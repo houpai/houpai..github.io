@@ -7,7 +7,7 @@ menu:
   旅行: /tags/旅行/
   摄影: http://shenyu-vip.lofter.com
   友链: /friends
-  关于我: /2019/about
+  关于我: /about/about
 
 # 站点次标题和打字动效
 # https://github.com/mattboldt/typed.js
@@ -183,7 +183,7 @@ friends_link:
     #网站图片(可忽略不写)
     img: /images/ayer.png
   GitHub:
-    url: https://github.com/Shen-Yu
+    url: https://github.com/houpai
     img: https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/github.png
   码云:
     url: https://gitee.com/shen-yu
