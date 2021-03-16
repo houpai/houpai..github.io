@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: houpai
+title: Hexo
 subtitle: ''
 description: ''
 keywords:
-author: houpai
+author: John Doe
 language: en
 timezone: ''
 
@@ -97,25 +97,9 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: ayer
+theme: hexo-theme-ayer
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
-
-# hexo-generator-searchdb
-search:
-  path: search.xml
-  field: post
-  format: html
-# hexo-generator-feed
-feed:
-  type: atom
-  path: atom.xml
-  limit: 20
-  hub:
-  content:
-  content_limit: 140
-  content_limit_delim: ' '
-  order_by: -date
