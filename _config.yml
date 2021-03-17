@@ -3,17 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: houpai
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: houpai
+language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://houpai.github.io
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -102,4 +103,25 @@ theme: hexo-theme-ayer
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  # 填上你自己的仓库名，注意后面有`.git`
+  repository: git@github.com:houpai/houpai.github.io.git
+  branch: master
+
+# hexo-generator-searchdb
+search:
+  path: search.xml
+  field: post
+  format: html
+
+
+# hexo-generator-feed 用于生成RSS订阅
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
