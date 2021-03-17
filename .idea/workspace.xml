@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea4969ae-8e46-450a-8501-3567b1e3a737" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/hello-world.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/.gitkeep" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/hexo-theme-ayer/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/hexo-theme-ayer/_config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,12 +41,22 @@
       <recent name="E:\blog\hp-hexo-blog\source\about" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server">
+  <component name="RunManager" selected="npm.push">
     <configuration name="clean" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="clean" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="push" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="push" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -67,6 +74,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.push" />
         <item itemvalue="npm.server" />
         <item itemvalue="npm.clean" />
       </list>
@@ -81,7 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1615894777066</updated>
       <workItem from="1615894778160" duration="4818000" />
-      <workItem from="1615977302817" duration="3120000" />
+      <workItem from="1615977302817" duration="5077000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1615895096695</created>
@@ -146,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615978964044</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="first commit">
+      <created>1615980508116</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1615980508116</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
