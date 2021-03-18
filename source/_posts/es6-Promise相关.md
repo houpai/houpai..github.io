@@ -4,7 +4,7 @@ date: 2021-03-11 09:48:56
 tags:
 - es6
 categories:
-- 前端
+- JavaScript
 ---
 Promise 对象代表了未来将要发生的事件，用来传递异步操作的消息。
 <!--more-->
