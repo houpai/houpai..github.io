@@ -89,10 +89,10 @@ input {
 
 ```css
 p {
-	width:200rpx;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width:200px;
 }
 ```
 
@@ -162,4 +162,4 @@ table{
 }
 ```
 
-[摘自](https://zhuanlan.zhihu.com/p/228168219)
+参考文档:[那些你总是记不住但又总是要用的css](https://zhuanlan.zhihu.com/p/228168219)

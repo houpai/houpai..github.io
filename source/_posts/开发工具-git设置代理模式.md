@@ -7,37 +7,31 @@ categories:
 - 开发工具
 
 ---
-为git设置代理,分为全局代理和局部代理
+github不使用代理就可以访问, 但有的时候clone和push的速度很慢，我们可以使用git代理来提高速度...
 <!--more-->
 
 ## 设置代理：
 
 ### 全局代理
 
-git config --global http.proxy `[IP地址]`:`[端口号]`
+```code
+git config --global http.proxy 127.0.0.1:10187
+```
 
-**例:**git config --global http.proxy 127.0.0.1:1087
+```code
+git config --global https.proxy 127.0.0.1:10187
+```
 
-### 局部代理，在github clone 仓库内执行
-
-git config --local http.proxy `[IP地址]`:`[端口号]`
-
-**例:**git config --local http.proxy 127.0.0.1:1087
-
-## 查询是否使用代理：
-
-### 查询全局代理
-
-git config --global http.proxy
-
-### 查询局部代理
-
-git config --local http.proxy
 
 ## 取消代理：
 
+```code
 git config --global --unset http.proxy
+```
+
+```code
 git config --local --unset http.proxy
+```
 
 ------
 
