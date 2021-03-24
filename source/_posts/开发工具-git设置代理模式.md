@@ -12,18 +12,31 @@ github不使用代理就可以访问, 但有的时候clone和push的速度很慢
 
 ## 设置代理：
 
-### 全局代理
+### 全局代理(http和https代理)
 
 ```code
-git config --global http.proxy 127.0.0.1:10187
+git config --global http.proxy 127.0.0.1:19180
 ```
 
 ```code
-git config --global https.proxy 127.0.0.1:10187
+git config --global https.proxy 127.0.0.1:19180
 ```
 
+### 局部代理(http和https代理)
+
+局部代理，在git仓库内执行
+
+```code
+git config --local http.proxy 127.0.0.1:19180
+```
+
+```code
+git config --local https.proxy 127.0.0.1:19180
+```
 
 ## 取消代理：
+
+### 取消全局代理(http和https代理)
 
 ```code
 git config --global --unset http.proxy
@@ -31,6 +44,16 @@ git config --global --unset http.proxy
 
 ```code
 git config --local --unset http.proxy
+```
+
+### 取消局部代理(http和https代理)
+
+```code
+git config --local --unset http.proxy
+```
+
+```code
+git config --local --unset https.proxy
 ```
 
 ------
