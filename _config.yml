@@ -125,3 +125,9 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
+# Online contact
+daovoice:
+  enable: true # 是否开启在线客服聊天
+  appid: '5d756096'  # 应用ID设置
+
