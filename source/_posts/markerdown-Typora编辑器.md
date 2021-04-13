@@ -1,13 +1,10 @@
 ---
 title: markerdown-Typora编辑器
-date: 2021-03-24 14:47:26
+date: 2021-04-12 14:47:26
 tags:
 - markerdown
 categories:
 - 开发工具
-cover: https://cdn.jsdelivr.net/gh/tangyuxian/blog_image@master/post/markerdown.jpg
-coverWidth: 1200
-coverHeight: 320
 ---
 Typora 是一款支持实时预览的 Markdown 文本编辑器
 

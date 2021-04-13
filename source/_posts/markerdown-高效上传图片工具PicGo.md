@@ -1,14 +1,12 @@
 ---
 title: markerdown-高效上传图片工具PicGo
-date: 2021-03-24 16:05:38
+date: 2021-04-12 16:05:38
 tags:
 - markerdown
-- 原创
+- 转载
 categories:
 - 开发工具
-cover: https://cdn.jsdelivr.net/gh/tangyuxian/blog_image@master/post/markerdown.jpg
-coverWidth: 1200
-coverHeight: 320
+
 ---
 在使用Typora时可随时便捷上传图片
 <!--more-->
