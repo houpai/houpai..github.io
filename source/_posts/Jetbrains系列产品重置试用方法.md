@@ -2,11 +2,11 @@
 title: Jetbrains系列产品重置试用方法
 date: 2021-05-04 09:48:56
 tags:
-- 转载
-  categories:
+- 转载  
+categories:
 - 工具
 ---
-记录一下如何重置Jetbrains的产品试用时间（30天试用期）。。。
+记录一下如何重置Jetbrains的产品试用时间（30天试用期）...
 <!--more-->
 **本站惯例：本文假定你知道Jetbrains家的产品。不知道可以问问搜索引擎。**
 
