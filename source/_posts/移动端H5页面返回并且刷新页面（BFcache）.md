@@ -3,8 +3,8 @@ title: 移动端H5页面返回并且刷新页面（BFcache）
 date: 2021-04-27 09:09:55
 tags:
 - 转载
-- javascript
-- html
+- Javascript
+- Html
 categories:
 - 前端
 ---

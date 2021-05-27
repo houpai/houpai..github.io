@@ -2,7 +2,7 @@
 title: markerdown-Typora编辑器
 date: 2021-04-12 14:47:26
 tags:
-- markerdown
+- Markerdown
 categories:
 - 开发工具
 ---

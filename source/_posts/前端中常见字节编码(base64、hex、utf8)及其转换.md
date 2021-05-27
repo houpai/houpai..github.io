@@ -2,7 +2,7 @@
 title: 前端中常见字节编码(base64、hex、utf8)及其转换
 date: 2021-05-07 11:09:55
 tags:
-- javascript
+- Javascript
 - 转载
 categories:
 - 前端

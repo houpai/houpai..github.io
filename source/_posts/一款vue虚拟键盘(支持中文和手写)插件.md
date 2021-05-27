@@ -2,8 +2,8 @@
 title: 一款vue虚拟键盘(支持中文和手写)插件
 date: 2021-05-07 09:09:55
 tags:
-- vue
-- npm
+- Vue
+- Npm
 categories:
 - 前端
 ---
