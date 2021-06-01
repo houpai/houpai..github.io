@@ -2,7 +2,7 @@
 title: js获取公网和内网ip
 date: 2021-05-27 10:09:55
 tags:
-- Javascript
+- JavaScript
 - 转载
 categories:
 - 前端
