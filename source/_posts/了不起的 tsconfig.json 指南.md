@@ -11,9 +11,8 @@ tsconfig.json配置详细说明...
 <!--more-->
 在 TypeScript 开发中，tsconfig.json 是个不可或缺的配置文件，它是我们在 TS 项目中最常见的配置文件，那么你真的了解这个文件吗？它里面都有哪些优秀配置？如何配置一个合理的 tsconfig.json 文件？本文将全面带大家一起详细了解 tsconfig.json 的各项配置。
 
-
 本文将从以下几个方面全面介绍 tsconfig.json 文件：
-![了不起的 tsconfig.json 指南.png](https://segmentfault.com/img/remote/1460000022809335)
+![image-20210601142104462](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210601142104462.png)
 
 
 水平有限，欢迎各位大佬指点~~
@@ -205,15 +204,15 @@ console.log(getVersion("1.0.1"));
 ### 1. 按顶层属性分类
 
 在 tsconfig.json 文件中按照**顶层属性**，分为以下几类：
-![tsconfig.json 文件结构（顶层属性）.png](https://segmentfault.com/img/remote/1460000022809334)
+![image-20210601142314935](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210601142314935.png)
 
-![了不起的 tsconfig.json 指南.png](https://segmentfault.com/img/remote/1460000022809332)
+![image-20210601142206106](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210601142206106.png)
 
 
 
 ### 2. 按功能分类
 
-![tsconfig.json 文件结构（功能）.png](https://segmentfault.com/img/remote/1460000022809333)
+![image-20210601142338923](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210601142338923.png)
 
 
 
