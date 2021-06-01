@@ -1,4 +1,14 @@
+---
+title: Vue3笔记 --- setup
+date: 2021-05-31 10:09:55
+tags:
+- Vue3
+categories:
+- 前端
 
+---
+记录一下js获取公网和内网ip的方法
+<!--more-->
 
 #### 什么是Composition API（组合API）
 
