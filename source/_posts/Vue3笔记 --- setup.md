@@ -604,7 +604,7 @@ export default {
 
 如果 `setup` 返回一个对象，则可以在组件的模板中像传递给 `setup` 的 `props` property 一样访问该对象的 property：
 
-```vue-html
+```javascript
 <!-- MyBook.vue -->
 <template>
   <div>{{ readersNumber }} {{ book.title }}</div>
