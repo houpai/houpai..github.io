@@ -59,7 +59,7 @@ Promise 对象代表了未来将要发生的事件，用来传递异步操作的
 
 ### class版
 
-```javascript
+```js
 class Promise{
     constructor(executor){
         this.state = 'pending';
@@ -98,7 +98,7 @@ class Promise{
 
 ### function版
 
-```javascript
+```js
 function myPromise(constructor){ let self=this;
   self.status="pending" //定义状态改变前的初始状态 
   self.value=undefined;//定义状态为resolved的时候的状态 
@@ -141,7 +141,7 @@ p.then(function(x){console.log(x)})
 
 测试：
 
-```JavaScript
+```js
 m = new Promise(resolve=>{
     console.log('aaa')
     setTimeout(function(){
@@ -160,7 +160,7 @@ m.then(res=>console.log(res));//执行
 
 ### class进阶版
 
-```JavaScript
+```js
 class Promise{
     constructor(executor){
         this.state = 'pending';
@@ -209,7 +209,7 @@ class Promise{
 
 ### function进阶版
 
-```JavaScript
+```js
 const PENDING = "pending"; 
 const FULFILLED = "fulfilled"; 
 const REJECTED = "rejected";

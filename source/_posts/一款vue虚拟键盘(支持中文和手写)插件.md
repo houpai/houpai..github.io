@@ -43,7 +43,7 @@ $ yarn add vue-keyboard-virtual-next --save
 
 ### 全局引入
 
-```javascript
+```js
 import App from "./app.vue";
 import { createApp } from "vue";
 import "vue-keyboard-virtual-next/keyboard.min.css";
@@ -56,7 +56,7 @@ createApp(App)
 
 ### 局部引入
 
-```html
+```vuejs
 <template>
   <!-- keyboard 只识别带有 data-mode 标识的输入框 -->
   <input data-mode v-model="value" />
@@ -66,7 +66,7 @@ createApp(App)
   />
 </template>
 ```
-```javascript
+```js
 <script lang="ts">
   import "keyboard-virtual-vue/keyboard.min.css";
   import KeyBoard from "keyboard-virtual-vue";
@@ -123,7 +123,7 @@ createApp(App)
 | reSignUp        | 重新给input注册绑定键盘,当页面有新的input标签出现时调用此方法 | （）=> void                     | v1.0.0+ |
 | getCurrentInput | 获取当前聚焦的输入框                                         | （）=> HTMLInputElement \| null | v1.0.1+ |
 
-```vue
+```vuejs
 <template>
   <!-- keyboard 只识别带有 data-mode 标识的输入框 -->
   <input data-mode v-model="value" />

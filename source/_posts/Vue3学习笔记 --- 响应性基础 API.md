@@ -46,7 +46,7 @@ function useState<State extends string>(initial: State) {
 - 获取数据值的时候需要加.value
 - `toRef后的ref数据不是原始数据的拷贝，而是引用，改变结果数据的值也会同时改变原始数据`
 
-```javascript
+```js
 import { defineComponent, toRef } from 'vue'
 
 export default defineComponent({
@@ -66,7 +66,7 @@ export default defineComponent({
 
 将响应式对象转换为普通对象，其中结果对象的每个 property 都是指向原始对象相应 property 的[`ref`](https://vue3js.cn/docs/zh/api/refs-api.html#ref)。
 
-```javascript
+```vuejs
 <template>
   <div>
     <h1>解构响应式对象数据</h1>
@@ -94,7 +94,7 @@ export default {
 
 当想要从一个组合逻辑函数中返回响应式对象时，用 toRefs 是很有效的，该 API 让消费组件可以 解构 / 扩展（使用 ... 操作符）返回的对象，并不会丢失响应性：
 
-```javascript
+```js
 function useFeatureX() {
   const state = reactive({
     foo: 1,
@@ -123,11 +123,11 @@ export default {
 
 
 
-##### readonly -- 深层”的只读代理
+##### readonly -- 深层”的只读**代理
 
 传入一个对象（响应式或普通）或 ref，返回一个原始对象的只读代理。一个只读的代理是“深层的”，对象内部任何嵌套的属性也都是只读的。
 
-```javascript
+```vuejs
 <template>
   <div>
     <h1>readonly - “深层”的只读代理</h1>
@@ -163,7 +163,7 @@ export default {
 
 返回对象的响应式副本,完整示例如下
 
-```javascript
+```vuejs
 <template>
   <div class="about">
     <button @click.stop="obj.increase">increase</button>
@@ -241,7 +241,7 @@ export default {
 
 立即执行传入的一个函数，并响应式追踪其依赖，并在其依赖变更时重新运行该函数。
 
-```javascript
+```vuejs
 <template>
   <div>
     <h1>watchEffect - 侦听器</h1>
@@ -278,7 +278,7 @@ export default {
 - `更明确哪些状态的改变会触发侦听器重新运行副作用；`
 - 访问侦听状态变化前后的值。
 
-```javascript
+```vuejs
 <template>
   <div>
     <h1>watch - 侦听器</h1>
@@ -325,7 +325,7 @@ export default {
 
 - ###### 只传 getter
 
-```javascript
+```vuejs
 <template>
   <div>
     <h1>computed - 计算属性</h1>
@@ -372,7 +372,7 @@ export default {
 
   创建一个可手动修改的计算状态。
 
-```javascript
+```vuejs
 <template>
   <div>
     <h1>computed - 计算属性</h1>

@@ -215,16 +215,93 @@ body {
 }
 
 body.darkmode {
-    background: rgba(0, 0, 0, .6)
+    background: rgba(0, 0, 0, .75)
 }
 
-body.darkmode * {
+body.darkmode html,
+body.darkmode div,
+body.darkmode span,
+body.darkmode applet,
+body.darkmode object,
+body.darkmode iframe,
+body.darkmode h1,
+body.darkmode h2,
+body.darkmode h3,
+body.darkmode h4,
+body.darkmode h5,
+body.darkmode h6,
+body.darkmode p,
+body.darkmode blockquote,
+body.darkmode a,
+body.darkmode abbr,
+body.darkmode acronym,
+body.darkmode address,
+body.darkmode big,
+body.darkmode cite,
+body.darkmode del,
+body.darkmode dfn,
+body.darkmode em,
+body.darkmode ins,
+body.darkmode kbd,
+body.darkmode q,
+body.darkmode s,
+body.darkmode samp,
+body.darkmode small,
+body.darkmode strike,
+body.darkmode strong,
+body.darkmode sub,
+body.darkmode sup,
+body.darkmode tt,
+body.darkmode var,
+body.darkmode b,
+body.darkmode u,
+body.darkmode i,
+body.darkmode center,
+body.darkmode dl,
+body.darkmode dt,
+body.darkmode dd,
+body.darkmode ol,
+body.darkmode ul,
+body.darkmode fieldset,
+body.darkmode form,
+body.darkmode label,
+body.darkmode legend,
+body.darkmode table,
+body.darkmode caption,
+body.darkmode tbody,
+body.darkmode tfoot,
+body.darkmode thead,
+body.darkmode tr,
+body.darkmode th,
+body.darkmode td,
+body.darkmode article,
+body.darkmode aside,
+body.darkmode canvas,
+body.darkmode details,
+body.darkmode embed,
+body.darkmode figure,
+body.darkmode figcaption,
+body.darkmode footer,
+body.darkmode header,
+body.darkmode hgroup,
+body.darkmode menu,
+body.darkmode nav,
+body.darkmode output,
+body.darkmode ruby,
+body.darkmode section,
+body.darkmode summary,
+body.darkmode time,
+body.darkmode mark,
+body.darkmode audio
+{
     color: #f2f2f2
 }
 
+
+
 body.darkmode .article-entry code {
-    background: #c7c7c7 !important;
-    color: #c7254e !important
+    /*background: #c7c7c7 !important;*/
+    /*color: #c7254e !important*/
 }
 
 body.darkmode .archive-article-date, body.darkmode .archive-year-wrap .archive-year, body.darkmode .article-category .article-category-link, body.darkmode .article-date, body.darkmode .article-header .article-title, body.darkmode .article-tag-list:before, body.darkmode .category-list .category-list-item i, body.darkmode .category-list a:hover .category-list-item, body.darkmode .share-outer i, body.darkmode .tag-list > .tag-list-item:before, body.darkmode a.toc-link {

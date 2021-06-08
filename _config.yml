@@ -45,17 +45,23 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
-  hljs: false
+  hljs: true
+
 prismjs:
   enable: false
-  preprocess: true
+  preprocess: false
   line_number: true
   tab_replace: ''
+
+
+
+
+
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -130,4 +136,5 @@ feed:
 daovoice:
   enable: true # 是否开启在线客服聊天
   appid: '5d756096'  # 应用ID设置
+
 

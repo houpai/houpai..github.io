@@ -165,7 +165,7 @@ console.log(counter.value) // 1
 
 回到我们的例子，让我们创建一个响应式的 `repositories` 变量：
 
-```javascript
+```js
 // src/components/UserRepositories.vue `setup` function
 import { fetchUserRepositories } from '@/api/repositories'
 import { ref } from 'vue'
