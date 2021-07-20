@@ -109,10 +109,14 @@ theme: hexo-theme-ayer
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  # 填上你自己的仓库名，注意后面有`.git`
-  repository: git@github.com:houpai/houpai.github.io.git
-  branch: master
+  - type: git
+    # 填上你自己的仓库名，注意后面有`.git`
+    repository: git@github.com:houpai/houpai.github.io.git
+    branch: master
+  - type: git
+    # 填上你自己的仓库名，注意后面有`.git`
+    repository: git@gitee.com:houpai/houpai.github.io.git
+    branch: master
 
 # hexo-generator-searchdb
 search:
