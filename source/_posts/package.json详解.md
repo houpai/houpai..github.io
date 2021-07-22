@@ -2,7 +2,7 @@
 title: package.json详解
 date: 2021-07-22 10:09:55
 tags:
-- 原创
+- 转载
 - Node
 categories:
 - 前端
@@ -717,3 +717,6 @@ if (foo) {
 ## 参考资料
 
 [https://docs.npmjs.com/cli/v7/c](https://link.zhihu.com/?target=https%3A//docs.npmjs.com/cli/v7/configuring-npm/package-json%23workspaces)
+
+
+转载于:[面试官：听说你对package.json很熟？](https://zhuanlan.zhihu.com/p/384484213)
