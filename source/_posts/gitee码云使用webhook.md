@@ -53,9 +53,7 @@ cat ~/.ssh/id_rsa.pub
 
 1. 添加公钥
 
-   ![img](https:////upload-images.jianshu.io/upload_images/821766-56bd17e0263347ac.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
-
-   image-2018-153940@2x.png
+   ![image-20210806130257753](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130257753.png)
 
 2. 测试
 
@@ -145,13 +143,9 @@ git pull xxxxx  # 根据自己的需要自行编写
 
 1. 测试服务
 
-   ![img](https:////upload-images.jianshu.io/upload_images/821766-d5df9db4f55c0bff.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
+   ![image-20210806130418973](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130418973.png)
 
-   WX20180225-163439@2x.png
-
-![img](https:////upload-images.jianshu.io/upload_images/821766-e026419e8867765b.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
-
-WX20180225-163748@2x.png
+![image-20210806130444529](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130444529.png)
 
 显示ok，说明成功
 
@@ -167,9 +161,7 @@ pm2 start webhook.js
 pm2 monit # 可以通过此命令查看服务的状态
 ```
 
-![img](https:////upload-images.jianshu.io/upload_images/821766-92b63c7277d377d8.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
-
-WX20180225-164721@2x.png
+![image-20210806130519710](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130519710.png)
 
 上图显示了一些应用的基本信息，可以更好的观察到服务的状态
 
