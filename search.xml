@@ -1107,7 +1107,7 @@ pm2 monit # 可以通过此命令查看服务的状态
     <content><![CDATA[<p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
 <span id="more"></span>
 
-<h4 id="1-从程序目录打开Git-Bash"><a href="#1-从程序目录打开Git-Bash" class="headerlink" title="1.从程序目录打开Git Bash"></a>1.从程序目录打开Git Bash</h4><h4 id="2-ssh-keygen-t-rsa-C-“-101-x6d-97-x69-x6c-64-x65-x6d-97-x69-x6c-x2e-99-111-109-“-101-109-97-x69-x6c-x40-x65-x6d-97-x69-x6c-46-99-111-x6d-是自己github账号"><a href="#2-ssh-keygen-t-rsa-C-“-101-x6d-97-x69-x6c-64-x65-x6d-97-x69-x6c-x2e-99-111-109-“-101-109-97-x69-x6c-x40-x65-x6d-97-x69-x6c-46-99-111-x6d-是自己github账号" class="headerlink" title="2.ssh-keygen -t rsa -C “&#101;&#x6d;&#97;&#x69;&#x6c;&#64;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;“ ,&#101;&#109;&#97;&#x69;&#x6c;&#x40;&#x65;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;是自己github账号"></a>2.ssh-keygen -t rsa -C “<a href="mailto:&#101;&#x6d;&#97;&#x69;&#x6c;&#64;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;">&#101;&#x6d;&#97;&#x69;&#x6c;&#64;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;</a>“ ,<a href="mailto:&#101;&#109;&#97;&#x69;&#x6c;&#x40;&#x65;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#101;&#109;&#97;&#x69;&#x6c;&#x40;&#x65;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a>是自己github账号</h4><h4 id="3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了"><a href="#3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了" class="headerlink" title="3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了"></a>3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了</h4><h4 id="4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下"><a href="#4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下" class="headerlink" title="4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下"></a>4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下</h4><h4 id="5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容"><a href="#5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容" class="headerlink" title="5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容"></a>5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容</h4><h4 id="6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去"><a href="#6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去" class="headerlink" title="6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去"></a>6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去</h4><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png"></p>
+<h4 id="1-从程序目录打开Git-Bash"><a href="#1-从程序目录打开Git-Bash" class="headerlink" title="1.从程序目录打开Git Bash"></a>1.从程序目录打开Git Bash</h4><h4 id="2-ssh-keygen-t-rsa-C-“-101-x6d-x61-105-x6c-x40-x65-109-97-x69-108-x2e-99-111-x6d-“-101-x6d-x61-x69-x6c-x40-101-109-x61-105-108-46-x63-x6f-109-是自己github账号"><a href="#2-ssh-keygen-t-rsa-C-“-101-x6d-x61-105-x6c-x40-x65-109-97-x69-108-x2e-99-111-x6d-“-101-x6d-x61-x69-x6c-x40-101-109-x61-105-108-46-x63-x6f-109-是自己github账号" class="headerlink" title="2.ssh-keygen -t rsa -C “&#101;&#x6d;&#x61;&#105;&#x6c;&#x40;&#x65;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;“ ,&#101;&#x6d;&#x61;&#x69;&#x6c;&#x40;&#101;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#109;是自己github账号"></a>2.ssh-keygen -t rsa -C “<a href="mailto:&#101;&#x6d;&#x61;&#105;&#x6c;&#x40;&#x65;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;">&#101;&#x6d;&#x61;&#105;&#x6c;&#x40;&#x65;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;</a>“ ,<a href="mailto:&#101;&#x6d;&#x61;&#x69;&#x6c;&#x40;&#101;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#109;">&#101;&#x6d;&#x61;&#x69;&#x6c;&#x40;&#101;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#109;</a>是自己github账号</h4><h4 id="3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了"><a href="#3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了" class="headerlink" title="3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了"></a>3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了</h4><h4 id="4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下"><a href="#4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下" class="headerlink" title="4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下"></a>4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下</h4><h4 id="5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容"><a href="#5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容" class="headerlink" title="5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容"></a>5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容</h4><h4 id="6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去"><a href="#6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去" class="headerlink" title="6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去"></a>6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去</h4><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh2.png"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/git_ssh.png"></p>
 ]]></content>
@@ -2698,6 +2698,34 @@ window.addEventListener(&#39;pageshow&#39;, function (e) &#123;
       </tags>
   </entry>
   <entry>
+    <title>本溪大石湖一日游</title>
+    <url>/2021/05/04/%E6%97%85%E8%A1%8C/%E6%9C%AC%E6%BA%AA%E5%A4%A7%E7%9F%B3%E6%B9%96%E4%B8%80%E6%97%A5%E6%B8%B8/</url>
+    <content><![CDATA[<p>五一放假期间去了一趟本溪大石湖，喜欢水的又离得比较近小伙伴们可以去耍耍…</p>
+<span id="more"></span>
+
+<h6 id="国际惯例，景区门口留影，哈哈"><a href="#国际惯例，景区门口留影，哈哈" class="headerlink" title="国际惯例，景区门口留影，哈哈"></a>国际惯例，景区门口留影，哈哈</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_123345.jpg"></p>
+<h6 id="这个也好意思叫岛，哈哈"><a href="#这个也好意思叫岛，哈哈" class="headerlink" title="这个也好意思叫岛，哈哈"></a>这个也好意思叫岛，哈哈</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_123915.jpg"></p>
+<h6 id="老婆大人夸我照相技术有点好-感谢煮师爷，哈哈"><a href="#老婆大人夸我照相技术有点好-感谢煮师爷，哈哈" class="headerlink" title="老婆大人夸我照相技术有点好(感谢煮师爷，哈哈)"></a>老婆大人夸我照相技术有点好(感谢煮师爷，哈哈)</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_124037.jpg"></p>
+<h6 id="小瀑布"><a href="#小瀑布" class="headerlink" title="小瀑布"></a>小瀑布</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_124203.jpg"></p>
+<h6 id=""><a href="#" class="headerlink" title=""></a><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_124529.jpg"></h6><h6 id="仙桃"><a href="#仙桃" class="headerlink" title="仙桃"></a>仙桃</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_124855.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_124859.jpg"></p>
+<h6 id="这个叫什么松，挺直"><a href="#这个叫什么松，挺直" class="headerlink" title="这个叫什么松，挺直"></a>这个叫什么松，挺直</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_125853.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_125923.jpg"></p>
+<h6 id="水很清"><a href="#水很清" class="headerlink" title="水很清"></a>水很清</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_130725.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_134533.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/laopo.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_135202.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_135204.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_144430.jpg"></p>
+]]></content>
+      <categories>
+        <category>游记</category>
+      </categories>
+      <tags>
+        <tag>旅行</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>那些你常用又记不住的Css</title>
     <url>/2021/03/18/%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%B8%B8%E7%94%A8%E5%8F%88%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84css/</url>
     <content><![CDATA[<p>记录一些常用Css效果</p>
@@ -2808,34 +2836,6 @@ table&#123;
       </categories>
       <tags>
         <tag>Css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>本溪大石湖一日游</title>
-    <url>/2021/05/04/%E6%97%85%E8%A1%8C/%E6%9C%AC%E6%BA%AA%E5%A4%A7%E7%9F%B3%E6%B9%96%E4%B8%80%E6%97%A5%E6%B8%B8/</url>
-    <content><![CDATA[<p>五一放假期间去了一趟本溪大石湖，喜欢水的又离得比较近小伙伴们可以去耍耍…</p>
-<span id="more"></span>
-
-<h6 id="国际惯例，景区门口留影，哈哈"><a href="#国际惯例，景区门口留影，哈哈" class="headerlink" title="国际惯例，景区门口留影，哈哈"></a>国际惯例，景区门口留影，哈哈</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_123345.jpg"></p>
-<h6 id="这个也好意思叫岛，哈哈"><a href="#这个也好意思叫岛，哈哈" class="headerlink" title="这个也好意思叫岛，哈哈"></a>这个也好意思叫岛，哈哈</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_123915.jpg"></p>
-<h6 id="老婆大人夸我照相技术有点好-感谢煮师爷，哈哈"><a href="#老婆大人夸我照相技术有点好-感谢煮师爷，哈哈" class="headerlink" title="老婆大人夸我照相技术有点好(感谢煮师爷，哈哈)"></a>老婆大人夸我照相技术有点好(感谢煮师爷，哈哈)</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_124037.jpg"></p>
-<h6 id="小瀑布"><a href="#小瀑布" class="headerlink" title="小瀑布"></a>小瀑布</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_124203.jpg"></p>
-<h6 id=""><a href="#" class="headerlink" title=""></a><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_124529.jpg"></h6><h6 id="仙桃"><a href="#仙桃" class="headerlink" title="仙桃"></a>仙桃</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_124855.jpg"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_124859.jpg"></p>
-<h6 id="这个叫什么松，挺直"><a href="#这个叫什么松，挺直" class="headerlink" title="这个叫什么松，挺直"></a>这个叫什么松，挺直</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_125853.jpg"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_125923.jpg"></p>
-<h6 id="水很清"><a href="#水很清" class="headerlink" title="水很清"></a>水很清</h6><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_130725.jpg"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_134533.jpg"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/laopo.jpg"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_135202.jpg"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_135204.jpg"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/IMG_20210501_144430.jpg"></p>
-]]></content>
-      <categories>
-        <category>游记</category>
-      </categories>
-      <tags>
-        <tag>旅行</tag>
       </tags>
   </entry>
   <entry>
@@ -3014,7 +3014,7 @@ table&#123;
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160215210.png" alt="image-20210813160215210"></p>
 <ul>
-<li><h5 id="更改远程仓库连接地址"><a href="#更改远程仓库连接地址" class="headerlink" title="更改远程仓库连接地址"></a>更改远程仓库连接地址</h5><p>ssh执行：git remote set-url origin <a href="mailto:&#103;&#x69;&#116;&#x40;&#103;&#105;&#116;&#101;&#101;&#x2e;&#99;&#111;&#109;">&#103;&#x69;&#116;&#x40;&#103;&#105;&#116;&#101;&#101;&#x2e;&#99;&#111;&#109;</a>:houpai/git-demo.git</p>
+<li><h5 id="更改远程仓库连接地址"><a href="#更改远程仓库连接地址" class="headerlink" title="更改远程仓库连接地址"></a>更改远程仓库连接地址</h5><p>ssh执行：git remote set-url origin <a href="mailto:&#x67;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#x65;&#x65;&#46;&#x63;&#111;&#109;">&#x67;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#x65;&#x65;&#46;&#x63;&#111;&#109;</a>:houpai/git-demo.git</p>
 <p>http执行：git remote set-url origin  <a href="https://github.com/NECKLI/git-test.git">https://github.com/NECKLI/git-test.git</a></p>
 </li>
 </ul>
