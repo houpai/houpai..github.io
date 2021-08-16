@@ -182,6 +182,301 @@ function useCount() &#123;
       </tags>
   </entry>
   <entry>
+    <title>Vue3笔记 --- 生命周期</title>
+    <url>/2021/06/09/Vue3%E7%AC%94%E8%AE%B0%20---%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+    <content><![CDATA[<p>老壶新酒,Vue3 — 生命周期…</p>
+<span id="more"></span>
+
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>这属于老壶新酒了，详情见文档<a href="https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html">生命周期钩子函数</a></p>
+<p>vue3的生命周期钩子注册函数只能在 setup() 期间同步使用。</p>
+<p>因为它们依赖于内部的全局状态来定位当前组件实例（正在调用 setup() 的组件实例）, 不在当前组件下调用这些函数会抛出一个错误。</p>
+<h4 id="与-2-x-版本生命周期等效的组合式-API"><a href="#与-2-x-版本生命周期等效的组合式-API" class="headerlink" title="与 2.x 版本生命周期等效的组合式 API"></a>与 2.x 版本生命周期等效的组合式 API</h4><table>
+<thead>
+<tr>
+<th><strong>v2.x</strong></th>
+<th><strong>v3</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>beforeCreate</td>
+<td><strong>setup</strong></td>
+</tr>
+<tr>
+<td>created</td>
+<td><strong>setup</strong></td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td>onBeforeMount</td>
+</tr>
+<tr>
+<td>mounted</td>
+<td>onMounted</td>
+</tr>
+<tr>
+<td>beforeUpdate</td>
+<td>onBeforeUpdate</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>onUpdated</td>
+</tr>
+<tr>
+<td>beforeDestroy</td>
+<td>onBeforeUnmount</td>
+</tr>
+<tr>
+<td>destroyed</td>
+<td>onUnmounted</td>
+</tr>
+<tr>
+<td>errorCaptured</td>
+<td>onErrorCaptured</td>
+</tr>
+</tbody></table>
+<h4 id="新增的钩子函数"><a href="#新增的钩子函数" class="headerlink" title="新增的钩子函数"></a>新增的钩子函数</h4><table>
+<thead>
+<tr>
+<th><strong>onRenderTracked</strong></th>
+<th>检查哪个 reactive 对象属性或一个 ref 作为依赖被追踪。当render函数被调用时，会检查哪个响应式数据被收集依赖。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>onRenderTriggered</strong></td>
+<td>当执行update操作时，会检查哪个响应式数据导致组件重新渲染。</td>
+</tr>
+</tbody></table>
+<p>使用方式与watchEffect的onTrack 和 onTrigger一样：</p>
+<p><a href="https://vue-composition-api-rfc.netlify.app/zh/api.html#watcheffect">https://vue-composition-api-rfc.netlify.app/zh/api.html#watcheffect</a></p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><h4 id="App-vue"><a href="#App-vue" class="headerlink" title="App.vue"></a>App.vue</h4><pre><code class="vuejs">&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;button @click=&quot;show=!show&quot;&gt;Toggle Demo&lt;/button&gt;
+    &lt;Demo v-if=&quot;show&quot; /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import Demo from &quot;./components/07Lifecycle.vue&quot;;
+export default &#123;
+  name: &quot;App&quot;,
+  data() &#123;
+    return &#123; show: false &#125;;
+  &#125;,
+  components: &#123;
+    // HelloWorld,
+    Demo,
+  &#125;,
+  errorCaptured(err, vm, info) &#123;
+    console.error(err, vm.data, info);
+    return true;
+  &#125;,
+&#125;;
+&lt;/script&gt;
+</code></pre>
+<h4 id="Lifecycle-vue"><a href="#Lifecycle-vue" class="headerlink" title="Lifecycle.vue"></a>Lifecycle.vue</h4><pre><code class="vuejs">&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;lifecycle - 生命周期&lt;/h1&gt;
+    &lt;p&gt;&#123;&#123;data.name&#125;&#125;&lt;/p&gt;
+    &lt;button @click=&quot;updateData&quot;&gt;Update data&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import &#123;
+  reactive,
+  // mount
+  onBeforeMount,
+  onMounted,
+  // update
+  onBeforeUpdate,
+  onUpdated,
+  // unmount
+  onBeforeUnmount,
+  onUnmounted,
+  // 新增的钩子函数
+  onRenderTracked,
+  onRenderTriggered,
+&#125; from &quot;vue&quot;;
+
+export default &#123;
+  name: &quot;Lifecycle&quot;,
+  setup() &#123;
+    onBeforeMount(() =&gt; &#123;
+      debugger; // eslint-disable-line
+    &#125;);
+    onMounted(() =&gt; &#123;
+      debugger; // eslint-disable-line
+    &#125;);
+    onBeforeUpdate(() =&gt; &#123;
+      debugger; // eslint-disable-line
+    &#125;);
+    onUpdated(() =&gt; &#123;
+      debugger; // eslint-disable-line
+    &#125;);
+    onBeforeUnmount(() =&gt; &#123;
+      debugger; // eslint-disable-line
+    &#125;);
+    onUnmounted(() =&gt; &#123;
+      debugger; // eslint-disable-line
+    &#125;);
+    onRenderTracked((e) =&gt; &#123; // eslint-disable-line
+      debugger; // eslint-disable-line
+    &#125;);
+    onRenderTriggered((e) =&gt; &#123; // eslint-disable-line
+      debugger; // eslint-disable-line
+    &#125;);
+
+    const data = reactive(&#123; name: &quot;haihong&quot; &#125;);
+    const updateData = () =&gt; &#123;
+      data.name = &quot;chen haiong&quot; + new Date().toLocaleTimeString();
+    &#125;;
+    return &#123; data, updateData &#125;;
+  &#125;,
+&#125;;
+&lt;/script&gt;
+</code></pre>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gitee使用webhook</title>
+    <url>/2021/08/06/gitee%E7%A0%81%E4%BA%91%E4%BD%BF%E7%94%A8webhook/</url>
+    <content><![CDATA[<p>gitee配置webhook…</p>
+<span id="more"></span>
+
+
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。</p>
+<h3 id="什么是webhook"><a href="#什么是webhook" class="headerlink" title="什么是webhook"></a>什么是webhook</h3><blockquote>
+<p>准确的说webhoo是一种web回调或者http的push API，是向APP或者其他应用提供实时信息的一种方式。Webhook在数据产生时立即发送数据，也就是你能实时收到数据。这一种不同于典型的API，需要用了实时性需要足够快的轮询。这无论是对生产还是对消费者都是高效的，唯一的缺点是初始建立困难。</p>
+</blockquote>
+<blockquote>
+<p>Webhook有时也被称为反向API，因为他提供了API规则，你需要设计要使用的API。Webhook将向你的应用发起http请求，典型的是post请求，应用程序由请求驱动。</p>
+</blockquote>
+<h3 id="配置webhook"><a href="#配置webhook" class="headerlink" title="配置webhook"></a>配置webhook</h3><p>知道什么是webhook 后我们就要开始配置我们自己的项目了。<br> 环境：<br> CentOS7<br> Gitee（网上GitHub的教程比较多，这个基于码云）</p>
+<ul>
+<li>配置项目公私钥</li>
+</ul>
+<ol>
+<li>生产公钥</li>
+</ol>
+<pre><code class="bash">ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;  
+
+# Generating public/private rsa key pair...
+# 三次回车即可生成 ssh key
+</code></pre>
+<ol>
+<li>查看公钥</li>
+</ol>
+<pre><code class="bash">cat ~/.ssh/id_rsa.pub
+# ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....
+</code></pre>
+<ol>
+<li><p>添加公钥</p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130257753.png" alt="image-20210806130257753"></p>
+</li>
+<li><p>测试</p>
+</li>
+</ol>
+<pre><code class="bash">ssh -T git@gitee.com
+Welcome to Gitee.com, yourname! # 返回，说明正常
+</code></pre>
+<ul>
+<li>配置服务器node环境</li>
+</ul>
+<ol>
+<li>安装nvm，服务器上使用nvm 方便多版本node切换</li>
+</ol>
+<pre><code class="bash">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+vim /etc/profile
+#加入下面的内容
+export NVM_DIR=&quot;$HOME/.nvm&quot;
+[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;
+source /etc/profile
+nvm install stable # 安装稳定版
+nvm current # 查看当前的版本
+</code></pre>
+<ol>
+<li>配置相关的脚本<br> 安装gitee-webhook-handler(GitHub,GitLab,gitee 的包是不同的，不能混用)</li>
+</ol>
+<pre><code class="bash">mkdir /opt/webhook #创建目录
+cd /opt/webhook
+npm init # 初始化项目，方便以后迁移
+npm install  gitee-webhook-handler --save # 当前的版本为v0.1.2
+</code></pre>
+<ol>
+<li>创建对应的webhook服务</li>
+</ol>
+<pre><code class="bash">vim webhook.js
+
+var http = require(&#39;http&#39;)
+var createHandler = require(&#39;gitee-webhook-handler&#39;)
+var handler = createHandler(&#123; path: &#39;/webhooks_push&#39;, secret: &#39;123456&#39; &#125;)# post 所需要用到的秘钥
+
+function run_cmd(cmd, args, callback) &#123;
+  var spawn = require(&#39;child_process&#39;).spawn;
+  var child = spawn(cmd, args);
+  var resp = &quot;&quot;;
+  child.stdout.on(&#39;data&#39;, function(buffer) &#123; resp += buffer.toString(); &#125;);
+  child.stdout.on(&#39;end&#39;, function() &#123; callback (resp) &#125;);
+&#125;
+handler.on(&#39;error&#39;, function (err) &#123;
+  console.error(&#39;Error:&#39;, err.message)
+&#125;)
+handler.on(&#39;Push Hook&#39;, function (event) &#123;  # 这个地方就是GitHub 和 Gitee 不一样的地方，需要注意
+  console.log(&#39;Received a push event for %s to %s&#39;,
+    event.payload.repository.name,
+    event.payload.ref);
+    run_cmd(&#39;sh&#39;, [&#39;./deploy.sh&#39;], function(text)&#123; console.log(text) &#125;);# 需要执行的脚本位置
+&#125;)
+try &#123;
+  http.createServer(function (req, res) &#123;
+    handler(req, res, function (err) &#123;
+      res.statusCode = 404
+      res.end(&#39;no such location&#39;)
+    &#125;)
+  &#125;).listen(6666) # 服务监听的端口，可以自行修改
+&#125;catch(err)&#123;
+  console.error(&#39;Error:&#39;, err.message)
+&#125;
+</code></pre>
+<ol>
+<li>创建需要执行的脚本</li>
+</ol>
+<pre><code class="bash">vim deploy.sh
+git pull xxxxx  # 根据自己的需要自行编写
+</code></pre>
+<ol>
+<li><p>测试服务</p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130418973.png" alt="image-20210806130418973"></p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130444529.png" alt="image-20210806130444529"></p>
+<p>显示ok，说明成功</p>
+<h3 id="使用pm2应用进程管理器"><a href="#使用pm2应用进程管理器" class="headerlink" title="使用pm2应用进程管理器"></a>使用pm2应用进程管理器</h3><p>使用node 启动服务不是很方便，推荐使用pm2</p>
+<pre><code class="bash">npm install -g pm2
+pm2 start webhook.js
+pm2 monit # 可以通过此命令查看服务的状态
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130519710.png" alt="image-20210806130519710"></p>
+<p>上图显示了一些应用的基本信息，可以更好的观察到服务的状态</p>
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>配置完成后，只要pull代码到仓库，就会触发webhook执行脚本，十分的方便，同时减少了工作量，相对采用轮询的方式消耗的资源更小。</p>
+<p>参考：<a href="https://www.npmjs.com/package/gitee-webhook-handler">https://www.npmjs.com/package/gitee-webhook-handler</a></p>
+<p>转载于:<a href="https://www.jianshu.com/p/caa541590d48">gitee码云使用webhook</a></p>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+      <tags>
+        <tag>转载</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue3笔记 --- 响应性基础API</title>
     <url>/2021/06/03/Vue3%E7%AC%94%E8%AE%B0%20---%20%E5%93%8D%E5%BA%94%E6%80%A7%E5%9F%BA%E7%A1%80%20API/</url>
     <content><![CDATA[<p>记录整理Vue3的响应性API…</p>
@@ -513,168 +808,6 @@ export default &#123;
       </tags>
   </entry>
   <entry>
-    <title>Vue3笔记 --- 生命周期</title>
-    <url>/2021/06/09/Vue3%E7%AC%94%E8%AE%B0%20---%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
-    <content><![CDATA[<p>老壶新酒,Vue3 — 生命周期…</p>
-<span id="more"></span>
-
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>这属于老壶新酒了，详情见文档<a href="https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html">生命周期钩子函数</a></p>
-<p>vue3的生命周期钩子注册函数只能在 setup() 期间同步使用。</p>
-<p>因为它们依赖于内部的全局状态来定位当前组件实例（正在调用 setup() 的组件实例）, 不在当前组件下调用这些函数会抛出一个错误。</p>
-<h4 id="与-2-x-版本生命周期等效的组合式-API"><a href="#与-2-x-版本生命周期等效的组合式-API" class="headerlink" title="与 2.x 版本生命周期等效的组合式 API"></a>与 2.x 版本生命周期等效的组合式 API</h4><table>
-<thead>
-<tr>
-<th><strong>v2.x</strong></th>
-<th><strong>v3</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>beforeCreate</td>
-<td><strong>setup</strong></td>
-</tr>
-<tr>
-<td>created</td>
-<td><strong>setup</strong></td>
-</tr>
-<tr>
-<td>beforeMount</td>
-<td>onBeforeMount</td>
-</tr>
-<tr>
-<td>mounted</td>
-<td>onMounted</td>
-</tr>
-<tr>
-<td>beforeUpdate</td>
-<td>onBeforeUpdate</td>
-</tr>
-<tr>
-<td>updated</td>
-<td>onUpdated</td>
-</tr>
-<tr>
-<td>beforeDestroy</td>
-<td>onBeforeUnmount</td>
-</tr>
-<tr>
-<td>destroyed</td>
-<td>onUnmounted</td>
-</tr>
-<tr>
-<td>errorCaptured</td>
-<td>onErrorCaptured</td>
-</tr>
-</tbody></table>
-<h4 id="新增的钩子函数"><a href="#新增的钩子函数" class="headerlink" title="新增的钩子函数"></a>新增的钩子函数</h4><table>
-<thead>
-<tr>
-<th><strong>onRenderTracked</strong></th>
-<th>检查哪个 reactive 对象属性或一个 ref 作为依赖被追踪。当render函数被调用时，会检查哪个响应式数据被收集依赖。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>onRenderTriggered</strong></td>
-<td>当执行update操作时，会检查哪个响应式数据导致组件重新渲染。</td>
-</tr>
-</tbody></table>
-<p>使用方式与watchEffect的onTrack 和 onTrigger一样：</p>
-<p><a href="https://vue-composition-api-rfc.netlify.app/zh/api.html#watcheffect">https://vue-composition-api-rfc.netlify.app/zh/api.html#watcheffect</a></p>
-<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><h4 id="App-vue"><a href="#App-vue" class="headerlink" title="App.vue"></a>App.vue</h4><pre><code class="vuejs">&lt;template&gt;
-  &lt;div id=&quot;app&quot;&gt;
-    &lt;button @click=&quot;show=!show&quot;&gt;Toggle Demo&lt;/button&gt;
-    &lt;Demo v-if=&quot;show&quot; /&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-import Demo from &quot;./components/07Lifecycle.vue&quot;;
-export default &#123;
-  name: &quot;App&quot;,
-  data() &#123;
-    return &#123; show: false &#125;;
-  &#125;,
-  components: &#123;
-    // HelloWorld,
-    Demo,
-  &#125;,
-  errorCaptured(err, vm, info) &#123;
-    console.error(err, vm.data, info);
-    return true;
-  &#125;,
-&#125;;
-&lt;/script&gt;
-</code></pre>
-<h4 id="Lifecycle-vue"><a href="#Lifecycle-vue" class="headerlink" title="Lifecycle.vue"></a>Lifecycle.vue</h4><pre><code class="vuejs">&lt;template&gt;
-  &lt;div&gt;
-    &lt;h1&gt;lifecycle - 生命周期&lt;/h1&gt;
-    &lt;p&gt;&#123;&#123;data.name&#125;&#125;&lt;/p&gt;
-    &lt;button @click=&quot;updateData&quot;&gt;Update data&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-import &#123;
-  reactive,
-  // mount
-  onBeforeMount,
-  onMounted,
-  // update
-  onBeforeUpdate,
-  onUpdated,
-  // unmount
-  onBeforeUnmount,
-  onUnmounted,
-  // 新增的钩子函数
-  onRenderTracked,
-  onRenderTriggered,
-&#125; from &quot;vue&quot;;
-
-export default &#123;
-  name: &quot;Lifecycle&quot;,
-  setup() &#123;
-    onBeforeMount(() =&gt; &#123;
-      debugger; // eslint-disable-line
-    &#125;);
-    onMounted(() =&gt; &#123;
-      debugger; // eslint-disable-line
-    &#125;);
-    onBeforeUpdate(() =&gt; &#123;
-      debugger; // eslint-disable-line
-    &#125;);
-    onUpdated(() =&gt; &#123;
-      debugger; // eslint-disable-line
-    &#125;);
-    onBeforeUnmount(() =&gt; &#123;
-      debugger; // eslint-disable-line
-    &#125;);
-    onUnmounted(() =&gt; &#123;
-      debugger; // eslint-disable-line
-    &#125;);
-    onRenderTracked((e) =&gt; &#123; // eslint-disable-line
-      debugger; // eslint-disable-line
-    &#125;);
-    onRenderTriggered((e) =&gt; &#123; // eslint-disable-line
-      debugger; // eslint-disable-line
-    &#125;);
-
-    const data = reactive(&#123; name: &quot;haihong&quot; &#125;);
-    const updateData = () =&gt; &#123;
-      data.name = &quot;chen haiong&quot; + new Date().toLocaleTimeString();
-    &#125;;
-    return &#123; data, updateData &#125;;
-  &#125;,
-&#125;;
-&lt;/script&gt;
-</code></pre>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>Vue3</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>es6-Promise相关</title>
     <url>/2021/03/11/es6-Promise%E7%9B%B8%E5%85%B3/</url>
     <content><![CDATA[<p>Promise 对象代表了未来将要发生的事件，用来传递异步操作的消息。</p>
@@ -969,145 +1102,12 @@ Promise.prototype.then = function(onFulfilled, onRejected) &#123;
       </tags>
   </entry>
   <entry>
-    <title>gitee使用webhook</title>
-    <url>/2021/08/06/gitee%E7%A0%81%E4%BA%91%E4%BD%BF%E7%94%A8webhook/</url>
-    <content><![CDATA[<p>gitee配置webhook…</p>
-<span id="more"></span>
-
-
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。</p>
-<h3 id="什么是webhook"><a href="#什么是webhook" class="headerlink" title="什么是webhook"></a>什么是webhook</h3><blockquote>
-<p>准确的说webhoo是一种web回调或者http的push API，是向APP或者其他应用提供实时信息的一种方式。Webhook在数据产生时立即发送数据，也就是你能实时收到数据。这一种不同于典型的API，需要用了实时性需要足够快的轮询。这无论是对生产还是对消费者都是高效的，唯一的缺点是初始建立困难。</p>
-</blockquote>
-<blockquote>
-<p>Webhook有时也被称为反向API，因为他提供了API规则，你需要设计要使用的API。Webhook将向你的应用发起http请求，典型的是post请求，应用程序由请求驱动。</p>
-</blockquote>
-<h3 id="配置webhook"><a href="#配置webhook" class="headerlink" title="配置webhook"></a>配置webhook</h3><p>知道什么是webhook 后我们就要开始配置我们自己的项目了。<br> 环境：<br> CentOS7<br> Gitee（网上GitHub的教程比较多，这个基于码云）</p>
-<ul>
-<li>配置项目公私钥</li>
-</ul>
-<ol>
-<li>生产公钥</li>
-</ol>
-<pre><code class="bash">ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;  
-
-# Generating public/private rsa key pair...
-# 三次回车即可生成 ssh key
-</code></pre>
-<ol>
-<li>查看公钥</li>
-</ol>
-<pre><code class="bash">cat ~/.ssh/id_rsa.pub
-# ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....
-</code></pre>
-<ol>
-<li><p>添加公钥</p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130257753.png" alt="image-20210806130257753"></p>
-</li>
-<li><p>测试</p>
-</li>
-</ol>
-<pre><code class="bash">ssh -T git@gitee.com
-Welcome to Gitee.com, yourname! # 返回，说明正常
-</code></pre>
-<ul>
-<li>配置服务器node环境</li>
-</ul>
-<ol>
-<li>安装nvm，服务器上使用nvm 方便多版本node切换</li>
-</ol>
-<pre><code class="bash">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-vim /etc/profile
-#加入下面的内容
-export NVM_DIR=&quot;$HOME/.nvm&quot;
-[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;
-source /etc/profile
-nvm install stable # 安装稳定版
-nvm current # 查看当前的版本
-</code></pre>
-<ol>
-<li>配置相关的脚本<br> 安装gitee-webhook-handler(GitHub,GitLab,gitee 的包是不同的，不能混用)</li>
-</ol>
-<pre><code class="bash">mkdir /opt/webhook #创建目录
-cd /opt/webhook
-npm init # 初始化项目，方便以后迁移
-npm install  gitee-webhook-handler --save # 当前的版本为v0.1.2
-</code></pre>
-<ol>
-<li>创建对应的webhook服务</li>
-</ol>
-<pre><code class="bash">vim webhook.js
-
-var http = require(&#39;http&#39;)
-var createHandler = require(&#39;gitee-webhook-handler&#39;)
-var handler = createHandler(&#123; path: &#39;/webhooks_push&#39;, secret: &#39;123456&#39; &#125;)# post 所需要用到的秘钥
-
-function run_cmd(cmd, args, callback) &#123;
-  var spawn = require(&#39;child_process&#39;).spawn;
-  var child = spawn(cmd, args);
-  var resp = &quot;&quot;;
-  child.stdout.on(&#39;data&#39;, function(buffer) &#123; resp += buffer.toString(); &#125;);
-  child.stdout.on(&#39;end&#39;, function() &#123; callback (resp) &#125;);
-&#125;
-handler.on(&#39;error&#39;, function (err) &#123;
-  console.error(&#39;Error:&#39;, err.message)
-&#125;)
-handler.on(&#39;Push Hook&#39;, function (event) &#123;  # 这个地方就是GitHub 和 Gitee 不一样的地方，需要注意
-  console.log(&#39;Received a push event for %s to %s&#39;,
-    event.payload.repository.name,
-    event.payload.ref);
-    run_cmd(&#39;sh&#39;, [&#39;./deploy.sh&#39;], function(text)&#123; console.log(text) &#125;);# 需要执行的脚本位置
-&#125;)
-try &#123;
-  http.createServer(function (req, res) &#123;
-    handler(req, res, function (err) &#123;
-      res.statusCode = 404
-      res.end(&#39;no such location&#39;)
-    &#125;)
-  &#125;).listen(6666) # 服务监听的端口，可以自行修改
-&#125;catch(err)&#123;
-  console.error(&#39;Error:&#39;, err.message)
-&#125;
-</code></pre>
-<ol>
-<li>创建需要执行的脚本</li>
-</ol>
-<pre><code class="bash">vim deploy.sh
-git pull xxxxx  # 根据自己的需要自行编写
-</code></pre>
-<ol>
-<li><p>测试服务</p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130418973.png" alt="image-20210806130418973"></p>
-</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130444529.png" alt="image-20210806130444529"></p>
-<p>显示ok，说明成功</p>
-<h3 id="使用pm2应用进程管理器"><a href="#使用pm2应用进程管理器" class="headerlink" title="使用pm2应用进程管理器"></a>使用pm2应用进程管理器</h3><p>使用node 启动服务不是很方便，推荐使用pm2</p>
-<pre><code class="bash">npm install -g pm2
-pm2 start webhook.js
-pm2 monit # 可以通过此命令查看服务的状态
-</code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130519710.png" alt="image-20210806130519710"></p>
-<p>上图显示了一些应用的基本信息，可以更好的观察到服务的状态</p>
-<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>配置完成后，只要pull代码到仓库，就会触发webhook执行脚本，十分的方便，同时减少了工作量，相对采用轮询的方式消耗的资源更小。</p>
-<p>参考：<a href="https://www.npmjs.com/package/gitee-webhook-handler">https://www.npmjs.com/package/gitee-webhook-handler</a></p>
-<p>转载于:<a href="https://www.jianshu.com/p/caa541590d48">gitee码云使用webhook</a></p>
-]]></content>
-      <categories>
-        <category>开发工具</category>
-      </categories>
-      <tags>
-        <tag>转载</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>github配置ssh</title>
     <url>/2021/04/08/github%E9%85%8D%E7%BD%AEssh/</url>
     <content><![CDATA[<p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
 <span id="more"></span>
 
-<h4 id="1-从程序目录打开Git-Bash"><a href="#1-从程序目录打开Git-Bash" class="headerlink" title="1.从程序目录打开Git Bash"></a>1.从程序目录打开Git Bash</h4><h4 id="2-ssh-keygen-t-rsa-C-“-101-x6d-x61-x69-108-x40-x65-109-x61-x69-108-x2e-99-111-x6d-“-101-x6d-97-105-108-x40-x65-x6d-x61-x69-108-46-99-111-x6d-是自己github账号"><a href="#2-ssh-keygen-t-rsa-C-“-101-x6d-x61-x69-108-x40-x65-109-x61-x69-108-x2e-99-111-x6d-“-101-x6d-97-105-108-x40-x65-x6d-x61-x69-108-46-99-111-x6d-是自己github账号" class="headerlink" title="2.ssh-keygen -t rsa -C “&#101;&#x6d;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;“ ,&#101;&#x6d;&#97;&#105;&#108;&#x40;&#x65;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;是自己github账号"></a>2.ssh-keygen -t rsa -C “<a href="mailto:&#101;&#x6d;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;">&#101;&#x6d;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;</a>“ ,<a href="mailto:&#101;&#x6d;&#97;&#105;&#108;&#x40;&#x65;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#101;&#x6d;&#97;&#105;&#108;&#x40;&#x65;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;</a>是自己github账号</h4><h4 id="3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了"><a href="#3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了" class="headerlink" title="3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了"></a>3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了</h4><h4 id="4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下"><a href="#4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下" class="headerlink" title="4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下"></a>4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下</h4><h4 id="5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容"><a href="#5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容" class="headerlink" title="5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容"></a>5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容</h4><h4 id="6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去"><a href="#6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去" class="headerlink" title="6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去"></a>6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去</h4><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png"></p>
+<h4 id="1-从程序目录打开Git-Bash"><a href="#1-从程序目录打开Git-Bash" class="headerlink" title="1.从程序目录打开Git Bash"></a>1.从程序目录打开Git Bash</h4><h4 id="2-ssh-keygen-t-rsa-C-“-x65-109-x61-x69-108-64-x65-109-97-x69-108-x2e-x63-111-x6d-“-x65-x6d-x61-x69-x6c-64-x65-x6d-97-105-108-x2e-x63-x6f-x6d-是自己github账号"><a href="#2-ssh-keygen-t-rsa-C-“-x65-109-x61-x69-108-64-x65-109-97-x69-108-x2e-x63-111-x6d-“-x65-x6d-x61-x69-x6c-64-x65-x6d-97-105-108-x2e-x63-x6f-x6d-是自己github账号" class="headerlink" title="2.ssh-keygen -t rsa -C “&#x65;&#109;&#x61;&#x69;&#108;&#64;&#x65;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;“ ,&#x65;&#x6d;&#x61;&#x69;&#x6c;&#64;&#x65;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;是自己github账号"></a>2.ssh-keygen -t rsa -C “<a href="mailto:&#x65;&#109;&#x61;&#x69;&#108;&#64;&#x65;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;">&#x65;&#109;&#x61;&#x69;&#108;&#64;&#x65;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;</a>“ ,<a href="mailto:&#x65;&#x6d;&#x61;&#x69;&#x6c;&#64;&#x65;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#x65;&#x6d;&#x61;&#x69;&#x6c;&#64;&#x65;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a>是自己github账号</h4><h4 id="3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了"><a href="#3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了" class="headerlink" title="3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了"></a>3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了</h4><h4 id="4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下"><a href="#4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下" class="headerlink" title="4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下"></a>4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下</h4><h4 id="5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容"><a href="#5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容" class="headerlink" title="5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容"></a>5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容</h4><h4 id="6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去"><a href="#6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去" class="headerlink" title="6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去"></a>6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去</h4><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh2.png"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/git_ssh.png"></p>
 ]]></content>
@@ -2245,88 +2245,6 @@ console.log(input)
       </tags>
   </entry>
   <entry>
-    <title>搭建ts简易开发环境</title>
-    <url>/2021/06/01/%E6%90%AD%E5%BB%BAts%E7%AE%80%E6%98%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<p>用webpack搭建一个用于学习ts的简易的ts开发环境…</p>
-<span id="more"></span>
-<h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><pre><code class="code">mkdir ts-cli
-cd ts-cli
-npm init -y
-</code></pre>
-<h4 id="下载typescript依赖"><a href="#下载typescript依赖" class="headerlink" title="下载typescript依赖"></a>下载typescript依赖</h4><pre><code>npm i typescript -D
-</code></pre>
-<h4 id="初始化typescript配置项"><a href="#初始化typescript配置项" class="headerlink" title="初始化typescript配置项"></a>初始化typescript配置项</h4><pre><code>npx tsc --init
-</code></pre>
-<p>初始化配置成功会提示如下</p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210601133709223.png" alt="image-20210601133709223"></p>
-<p>我们这里搭建的是便于学习ts的开发环境，我们再添加一些目录文件，index.html，和webpack配置文件build/webpack.config.js src/main.ts、tslint.json…</p>
-<p>代码结构如下</p>
-<pre><code class="pseudocode">ts-cli
-└───build
-│   │   webpack.config.js
-└───index.html
-└───node_modules
-│   │
-└─── package.json
-└───src
-│   │   main.ts
-└─── tsconfig.json
-└─── tslint.json
-└─── REAME.md
-</code></pre>
-<h4 id="下载webpack依赖"><a href="#下载webpack依赖" class="headerlink" title="下载webpack依赖"></a>下载webpack依赖</h4><pre><code>&quot;cross-env&quot;: &quot;^6.0.3&quot;,
-&quot;html-webpack-plugin&quot;: &quot;^3.2.0&quot;,
-&quot;ts-loader&quot;: &quot;^6.2.1&quot;,
-&quot;webpack&quot;: &quot;^4.41.4&quot;,
-&quot;webpack-cli&quot;: &quot;^3.3.10&quot;,
-&quot;webpack-dev-server&quot;: &quot;^3.10.1&quot;
-</code></pre>
-<h4 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h4><pre><code class="js">const HtmlWebpackPlugin = require(&quot;html-webpack-plugin&quot;);
-
-module.exports = &#123;
-  entry: &quot;./src/main.ts&quot;,
-  output: &#123;
-    filename: &quot;build.js&quot;
-  &#125;,
-  resolve: &#123;
-    extensions: [&quot;.tsx&quot;, &quot;.ts&quot;, &quot;.js&quot;]
-  &#125;,
-  module: &#123;
-    rules: [
-      &#123;
-        test: /.tsx?$/,
-        use: &quot;ts-loader&quot;,
-        exclude: /node_modules/
-      &#125;
-    ]
-  &#125;,
-  devtool: process.env.NODE_ENV === &quot;production&quot; ? false : &quot;inline-source-map&quot;,
-  devServer: &#123;
-    contentBase: &quot;./dist&quot;,
-    stats: &quot;errors-only&quot;,
-    compress: false,
-    host: &quot;localhost&quot;,
-    port: 8080
-  &#125;,
-  plugins: [
-    new HtmlWebpackPlugin(&#123;
-      template: &quot;./index.html&quot;
-    &#125;)
-  ]
-&#125;;
-</code></pre>
-<p>比较简单的webpack配置，设置好入口和出口文件，然后用插件HtmlWebpackPlugin插件把build.js引入到index.html里…</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>Webpack</tag>
-        <tag>TypeScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>微信小程序常用工具函数封装</title>
     <url>/2021/05/27/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/</url>
     <content><![CDATA[<p>对微信小程序自身特性的功能进行封装使用</p>
@@ -2578,6 +2496,88 @@ export &#123;
       <tags>
         <tag>转载</tag>
         <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建ts简易开发环境</title>
+    <url>/2021/06/01/%E6%90%AD%E5%BB%BAts%E7%AE%80%E6%98%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<p>用webpack搭建一个用于学习ts的简易的ts开发环境…</p>
+<span id="more"></span>
+<h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><pre><code class="code">mkdir ts-cli
+cd ts-cli
+npm init -y
+</code></pre>
+<h4 id="下载typescript依赖"><a href="#下载typescript依赖" class="headerlink" title="下载typescript依赖"></a>下载typescript依赖</h4><pre><code>npm i typescript -D
+</code></pre>
+<h4 id="初始化typescript配置项"><a href="#初始化typescript配置项" class="headerlink" title="初始化typescript配置项"></a>初始化typescript配置项</h4><pre><code>npx tsc --init
+</code></pre>
+<p>初始化配置成功会提示如下</p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210601133709223.png" alt="image-20210601133709223"></p>
+<p>我们这里搭建的是便于学习ts的开发环境，我们再添加一些目录文件，index.html，和webpack配置文件build/webpack.config.js src/main.ts、tslint.json…</p>
+<p>代码结构如下</p>
+<pre><code class="pseudocode">ts-cli
+└───build
+│   │   webpack.config.js
+└───index.html
+└───node_modules
+│   │
+└─── package.json
+└───src
+│   │   main.ts
+└─── tsconfig.json
+└─── tslint.json
+└─── REAME.md
+</code></pre>
+<h4 id="下载webpack依赖"><a href="#下载webpack依赖" class="headerlink" title="下载webpack依赖"></a>下载webpack依赖</h4><pre><code>&quot;cross-env&quot;: &quot;^6.0.3&quot;,
+&quot;html-webpack-plugin&quot;: &quot;^3.2.0&quot;,
+&quot;ts-loader&quot;: &quot;^6.2.1&quot;,
+&quot;webpack&quot;: &quot;^4.41.4&quot;,
+&quot;webpack-cli&quot;: &quot;^3.3.10&quot;,
+&quot;webpack-dev-server&quot;: &quot;^3.10.1&quot;
+</code></pre>
+<h4 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h4><pre><code class="js">const HtmlWebpackPlugin = require(&quot;html-webpack-plugin&quot;);
+
+module.exports = &#123;
+  entry: &quot;./src/main.ts&quot;,
+  output: &#123;
+    filename: &quot;build.js&quot;
+  &#125;,
+  resolve: &#123;
+    extensions: [&quot;.tsx&quot;, &quot;.ts&quot;, &quot;.js&quot;]
+  &#125;,
+  module: &#123;
+    rules: [
+      &#123;
+        test: /.tsx?$/,
+        use: &quot;ts-loader&quot;,
+        exclude: /node_modules/
+      &#125;
+    ]
+  &#125;,
+  devtool: process.env.NODE_ENV === &quot;production&quot; ? false : &quot;inline-source-map&quot;,
+  devServer: &#123;
+    contentBase: &quot;./dist&quot;,
+    stats: &quot;errors-only&quot;,
+    compress: false,
+    host: &quot;localhost&quot;,
+    port: 8080
+  &#125;,
+  plugins: [
+    new HtmlWebpackPlugin(&#123;
+      template: &quot;./index.html&quot;
+    &#125;)
+  ]
+&#125;;
+</code></pre>
+<p>比较简单的webpack配置，设置好入口和出口文件，然后用插件HtmlWebpackPlugin插件把build.js引入到index.html里…</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>Webpack</tag>
+        <tag>TypeScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2839,9 +2839,9 @@ table&#123;
       </tags>
   </entry>
   <entry>
-    <title>Git常用操作整理</title>
+    <title>git常用操作整理</title>
     <url>/2021/08/13/Git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<p>Git常用操作整理…</p>
+    <content><![CDATA[<p>git常用操作整理…</p>
 <span id="more"></span>
 
 <h4 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h4><ul>
@@ -3014,7 +3014,7 @@ table&#123;
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160215210.png" alt="image-20210813160215210"></p>
 <ul>
-<li><h5 id="更改远程仓库连接地址"><a href="#更改远程仓库连接地址" class="headerlink" title="更改远程仓库连接地址"></a>更改远程仓库连接地址</h5><p>ssh执行：git remote set-url origin <a href="mailto:&#103;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#101;&#x65;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#101;&#x65;&#x2e;&#99;&#x6f;&#x6d;</a>:houpai/git-demo.git</p>
+<li><h5 id="更改远程仓库连接地址"><a href="#更改远程仓库连接地址" class="headerlink" title="更改远程仓库连接地址"></a>更改远程仓库连接地址</h5><p>ssh执行：git remote set-url origin <a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#101;&#x65;&#x2e;&#99;&#x6f;&#109;">&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#101;&#x65;&#x2e;&#99;&#x6f;&#109;</a>:houpai/git-demo.git</p>
 <p>http执行：git remote set-url origin  <a href="https://github.com/NECKLI/git-test.git">https://github.com/NECKLI/git-test.git</a></p>
 </li>
 </ul>
