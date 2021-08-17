@@ -6,7 +6,7 @@
   <link href="https://houpai.github.io/atom.xml" rel="self"/>
   
   <link href="https://houpai.github.io/"/>
-  <updated>2021-08-16T00:41:33.001Z</updated>
+  <updated>2021-08-17T01:23:28.458Z</updated>
   <id>https://houpai.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端鉴权的兄弟们：cookie、session、token、jwt、单点登录</title>
+    <link href="https://houpai.github.io/2021/08/17/%E5%89%8D%E7%AB%AF%E9%89%B4%E6%9D%83%E7%9A%84%E5%85%84%E5%BC%9F%E4%BB%AC%EF%BC%9Acookie%E3%80%81session%E3%80%81token%E3%80%81jwt%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/"/>
+    <id>https://houpai.github.io/2021/08/17/%E5%89%8D%E7%AB%AF%E9%89%B4%E6%9D%83%E7%9A%84%E5%85%84%E5%BC%9F%E4%BB%AC%EF%BC%9Acookie%E3%80%81session%E3%80%81token%E3%80%81jwt%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/</id>
+    <published>2021-08-17T01:09:55.000Z</published>
+    <updated>2021-08-17T01:23:28.458Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;package.json详解…&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="前端" scheme="https://houpai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="转载" scheme="https://houpai.github.io/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Git常用操作整理</title>
@@ -74,6 +93,25 @@
     <category term="转载" scheme="https://houpai.github.io/tags/%E8%BD%AC%E8%BD%BD/"/>
     
     <category term="Node" scheme="https://houpai.github.io/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js工具函数</title>
+    <link href="https://houpai.github.io/2021/07/19/js%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/"/>
+    <id>https://houpai.github.io/2021/07/19/js%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/</id>
+    <published>2021-07-19T07:17:56.000Z</published>
+    <updated>2021-08-17T01:26:52.280Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;整理一下前端开发中常用的工具方法，有了这些工具函数就可以高效的处理任务和信息了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="前端" scheme="https://houpai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://houpai.github.io/tags/JavaScript/"/>
     
   </entry>
   
@@ -379,50 +417,6 @@
     <category term="转载" scheme="https://houpai.github.io/tags/%E8%BD%AC%E8%BD%BD/"/>
     
     <category term="Css" scheme="https://houpai.github.io/tags/Css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>移动端H5页面返回并且刷新页面（BFcache）</title>
-    <link href="https://houpai.github.io/2021/04/27/%E7%A7%BB%E5%8A%A8%E7%AB%AFH5%E9%A1%B5%E9%9D%A2%E8%BF%94%E5%9B%9E%E5%B9%B6%E4%B8%94%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%EF%BC%88BFcache%EF%BC%89/"/>
-    <id>https://houpai.github.io/2021/04/27/%E7%A7%BB%E5%8A%A8%E7%AB%AFH5%E9%A1%B5%E9%9D%A2%E8%BF%94%E5%9B%9E%E5%B9%B6%E4%B8%94%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%EF%BC%88BFcache%EF%BC%89/</id>
-    <published>2021-04-27T01:09:55.000Z</published>
-    <updated>2021-08-11T01:43:46.575Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;什么是BF叉车呢…&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="前端" scheme="https://houpai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="Html" scheme="https://houpai.github.io/tags/Html/"/>
-    
-    <category term="转载" scheme="https://houpai.github.io/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-    <category term="JavaScript" scheme="https://houpai.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>node自定义环境变量NODE_ENV</title>
-    <link href="https://houpai.github.io/2021/04/26/node%E8%87%AA%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FNODE_ENV/"/>
-    <id>https://houpai.github.io/2021/04/26/node%E8%87%AA%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FNODE_ENV/</id>
-    <published>2021-04-26T02:09:55.000Z</published>
-    <updated>2021-08-11T01:43:46.572Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;记录一下如何指定node自定义环境变量NODE_ENV…&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="前端" scheme="https://houpai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="原创" scheme="https://houpai.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Node" scheme="https://houpai.github.io/tags/Node/"/>
     
   </entry>
   
