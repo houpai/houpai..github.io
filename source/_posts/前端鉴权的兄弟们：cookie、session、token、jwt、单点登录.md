@@ -66,7 +66,7 @@ cookie 也是前端存储的一种，但相比于 localStorage 等其他方式�
 
 - 在提供标记的接口，通过 HTTP 返回头的 Set-Cookie 字段，直接「种」到浏览器上
 - 浏览器发起请求时，会自动把 cookie 通过 HTTP 请求头的 Cookie 字段，带给接口
-
+1
 **配置：Domain / Path**
 
 > 你不能拿清华的校园卡进北大。
