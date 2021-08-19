@@ -115,7 +115,7 @@ HTTP 返回的一个 Set-Cookie 头用于向浏览器写入「一条（且只能
 
 ```
 Set-Cookie: username=jimu; domain=jimu.com; path=/blog; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
-复制代码
+
 ```
 
 那我想一次多 set 几个 cookie 怎么办？多给几个 Set-Cookie 头（一次 HTTP 请求中允许重复）
@@ -124,14 +124,14 @@ Set-Cookie: username=jimu; domain=jimu.com; path=/blog; Expires=Wed, 21 Oct 2015
 Set-Cookie: username=jimu; domain=jimu.com
 Set-Cookie: height=180; domain=me.jimu.com
 Set-Cookie: weight=80; domain=me.jimu.com
-复制代码
+
 ```
 
 HTTP 请求的 Cookie 头用于浏览器把符合当前「空间、时间、使用方式」配置的所有 cookie 一并发给服务端。因为由浏览器做了筛选判断，就不需要归还配置内容了，只要发送键值就可以。
 
 ```
 Cookie: username=jimu; height=180; weight=80
-复制代码
+
 ```
 
 **前端对 cookie 的读写**
@@ -142,7 +142,7 @@ Cookie: username=jimu; height=180; weight=80
 
 ```js
 document.cookie = 'username=jimu; domain=jimu.com; path=/blog; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly';
-复制代码
+
 ```
 
 调用`document.cookie`也可以读到 cookie，也和 HTTP 一样，能读到所有的非`HttpOnly` cookie。
@@ -150,7 +150,7 @@ document.cookie = 'username=jimu; domain=jimu.com; path=/blog; Expires=Wed, 21 O
 ```js
 console.log(document.cookie);
 // username=jimu; height=180; weight=80
-复制代码
+
 ```
 
 （就一个 cookie 属性，为什么读写行为不一样？get / set 了解下）
@@ -275,7 +275,7 @@ token 的流程是这样的：
 ```
 secret: 'iAmSecret',
 signed: true,
-复制代码
+
 ```
 
 这样会多种一个 .sig cookie，里面的值就是 `{"userid":"abb”}` 和 `iAmSecret`通过加密算法计算出来的，常见的比如[HMACSHA256 类 (System.Security.Cryptography) | Microsoft Docs](https://link.juejin.cn?target=https%3A%2F%2Fdocs.microsoft.com%2Fzh-cn%2Fdotnet%2Fapi%2Fsystem.security.cryptography.hmacsha256%3Fredirectedfrom%3DMSDN%26view%3Dnetframework-4.8)。
@@ -294,7 +294,7 @@ signed: true,
 
 ```
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiJhIiwiaWF0IjoxNTUxOTUxOTk4fQ.2jf3kl_uKWRkwjOP6uQRJFqMlwSABcgqqcJofFH5XCo 
-复制代码
+
 ```
 
 这串东西是怎么生成的呢？看图：
