@@ -120,6 +120,145 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue3笔记 --- Teleport</title>
+    <url>/2021/08/19/Vue3%E7%AC%94%E8%AE%B0%20---%20Teleport/</url>
+    <content><![CDATA[<p>Vue3之新特性Teleport,真香…</p>
+<span id="more"></span>
+
+
+
+<p>在<code>vue2.0</code>时代，我们经常会有这样的需求，写代码逻辑的时候希望将组件写在某个模板之下，因为这样我们很好的使用组件内部的状态数据，控制组件的展示形态。但是从技术的角度上我们又希望将这段代码移到<code>DOM</code>中<code>Vue app</code>之外的其他位置。</p>
+<p>举个简单的例子，我们在使用<code>modal</code>组件的时候，我们将它放在了我们的模板<code>template</code>里面，但是由于<code>modal</code>组件希望位于页面的最上方，这时候我们将<code>modal</code>组件挂载在<code>body</code>上面是最好控制的，我们能够很好的通过<code>zIndex</code>来控制<code>modal</code>的位置，当他嵌套在<code>template</code>里面的时候就不那么容易了。</p>
+<h4 id="Vue2中的实现"><a href="#Vue2中的实现" class="headerlink" title="Vue2中的实现"></a>Vue2中的实现</h4><p>​    <code>vue2.0</code>中我在写这个组件的时候是通过手动的形式来进行挂载的，我写了一个vue指令来进行这个操作，帮助我将<code>modal</code>组件挂载到<code>body</code>上面去，专这样也能够很好的通过控制<code>zIndex</code>来控制<code>modal</code>的展示。</p>
+<pre><code class="javascript">function insert(el) &#123;
+  const parent = el.parentNode;
+  if (parent &amp;&amp; parent !== document.body) &#123;
+      parent.removeChild(el);
+      document.body.appendChild(el);
+  &#125;
+&#125;
+
+export default (typeof window !== &#39;undefined&#39; ? &#123;
+  inserted(el, &#123; value &#125;) &#123;
+      if (value) &#123;
+          insert(el);
+      &#125;
+  &#125;,
+  componentUpdated(el, &#123; value &#125;) &#123;
+      if (value) &#123;
+          insert(el);
+      &#125;
+  &#125;,
+&#125; : &#123;&#125;);
+</code></pre>
+<p>上面的代码其实就是简单的将<code>modal</code>从他原始挂载的父节点移除，然后挂载到<code>body</code>上去，通过手动的形式来重新挂载，能够很好的解决这种问题，当然上面只是简单的逻辑，如果需要考虑卸载等其他逻辑代码还得增加。</p>
+<pre><code class="javascript">&lt;template&gt;
+  &lt;div class=&quot;modal&quot; v-to-body=&quot;show&quot; v-if=&quot;show&quot;&gt;
+    &lt;div class=&quot;modal-mask&quot; @click=&quot;close&quot;&gt;&lt;/div&gt;
+    &lt;slot&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import &quot;./style.scss&quot;;
+import toBody from &quot;../directives/to-body&quot;;
+export default &#123;
+  props: &#123;
+    show: Boolean,
+  &#125;,
+  directives: &#123;
+    toBody,
+  &#125;,
+  methods: &#123;
+    close() &#123;
+      this.$emit(&quot;close&quot;);
+    &#125;,
+  &#125;,
+&#125;;
+&lt;/script&gt;
+</code></pre>
+<p>说实话<code>vue2.0</code>中的实现其实是没啥问题的，只是不是很优雅，需要额外的代码控制，所以<code>vue3.0</code>中直接带来了<code>Teleport-任意传送门</code></p>
+<p>具体代码参考vue2.0-modal: <a href="https://codesandbox.io/s/vue20-modal-sc1rq">https://codesandbox.io/s/vue20-modal-sc1rq</a></p>
+<h4 id="什么是Teleport"><a href="#什么是Teleport" class="headerlink" title="什么是Teleport"></a>什么是Teleport</h4><p><code>Teleport</code>能够直接帮助我们将组件渲染后页面中的任意地方，只要我们指定了渲染的目标对象。<code>Teleport</code>使用起来非常简单。</p>
+<pre><code class="javascript">&lt;template&gt;
+  &lt;teleport to=&quot;body&quot; class=&quot;modal&quot; v-if=&quot;show&quot;&gt;
+    &lt;div class=&quot;modal-mask&quot; @click=&quot;close&quot;&gt;&lt;/div&gt;
+    &lt;slot&gt;&lt;/slot&gt;
+  &lt;/teleport&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import &quot;./style.scss&quot;;
+export default &#123;
+  props: &#123;
+    show: Boolean,
+  &#125;,
+  methods: &#123;
+    close() &#123;
+      this.$emit(&quot;close&quot;);
+    &#125;,
+  &#125;,
+&#125;;
+&lt;/script&gt;
+</code></pre>
+<p>上面的代码我们就能够很简单的实现之前vue2.0所实现的功能。</p>
+<p>具体代码参考vue3.0-modal: <a href="https://codesandbox.io/s/vue3-modal-x2lud">https://codesandbox.io/s/vue3-modal-x2lud</a></p>
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a><strong>注意点</strong></h4><h5 id="与-Vue-components-一起使用"><a href="#与-Vue-components-一起使用" class="headerlink" title="与 Vue components 一起使用"></a>与 Vue components 一起使用</h5><p>在这种情况下，即使在不同的地方渲染<code>child-component</code>，它仍将是<code>parent-component</code>的子级，并将从中接收<code>name prop</code>。</p>
+<p>这也意味着来自父组件的注入按预期工作，并且子组件将嵌套在<code>Vue Devtools</code>中的父组件之下，而不是放在实际内容移动到的位置。</p>
+<pre><code class="javascript">const app = Vue.createApp(&#123;
+  template: `
+    &lt;h1&gt;Root instance&lt;/h1&gt;
+    &lt;parent-component /&gt;
+  `
+&#125;)
+
+app.component(&#39;parent-component&#39;, &#123;
+  template: `
+    &lt;h2&gt;This is a parent component&lt;/h2&gt;
+    &lt;teleport to=&quot;#endofbody&quot;&gt;
+      &lt;child-component name=&quot;John&quot; /&gt;
+    &lt;/teleport&gt;
+  `
+&#125;)
+
+app.component(&#39;child-component&#39;, &#123;
+  props: [&#39;name&#39;],
+  template: `
+    &lt;div&gt;Hello, &#123;&#123; name &#125;&#125;&lt;/div&gt;
+  `
+&#125;)
+</code></pre>
+<h5 id="在同一目标上使用多个teleport"><a href="#在同一目标上使用多个teleport" class="headerlink" title="在同一目标上使用多个teleport"></a>在同一目标上使用多个teleport</h5><p>当我们将多个<code>teleport</code>送到同一位置时会发生什么？</p>
+<pre><code class="javascript">&lt;teleport to=&quot;#modals&quot;&gt;
+  &lt;div&gt;A&lt;/div&gt;
+&lt;/teleport&gt;
+&lt;teleport to=&quot;#modals&quot;&gt;
+  &lt;div&gt;B&lt;/div&gt;
+&lt;/teleport&gt;
+
+&lt;!-- result--&gt;
+&lt;div id=&quot;modals&quot;&gt;
+  &lt;div&gt;A&lt;/div&gt;
+  &lt;div&gt;B&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>我们可以看到对于这种情况，多个<code>teleport</code>组件可以将其内容挂载到同一个目标元素。顺序将是一个简单的追加——稍后挂载将位于目标元素中较早的挂载之后。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>一句话来描述<code>Teleport</code>就是一种将代码组织逻辑依旧放在组件中，这样我们能够使用组件内部的数据状态，控制组件展示的形式，但是最后渲染的地方可以是任意的，而不是局限于组件内部</p>
+<p>- END -</p>
+<p>点赞 + 在看 + 分享，一键三连，幸福满满！</p>
+<p>本文分享自微信公众号 - 鱼头的Web海洋（krissarea）</p>
+<p>原文出处及转载信息见文内详细说明，如有侵权，请联系 <a href="mailto:&#x79;&#117;&#x6e;&#x6a;&#105;&#97;&#95;&#99;&#111;&#x6d;&#109;&#x75;&#x6e;&#x69;&#116;&#x79;&#64;&#116;&#101;&#x6e;&#x63;&#101;&#x6e;&#116;&#x2e;&#x63;&#x6f;&#109;">&#x79;&#117;&#x6e;&#x6a;&#105;&#97;&#95;&#99;&#111;&#x6d;&#109;&#x75;&#x6e;&#x69;&#116;&#x79;&#64;&#116;&#101;&#x6e;&#x63;&#101;&#x6e;&#116;&#x2e;&#x63;&#x6f;&#109;</a> 删除。</p>
+<p>原始发表时间：2021-07-05</p>
+<p>本文参与<a href="https://cloud.tencent.com/developer/support-plan">腾讯云自媒体分享计划</a>，欢迎正在阅读的你也加入，一起分享。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Vue3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue3笔记 --- 代码复用示例</title>
     <url>/2021/06/15/Vue3%E7%AC%94%E8%AE%B0%20---%20%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E7%A4%BA%E4%BE%8B/</url>
     <content><![CDATA[<p>记录整理Vue3代码的复用示例…</p>
@@ -1107,7 +1246,7 @@ pm2 monit # 可以通过此命令查看服务的状态
     <content><![CDATA[<p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
 <span id="more"></span>
 
-<h4 id="1-从程序目录打开Git-Bash"><a href="#1-从程序目录打开Git-Bash" class="headerlink" title="1.从程序目录打开Git Bash"></a>1.从程序目录打开Git Bash</h4><h4 id="2-ssh-keygen-t-rsa-C-“-101-x6d-97-105-x6c-x40-x65-x6d-97-105-x6c-x2e-x63-111-109-“-101-109-97-105-108-x40-x65-x6d-x61-x69-x6c-46-99-x6f-109-是自己github账号"><a href="#2-ssh-keygen-t-rsa-C-“-101-x6d-97-105-x6c-x40-x65-x6d-97-105-x6c-x2e-x63-111-109-“-101-109-97-105-108-x40-x65-x6d-x61-x69-x6c-46-99-x6f-109-是自己github账号" class="headerlink" title="2.ssh-keygen -t rsa -C “&#101;&#x6d;&#97;&#105;&#x6c;&#x40;&#x65;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;“ ,&#101;&#109;&#97;&#105;&#108;&#x40;&#x65;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;是自己github账号"></a>2.ssh-keygen -t rsa -C “<a href="mailto:&#101;&#x6d;&#97;&#105;&#x6c;&#x40;&#x65;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#101;&#x6d;&#97;&#105;&#x6c;&#x40;&#x65;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a>“ ,<a href="mailto:&#101;&#109;&#97;&#105;&#108;&#x40;&#x65;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;">&#101;&#109;&#97;&#105;&#108;&#x40;&#x65;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;</a>是自己github账号</h4><h4 id="3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了"><a href="#3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了" class="headerlink" title="3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了"></a>3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了</h4><h4 id="4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下"><a href="#4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下" class="headerlink" title="4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下"></a>4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下</h4><h4 id="5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容"><a href="#5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容" class="headerlink" title="5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容"></a>5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容</h4><h4 id="6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去"><a href="#6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去" class="headerlink" title="6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去"></a>6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去</h4><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png"></p>
+<h4 id="1-从程序目录打开Git-Bash"><a href="#1-从程序目录打开Git-Bash" class="headerlink" title="1.从程序目录打开Git Bash"></a>1.从程序目录打开Git Bash</h4><h4 id="2-ssh-keygen-t-rsa-C-“-101-x6d-97-105-108-x40-101-x6d-97-x69-108-46-99-111-x6d-“-x65-x6d-x61-x69-108-x40-x65-109-x61-x69-x6c-x2e-99-x6f-x6d-是自己github账号"><a href="#2-ssh-keygen-t-rsa-C-“-101-x6d-97-105-108-x40-101-x6d-97-x69-108-46-99-111-x6d-“-x65-x6d-x61-x69-108-x40-x65-109-x61-x69-x6c-x2e-99-x6f-x6d-是自己github账号" class="headerlink" title="2.ssh-keygen -t rsa -C “&#101;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;“ ,&#x65;&#x6d;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;是自己github账号"></a>2.ssh-keygen -t rsa -C “<a href="mailto:&#101;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#101;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;</a>“ ,<a href="mailto:&#x65;&#x6d;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x65;&#x6d;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a>是自己github账号</h4><h4 id="3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了"><a href="#3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了" class="headerlink" title="3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了"></a>3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了</h4><h4 id="4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下"><a href="#4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下" class="headerlink" title="4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下"></a>4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下</h4><h4 id="5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容"><a href="#5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容" class="headerlink" title="5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容"></a>5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容</h4><h4 id="6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去"><a href="#6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去" class="headerlink" title="6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去"></a>6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去</h4><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh2.png"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/git_ssh.png"></p>
 ]]></content>
@@ -3014,7 +3153,7 @@ table&#123;
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160215210.png" alt="image-20210813160215210"></p>
 <ul>
-<li><h5 id="更改远程仓库连接地址"><a href="#更改远程仓库连接地址" class="headerlink" title="更改远程仓库连接地址"></a>更改远程仓库连接地址</h5><p>ssh执行：git remote set-url origin <a href="mailto:&#103;&#x69;&#x74;&#64;&#103;&#105;&#x74;&#101;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#x74;&#64;&#103;&#105;&#x74;&#101;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a>:houpai/git-demo.git</p>
+<li><h5 id="更改远程仓库连接地址"><a href="#更改远程仓库连接地址" class="headerlink" title="更改远程仓库连接地址"></a>更改远程仓库连接地址</h5><p>ssh执行：git remote set-url origin <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#x74;&#101;&#101;&#46;&#x63;&#111;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#x74;&#101;&#101;&#46;&#x63;&#111;&#x6d;</a>:houpai/git-demo.git</p>
 <p>http执行：git remote set-url origin  <a href="https://github.com/NECKLI/git-test.git">https://github.com/NECKLI/git-test.git</a></p>
 </li>
 </ul>
@@ -5409,28 +5548,23 @@ module.exports = &#123;
 <p>回过头来，HTTP 是如何写入和传递 cookie 及其配置的呢？</p>
 <p>HTTP 返回的一个 Set-Cookie 头用于向浏览器写入「一条（且只能是一条）」cookie，格式为 cookie 键值 + 配置键值。例如：</p>
 <pre><code>Set-Cookie: username=jimu; domain=jimu.com; path=/blog; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
-复制代码
 </code></pre>
 <p>那我想一次多 set 几个 cookie 怎么办？多给几个 Set-Cookie 头（一次 HTTP 请求中允许重复）</p>
 <pre><code>Set-Cookie: username=jimu; domain=jimu.com
 Set-Cookie: height=180; domain=me.jimu.com
 Set-Cookie: weight=80; domain=me.jimu.com
-复制代码
 </code></pre>
 <p>HTTP 请求的 Cookie 头用于浏览器把符合当前「空间、时间、使用方式」配置的所有 cookie 一并发给服务端。因为由浏览器做了筛选判断，就不需要归还配置内容了，只要发送键值就可以。</p>
 <pre><code>Cookie: username=jimu; height=180; weight=80
-复制代码
 </code></pre>
 <p><strong>前端对 cookie 的读写</strong></p>
 <p>前端可以自己创建 cookie，如果服务端创建的 cookie 没加<code>HttpOnly</code>，那恭喜你也可以修改他给的 cookie。</p>
 <p>调用<code>document.cookie</code>可以创建、修改 cookie，和 HTTP 一样，一次<code>document.cookie</code>能且只能操作一个 cookie。</p>
 <pre><code class="js">document.cookie = &#39;username=jimu; domain=jimu.com; path=/blog; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly&#39;;
-复制代码
 </code></pre>
 <p>调用<code>document.cookie</code>也可以读到 cookie，也和 HTTP 一样，能读到所有的非<code>HttpOnly</code> cookie。</p>
 <pre><code class="js">console.log(document.cookie);
 // username=jimu; height=180; weight=80
-复制代码
 </code></pre>
 <p>（就一个 cookie 属性，为什么读写行为不一样？get / set 了解下）</p>
 <p><strong>cookie 是维持 HTTP 请求状态的基石</strong></p>
@@ -5515,7 +5649,6 @@ Set-Cookie: weight=80; domain=me.jimu.com
 <p>解决方案就是给 token 加签名，来识别 token 是否被篡改过。例如在 <a href="https://link.juejin.cn/?target=https://www.npmjs.com/package/cookie-session">cookie-session  -  npm</a> 库中，增加两项配置：</p>
 <pre><code>secret: &#39;iAmSecret&#39;,
 signed: true,
-复制代码
 </code></pre>
 <p>这样会多种一个 .sig cookie，里面的值就是 <code>&#123;&quot;userid&quot;:&quot;abb”&#125;</code> 和 <code>iAmSecret</code>通过加密算法计算出来的，常见的比如<a href="https://link.juejin.cn/?target=https://docs.microsoft.com/zh-cn/dotnet/api/system.security.cryptography.hmacsha256?redirectedfrom=MSDN&view=netframework-4.8">HMACSHA256 类 (System.Security.Cryptography) | Microsoft Docs</a>。</p>
 <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fb5955e681724ee084e6f46aa6e45666~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
@@ -5527,7 +5660,6 @@ signed: true,
 </blockquote>
 <p>它是一种成熟的 token 字符串生成方案，包含了我们前面提到的数据、签名。不如直接看一下一个 JWT token 长什么样：</p>
 <pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiJhIiwiaWF0IjoxNTUxOTUxOTk4fQ.2jf3kl_uKWRkwjOP6uQRJFqMlwSABcgqqcJofFH5XCo 
-复制代码
 </code></pre>
 <p>这串东西是怎么生成的呢？看图：</p>
 <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/65b5e67305f84e9391de2d5b436600e7~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
