@@ -247,7 +247,7 @@ app.component(&#39;child-component&#39;, &#123;
 <p>- END -</p>
 <p>点赞 + 在看 + 分享，一键三连，幸福满满！</p>
 <p>本文分享自微信公众号 - 鱼头的Web海洋（krissarea）</p>
-<p>原文出处及转载信息见文内详细说明，如有侵权，请联系 <a href="mailto:&#x79;&#117;&#x6e;&#x6a;&#105;&#97;&#95;&#99;&#111;&#x6d;&#109;&#x75;&#x6e;&#x69;&#116;&#x79;&#64;&#116;&#101;&#x6e;&#x63;&#101;&#x6e;&#116;&#x2e;&#x63;&#x6f;&#109;">&#x79;&#117;&#x6e;&#x6a;&#105;&#97;&#95;&#99;&#111;&#x6d;&#109;&#x75;&#x6e;&#x69;&#116;&#x79;&#64;&#116;&#101;&#x6e;&#x63;&#101;&#x6e;&#116;&#x2e;&#x63;&#x6f;&#109;</a> 删除。</p>
+<p>原文出处及转载信息见文内详细说明，如有侵权，请联系 <a href="mailto:&#121;&#117;&#x6e;&#106;&#105;&#97;&#95;&#99;&#x6f;&#109;&#x6d;&#x75;&#110;&#x69;&#x74;&#x79;&#x40;&#116;&#101;&#x6e;&#99;&#x65;&#x6e;&#116;&#x2e;&#99;&#111;&#109;">&#121;&#117;&#x6e;&#106;&#105;&#97;&#95;&#99;&#x6f;&#109;&#x6d;&#x75;&#110;&#x69;&#x74;&#x79;&#x40;&#116;&#101;&#x6e;&#99;&#x65;&#x6e;&#116;&#x2e;&#99;&#111;&#109;</a> 删除。</p>
 <p>原始发表时间：2021-07-05</p>
 <p>本文参与<a href="https://cloud.tencent.com/developer/support-plan">腾讯云自媒体分享计划</a>，欢迎正在阅读的你也加入，一起分享。</p>
 ]]></content>
@@ -1108,6 +1108,121 @@ Promise.prototype.then = function(onFulfilled, onRejected) &#123;
       </tags>
   </entry>
   <entry>
+    <title>Vue3笔记 --- Suspense</title>
+    <url>/2021/08/23/Vue%E7%AC%94%E8%AE%B0%20---%20Suspense/</url>
+    <content><![CDATA[<p>Suspense 组件是 Vue3 中众所周知的特征之一。它可以使我们的 vue 程序在等待异步组件时渲染一些后备内容，从而使用户产生平滑流畅的体验。…</p>
+<span id="more"></span>
+
+<p>Suspense 组件很容易理解，也不需要额外导入其他的包。</p>
+<p>本文讲告诉你：</p>
+<ul>
+<li>什么是 Suspense 组件</li>
+<li>什么时候使用</li>
+<li>怎样使用</li>
+</ul>
+<h2 id="什么是-Suspense-组件"><a href="#什么是-Suspense-组件" class="headerlink" title="什么是 Suspense 组件"></a>什么是 Suspense 组件</h2><p>Suspense 组件用于在等待某些异步组件来解析时显示后备内容。</p>
+<p>使用异步组件的场合非常多，尤其是以下情况：</p>
+<ul>
+<li>在页面加载之前显示加载动画</li>
+<li>显示占位符内容</li>
+<li>处理延迟加载的图像</li>
+</ul>
+<p>以前在 vue2 中，我们必须使用条件（<code>v-if</code> 或  <code>v-else</code>）来检查数据是否已加载和显示后备内容。</p>
+<p>但现在 Vue3 有了内置的 Suspense，使我们不必在加载和渲染相应内容时再去额外处理了。</p>
+<h2 id="怎样使用-Suspense"><a href="#怎样使用-Suspense" class="headerlink" title="怎样使用 Suspense"></a>怎样使用 Suspense</h2><p>由于本文的重点是 Suspense 而不是组件 API，所以不会涉及过多关于 API 的细节。</p>
+<p>在下面的例子中，ArticleInfo 会在返回之前用异步 <code>setup</code> 方法加载用户数据。</p>
+<pre><code class="vue">// ArticleInfo.vue
+async function getArticleInfo() &#123;
+  // 一些异步API调用
+  return &#123; article &#125;
+&#125;
+
+export default &#123;
+  async setup () &#123;
+    var &#123; article &#125; = await getArticleInfo()
+
+    return &#123;
+      article
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p>假设 ArticleInfo 被实现在 <code>partrypost.vue</code> 中，如果我们想在等待组件获取数据并解析时显示 “Loading Profile…” ，只需三个步骤即可实现 Suspense。</p>
+<ol>
+<li>将异步组件包装在 <code>&lt;template #default&gt;</code> 标记中</li>
+<li>在我们的异步组件旁边添加一个兄弟组件，标签为 <code>&lt;template #fallback&gt;</code></li>
+<li>将上述两个组件包装在 <code>&lt;subsense&gt;</code> 组件中</li>
+</ol>
+<p>通过使用插槽， suspense 将会渲染后备内容，直到默认设置为准备就绪。然后它将自动切换来显示我们的异步组件。</p>
+<p>代码如下：</p>
+<p>ArticlePost.vue</p>
+<pre><code class="vue">&lt;Suspense&gt;
+    &lt;template #default&gt;
+    &lt;article-info/&gt;
+    &lt;/template&gt;
+    &lt;template #fallback&gt;
+    &lt;div&gt;Loading Profile...&lt;/div&gt;
+    &lt;/template&gt;
+&lt;/Suspense&gt;
+</code></pre>
+<h2 id="还可以捕获组件错误"><a href="#还可以捕获组件错误" class="headerlink" title="还可以捕获组件错误"></a>还可以捕获组件错误</h2><p>vue 有一个不错的功能，是当我们开始使用异步组件时，可以捕获错误并显示给用户一些错误消息。</p>
+<p>在 vue2 中，也可以使用 errorCaptured hook实现，但是在 Vue3 中，它被重命名为 <code>OnErroloIched</code>。</p>
+<p>不管它叫什么名字，这个 hook 都会在捕获到任何子组件的错误时被执行。如果出现问题可以使用 Suspense 渲染错误信息。</p>
+<p>下面是代码实现：</p>
+<p>ArticlePost.vue</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div v-if=&quot;errMsg&quot;&gt; &#123;&#123; errMsg &#125;&#125; &lt;/div&gt;
+  &lt;Suspense v-else&gt;
+      &lt;template #default&gt;
+        &lt;article-info/&gt;
+      &lt;/template&gt;
+      &lt;template #fallback&gt;
+        &lt;div&gt;Loading Profile...&lt;/div&gt;
+      &lt;/template&gt;
+  &lt;/Suspense&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import &#123; onErrorCaptured &#125; from &#39;vue&#39;
+
+setup () &#123;
+  const errMsg = ref(null)
+  onErrorCaptured(e =&gt; &#123;
+    errMsg.value = &#39;Uh oh. Something went wrong!&#39;
+    return true
+  &#125;)&#125;
+  return &#123; error &#125;
+&lt;/script&gt;
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Suspense 只是 Vue 使开我们更容易解决常见问题另一种方式，而不是用来有条件地去渲染组件。</p>
+<p>在我看来，它是 Vue3 最巧妙的补充之一</p>
+<p>本文章转载自公众号:frontendJS</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github配置ssh</title>
+    <url>/2021/04/08/github%E9%85%8D%E7%BD%AEssh/</url>
+    <content><![CDATA[<p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
+<span id="more"></span>
+
+<h4 id="1-从程序目录打开Git-Bash"><a href="#1-从程序目录打开Git-Bash" class="headerlink" title="1.从程序目录打开Git Bash"></a>1.从程序目录打开Git Bash</h4><h4 id="2-ssh-keygen-t-rsa-C-“-101-x6d-x61-105-108-64-101-109-x61-x69-108-46-x63-x6f-x6d-“-x65-109-x61-x69-108-x40-x65-109-x61-105-108-x2e-99-111-x6d-是自己github账号"><a href="#2-ssh-keygen-t-rsa-C-“-101-x6d-x61-105-108-64-101-109-x61-x69-108-46-x63-x6f-x6d-“-x65-109-x61-x69-108-x40-x65-109-x61-105-108-x2e-99-111-x6d-是自己github账号" class="headerlink" title="2.ssh-keygen -t rsa -C “&#101;&#x6d;&#x61;&#105;&#108;&#64;&#101;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;“ ,&#x65;&#109;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;是自己github账号"></a>2.ssh-keygen -t rsa -C “<a href="mailto:&#101;&#x6d;&#x61;&#105;&#108;&#64;&#101;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#101;&#x6d;&#x61;&#105;&#108;&#64;&#101;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a>“ ,<a href="mailto:&#x65;&#109;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">&#x65;&#109;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a>是自己github账号</h4><h4 id="3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了"><a href="#3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了" class="headerlink" title="3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了"></a>3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了</h4><h4 id="4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下"><a href="#4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下" class="headerlink" title="4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下"></a>4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下</h4><h4 id="5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容"><a href="#5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容" class="headerlink" title="5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容"></a>5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容</h4><h4 id="6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去"><a href="#6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去" class="headerlink" title="6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去"></a>6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去</h4><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh2.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/git_ssh.png"></p>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gitee使用webhook</title>
     <url>/2021/08/06/gitee%E7%A0%81%E4%BA%91%E4%BD%BF%E7%94%A8webhook/</url>
     <content><![CDATA[<p>gitee配置webhook…</p>
@@ -1237,23 +1352,6 @@ pm2 monit # 可以通过此命令查看服务的状态
       </categories>
       <tags>
         <tag>转载</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>github配置ssh</title>
-    <url>/2021/04/08/github%E9%85%8D%E7%BD%AEssh/</url>
-    <content><![CDATA[<p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
-<span id="more"></span>
-
-<h4 id="1-从程序目录打开Git-Bash"><a href="#1-从程序目录打开Git-Bash" class="headerlink" title="1.从程序目录打开Git Bash"></a>1.从程序目录打开Git Bash</h4><h4 id="2-ssh-keygen-t-rsa-C-“-101-x6d-97-105-108-x40-101-x6d-97-x69-108-46-99-111-x6d-“-x65-x6d-x61-x69-108-x40-x65-109-x61-x69-x6c-x2e-99-x6f-x6d-是自己github账号"><a href="#2-ssh-keygen-t-rsa-C-“-101-x6d-97-105-108-x40-101-x6d-97-x69-108-46-99-111-x6d-“-x65-x6d-x61-x69-108-x40-x65-109-x61-x69-x6c-x2e-99-x6f-x6d-是自己github账号" class="headerlink" title="2.ssh-keygen -t rsa -C “&#101;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;“ ,&#x65;&#x6d;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;是自己github账号"></a>2.ssh-keygen -t rsa -C “<a href="mailto:&#101;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#101;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;</a>“ ,<a href="mailto:&#x65;&#x6d;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x65;&#x6d;&#x61;&#x69;&#108;&#x40;&#x65;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a>是自己github账号</h4><h4 id="3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了"><a href="#3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了" class="headerlink" title="3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了"></a>3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了</h4><h4 id="4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下"><a href="#4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下" class="headerlink" title="4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下"></a>4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下</h4><h4 id="5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容"><a href="#5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容" class="headerlink" title="5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容"></a>5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容</h4><h4 id="6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去"><a href="#6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去" class="headerlink" title="6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去"></a>6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去</h4><p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh2.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/git_ssh.png"></p>
-]]></content>
-      <categories>
-        <category>开发工具</category>
-      </categories>
-      <tags>
         <tag>Git</tag>
       </tags>
   </entry>
@@ -1533,14 +1631,6 @@ ps：按住ctrl点击链接可直接打开
       </tags>
   </entry>
   <entry>
-    <title>关于我</title>
-    <url>/2021/03/11/me/</url>
-    <content><![CDATA[<span id="more"></span>
-
-<p>姓名：侯湃<br>现居：沈阳<br>GitHub: houpai<br>QQ: 784950731<br>微信: houpai314</p>
-]]></content>
-  </entry>
-  <entry>
     <title>markerdown-高效上传图片工具PicGo</title>
     <url>/2021/04/12/markerdown-%E9%AB%98%E6%95%88%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E5%B7%A5%E5%85%B7PicGo/</url>
     <content><![CDATA[<p>在使用Typora时可随时便捷上传图片</p>
@@ -1607,6 +1697,14 @@ ps：按住ctrl点击链接可直接打开
         <tag>原创</tag>
         <tag>Node</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>关于我</title>
+    <url>/2021/03/11/me/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<p>姓名：侯湃<br>现居：沈阳<br>GitHub: houpai<br>QQ: 784950731<br>微信: houpai314</p>
+]]></content>
   </entry>
   <entry>
     <title>一款vue虚拟键盘(支持中文和手写)插件</title>
@@ -2720,6 +2818,119 @@ module.exports = &#123;
       </tags>
   </entry>
   <entry>
+    <title>那些你常用又记不住的Css</title>
+    <url>/2021/03/18/%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%B8%B8%E7%94%A8%E5%8F%88%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84css/</url>
+    <content><![CDATA[<p>记录一些常用Css效果</p>
+<span id="more"></span>
+
+
+<h1 id="一、设置input-的placeholder的字体样式"><a href="#一、设置input-的placeholder的字体样式" class="headerlink" title="一、设置input 的placeholder的字体样式"></a>一、设置input 的placeholder的字体样式</h1><pre><code class="less">input::-webkit-input-placeholder &#123;    /* Chrome/Opera/Safari */
+    color: red;
+&#125;
+input::-moz-placeholder &#123; /* Firefox 19+ */  
+    color: red;
+&#125;
+input:-ms-input-placeholder &#123; /* IE 10+ */
+    color: red;
+&#125;
+input:-moz-placeholder &#123; /* Firefox 18- */
+    color: red;
+&#125;
+</code></pre>
+<h2 id="设置input聚焦时的样式"><a href="#设置input聚焦时的样式" class="headerlink" title="设置input聚焦时的样式"></a>设置input聚焦时的样式</h2><pre><code class="css">input:focus &#123;   
+    background-color: red;
+&#125;
+</code></pre>
+<h2 id="取消input的边框"><a href="#取消input的边框" class="headerlink" title="取消input的边框"></a>取消input的边框</h2><pre><code class="css">input &#123;
+    border: none;
+    outline: none;
+&#125;
+</code></pre>
+<h1 id="二、隐藏滚动条或更改滚动条样式"><a href="#二、隐藏滚动条或更改滚动条样式" class="headerlink" title="二、隐藏滚动条或更改滚动条样式"></a>二、隐藏滚动条或更改滚动条样式</h1><pre><code class="css">/*css主要部分的样式*//*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar &#123;
+    width: 10px; /*对垂直流动条有效*/
+    height: 10px; /*对水平流动条有效*/
+&#125;
+
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+::-webkit-scrollbar-track&#123;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rosybrown;
+    border-radius: 3px;
+&#125;
+
+/*定义滑块颜色、内阴影及圆角*/
+::-webkit-scrollbar-thumb&#123; 
+    border-radius: 7px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #E8E8E8;
+&#125;
+
+/*定义两端按钮的样式*/
+::-webkit-scrollbar-button &#123;
+    background-color:cyan;
+&#125;
+
+/*定义右下角汇合处的样式*/
+::-webkit-scrollbar-corner &#123;
+    background:khaki;
+&#125;
+</code></pre>
+<h1 id="三、文字超出隐藏并显示省略号"><a href="#三、文字超出隐藏并显示省略号" class="headerlink" title="三、文字超出隐藏并显示省略号"></a>三、文字超出隐藏并显示省略号</h1><h2 id="单行（一定要有宽度）"><a href="#单行（一定要有宽度）" class="headerlink" title="单行（一定要有宽度）"></a>单行（一定要有宽度）</h2><pre><code class="css">p &#123;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width:200px;
+&#125;
+</code></pre>
+<h2 id="多行"><a href="#多行" class="headerlink" title="多行"></a>多行</h2><pre><code class="css">p &#123;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+&#125;
+</code></pre>
+<h1 id="四、控制div内的元素自动换行"><a href="#四、控制div内的元素自动换行" class="headerlink" title="四、控制div内的元素自动换行"></a>四、控制div内的元素自动换行</h1><pre><code class="css">div &#123;
+    word-wrap: break-word;
+    word-break：break-all;
+&#125;
+</code></pre>
+<h1 id="五、-纯css画三角形"><a href="#五、-纯css画三角形" class="headerlink" title="五、 纯css画三角形"></a>五、 纯css画三角形</h1><pre><code class="css">#demo &#123;
+    width: 0;
+    height: 0;
+    border-width: 20px;
+    border-style: solid;
+    border-color: transparent transparent red transparent;
+&#125;
+</code></pre>
+<h1 id="六、-绝对定位元素居中（水平和垂直方向）"><a href="#六、-绝对定位元素居中（水平和垂直方向）" class="headerlink" title="六、 绝对定位元素居中（水平和垂直方向）"></a>六、 绝对定位元素居中（水平和垂直方向）</h1><pre><code class="css">#demo &#123;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: green;
+&#125;
+</code></pre>
+<h1 id="七、表格边框合并"><a href="#七、表格边框合并" class="headerlink" title="七、表格边框合并"></a>七、表格边框合并</h1><pre><code class="css">table,tr,td&#123;
+    border: 1px solid #333;
+&#125;
+table&#123;
+  border-collapse: collapse;
+&#125;
+</code></pre>
+<p>参考文档:<a href="https://zhuanlan.zhihu.com/p/228168219">那些你总是记不住但又总是要用的css</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>移动端H5页面返回并且刷新页面（BFcache）</title>
     <url>/2021/04/27/%E7%A7%BB%E5%8A%A8%E7%AB%AFH5%E9%A1%B5%E9%9D%A2%E8%BF%94%E5%9B%9E%E5%B9%B6%E4%B8%94%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%EF%BC%88BFcache%EF%BC%89/</url>
     <content><![CDATA[<p>什么是BF叉车呢…</p>
@@ -2833,119 +3044,6 @@ window.addEventListener(&#39;pageshow&#39;, function (e) &#123;
       <tags>
         <tag>Html</tag>
         <tag>转载</tag>
-        <tag>Css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>那些你常用又记不住的Css</title>
-    <url>/2021/03/18/%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%B8%B8%E7%94%A8%E5%8F%88%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84css/</url>
-    <content><![CDATA[<p>记录一些常用Css效果</p>
-<span id="more"></span>
-
-
-<h1 id="一、设置input-的placeholder的字体样式"><a href="#一、设置input-的placeholder的字体样式" class="headerlink" title="一、设置input 的placeholder的字体样式"></a>一、设置input 的placeholder的字体样式</h1><pre><code class="less">input::-webkit-input-placeholder &#123;    /* Chrome/Opera/Safari */
-    color: red;
-&#125;
-input::-moz-placeholder &#123; /* Firefox 19+ */  
-    color: red;
-&#125;
-input:-ms-input-placeholder &#123; /* IE 10+ */
-    color: red;
-&#125;
-input:-moz-placeholder &#123; /* Firefox 18- */
-    color: red;
-&#125;
-</code></pre>
-<h2 id="设置input聚焦时的样式"><a href="#设置input聚焦时的样式" class="headerlink" title="设置input聚焦时的样式"></a>设置input聚焦时的样式</h2><pre><code class="css">input:focus &#123;   
-    background-color: red;
-&#125;
-</code></pre>
-<h2 id="取消input的边框"><a href="#取消input的边框" class="headerlink" title="取消input的边框"></a>取消input的边框</h2><pre><code class="css">input &#123;
-    border: none;
-    outline: none;
-&#125;
-</code></pre>
-<h1 id="二、隐藏滚动条或更改滚动条样式"><a href="#二、隐藏滚动条或更改滚动条样式" class="headerlink" title="二、隐藏滚动条或更改滚动条样式"></a>二、隐藏滚动条或更改滚动条样式</h1><pre><code class="css">/*css主要部分的样式*//*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
-::-webkit-scrollbar &#123;
-    width: 10px; /*对垂直流动条有效*/
-    height: 10px; /*对水平流动条有效*/
-&#125;
-
-/*定义滚动条的轨道颜色、内阴影及圆角*/
-::-webkit-scrollbar-track&#123;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: rosybrown;
-    border-radius: 3px;
-&#125;
-
-/*定义滑块颜色、内阴影及圆角*/
-::-webkit-scrollbar-thumb&#123; 
-    border-radius: 7px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #E8E8E8;
-&#125;
-
-/*定义两端按钮的样式*/
-::-webkit-scrollbar-button &#123;
-    background-color:cyan;
-&#125;
-
-/*定义右下角汇合处的样式*/
-::-webkit-scrollbar-corner &#123;
-    background:khaki;
-&#125;
-</code></pre>
-<h1 id="三、文字超出隐藏并显示省略号"><a href="#三、文字超出隐藏并显示省略号" class="headerlink" title="三、文字超出隐藏并显示省略号"></a>三、文字超出隐藏并显示省略号</h1><h2 id="单行（一定要有宽度）"><a href="#单行（一定要有宽度）" class="headerlink" title="单行（一定要有宽度）"></a>单行（一定要有宽度）</h2><pre><code class="css">p &#123;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width:200px;
-&#125;
-</code></pre>
-<h2 id="多行"><a href="#多行" class="headerlink" title="多行"></a>多行</h2><pre><code class="css">p &#123;
-    word-break: break-all;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-&#125;
-</code></pre>
-<h1 id="四、控制div内的元素自动换行"><a href="#四、控制div内的元素自动换行" class="headerlink" title="四、控制div内的元素自动换行"></a>四、控制div内的元素自动换行</h1><pre><code class="css">div &#123;
-    word-wrap: break-word;
-    word-break：break-all;
-&#125;
-</code></pre>
-<h1 id="五、-纯css画三角形"><a href="#五、-纯css画三角形" class="headerlink" title="五、 纯css画三角形"></a>五、 纯css画三角形</h1><pre><code class="css">#demo &#123;
-    width: 0;
-    height: 0;
-    border-width: 20px;
-    border-style: solid;
-    border-color: transparent transparent red transparent;
-&#125;
-</code></pre>
-<h1 id="六、-绝对定位元素居中（水平和垂直方向）"><a href="#六、-绝对定位元素居中（水平和垂直方向）" class="headerlink" title="六、 绝对定位元素居中（水平和垂直方向）"></a>六、 绝对定位元素居中（水平和垂直方向）</h1><pre><code class="css">#demo &#123;
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    background-color: green;
-&#125;
-</code></pre>
-<h1 id="七、表格边框合并"><a href="#七、表格边框合并" class="headerlink" title="七、表格边框合并"></a>七、表格边框合并</h1><pre><code class="css">table,tr,td&#123;
-    border: 1px solid #333;
-&#125;
-table&#123;
-  border-collapse: collapse;
-&#125;
-</code></pre>
-<p>参考文档:<a href="https://zhuanlan.zhihu.com/p/228168219">那些你总是记不住但又总是要用的css</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
         <tag>Css</tag>
       </tags>
   </entry>
@@ -3153,7 +3251,7 @@ table&#123;
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160215210.png" alt="image-20210813160215210"></p>
 <ul>
-<li><h5 id="更改远程仓库连接地址"><a href="#更改远程仓库连接地址" class="headerlink" title="更改远程仓库连接地址"></a>更改远程仓库连接地址</h5><p>ssh执行：git remote set-url origin <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#x74;&#101;&#101;&#46;&#x63;&#111;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#x74;&#101;&#101;&#46;&#x63;&#111;&#x6d;</a>:houpai/git-demo.git</p>
+<li><h5 id="更改远程仓库连接地址"><a href="#更改远程仓库连接地址" class="headerlink" title="更改远程仓库连接地址"></a>更改远程仓库连接地址</h5><p>ssh执行：git remote set-url origin <a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#101;&#101;&#46;&#99;&#x6f;&#109;">&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#101;&#101;&#46;&#99;&#x6f;&#109;</a>:houpai/git-demo.git</p>
 <p>http执行：git remote set-url origin  <a href="https://github.com/NECKLI/git-test.git">https://github.com/NECKLI/git-test.git</a></p>
 </li>
 </ul>
