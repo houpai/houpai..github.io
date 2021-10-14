@@ -1,10 +1,10 @@
 ---
-title: 在微信小程序中使用 Protocol Buffer 的方法(如无必要,请慎用)
+title: 在微信小程序中使用ProtocolBuffer的方法
 date: 2021-10-14 09:09:55
 tags:
 - 微信小程序
 - 转载
-  categories:
+categories:
 - 前端
 ---
 在微信小程序中使用 Protocol Buffer 的方法...
