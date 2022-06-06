@@ -114,24 +114,6 @@
       </tags>
   </entry>
   <entry>
-    <title>html内容禁止选择、复制、右键等</title>
-    <url>/2021/06/23/HTML%E9%A1%B5%E9%9D%A2%E5%86%85%E5%AE%B9%E7%A6%81%E6%AD%A2%E9%80%89%E6%8B%A9%E3%80%81%E5%A4%8D%E5%88%B6%E3%80%81%E5%8F%B3%E9%94%AE/</url>
-    <content><![CDATA[<p>html内容禁止选择、复制、右键…</p>
-<span id="more"></span>
-
-<h4 id="HTML页面内容禁止选择、复制、右键"><a href="#HTML页面内容禁止选择、复制、右键" class="headerlink" title="HTML页面内容禁止选择、复制、右键"></a>HTML页面内容禁止选择、复制、右键</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">leftmargin</span>=<span class="string">0</span> <span class="attr">topmargin</span>=<span class="string">0</span> <span class="attr">oncontextmenu</span>=<span class="string">&#x27;return false&#x27;</span> <span class="attr">ondragstart</span>=<span class="string">&#x27;return false&#x27;</span> <span class="attr">onselectstart</span> =<span class="string">&#x27;return false&#x27;</span> <span class="attr">onselect</span>=<span class="string">&#x27;document.selection.empty()&#x27;</span> <span class="attr">oncopy</span>=<span class="string">&#x27;document.selection.empty()&#x27;</span> <span class="attr">onbeforecopy</span>=<span class="string">&#x27;return false&#x27;</span> <span class="attr">onmouseup</span>=<span class="string">&#x27;document.selection.empty()&#x27;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="禁止网页另存为：在body后面加入以下代码："><a href="#禁止网页另存为：在body后面加入以下代码：" class="headerlink" title="禁止网页另存为：在body后面加入以下代码："></a>禁止网页另存为：在body后面加入以下代码：</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;*.htm&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span> </span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>Html</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git常用操作整理</title>
     <url>/2021/08/13/Git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<p>Git常用操作整理…</p>
@@ -307,7 +289,7 @@
 </ul>
 <p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160215210.png" alt="image-20210813160215210"></p>
 <ul>
-<li><h5 id="更改远程仓库连接地址"><a href="#更改远程仓库连接地址" class="headerlink" title="更改远程仓库连接地址"></a>更改远程仓库连接地址</h5><p>ssh执行：git remote set-url origin <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x65;&#x65;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x65;&#x65;&#x2e;&#x63;&#x6f;&#x6d;</a>:houpai/git-demo.git</p>
+<li><h5 id="更改远程仓库连接地址"><a href="#更改远程仓库连接地址" class="headerlink" title="更改远程仓库连接地址"></a>更改远程仓库连接地址</h5><p>ssh执行：git remote set-url origin <a href="mailto:&#103;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#x65;&#101;&#46;&#x63;&#x6f;&#109;">&#103;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#x65;&#101;&#46;&#x63;&#x6f;&#109;</a>:houpai/git-demo.git</p>
 <p>http执行：git remote set-url origin  <a href="https://github.com/NECKLI/git-test.git">https://github.com/NECKLI/git-test.git</a></p>
 </li>
 </ul>
@@ -374,6 +356,24 @@
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>html内容禁止选择、复制、右键等</title>
+    <url>/2021/06/23/HTML%E9%A1%B5%E9%9D%A2%E5%86%85%E5%AE%B9%E7%A6%81%E6%AD%A2%E9%80%89%E6%8B%A9%E3%80%81%E5%A4%8D%E5%88%B6%E3%80%81%E5%8F%B3%E9%94%AE/</url>
+    <content><![CDATA[<p>html内容禁止选择、复制、右键…</p>
+<span id="more"></span>
+
+<h4 id="HTML页面内容禁止选择、复制、右键"><a href="#HTML页面内容禁止选择、复制、右键" class="headerlink" title="HTML页面内容禁止选择、复制、右键"></a>HTML页面内容禁止选择、复制、右键</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">leftmargin</span>=<span class="string">0</span> <span class="attr">topmargin</span>=<span class="string">0</span> <span class="attr">oncontextmenu</span>=<span class="string">&#x27;return false&#x27;</span> <span class="attr">ondragstart</span>=<span class="string">&#x27;return false&#x27;</span> <span class="attr">onselectstart</span> =<span class="string">&#x27;return false&#x27;</span> <span class="attr">onselect</span>=<span class="string">&#x27;document.selection.empty()&#x27;</span> <span class="attr">oncopy</span>=<span class="string">&#x27;document.selection.empty()&#x27;</span> <span class="attr">onbeforecopy</span>=<span class="string">&#x27;return false&#x27;</span> <span class="attr">onmouseup</span>=<span class="string">&#x27;document.selection.empty()&#x27;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="禁止网页另存为：在body后面加入以下代码："><a href="#禁止网页另存为：在body后面加入以下代码：" class="headerlink" title="禁止网页另存为：在body后面加入以下代码："></a>禁止网页另存为：在body后面加入以下代码：</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;*.htm&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Html</tag>
       </tags>
   </entry>
   <entry>
@@ -509,27 +509,9 @@
 <p>- END -</p>
 <p>点赞 + 在看 + 分享，一键三连，幸福满满！</p>
 <p>本文分享自微信公众号 - 鱼头的Web海洋（krissarea）</p>
-<p>原文出处及转载信息见文内详细说明，如有侵权，请联系 <a href="mailto:&#121;&#x75;&#x6e;&#106;&#105;&#97;&#x5f;&#x63;&#x6f;&#109;&#109;&#x75;&#110;&#105;&#116;&#121;&#64;&#x74;&#101;&#110;&#x63;&#x65;&#x6e;&#x74;&#46;&#99;&#x6f;&#x6d;">&#121;&#x75;&#x6e;&#106;&#105;&#97;&#x5f;&#x63;&#x6f;&#109;&#109;&#x75;&#110;&#105;&#116;&#121;&#64;&#x74;&#101;&#110;&#x63;&#x65;&#x6e;&#x74;&#46;&#99;&#x6f;&#x6d;</a> 删除。</p>
+<p>原文出处及转载信息见文内详细说明，如有侵权，请联系 <a href="mailto:&#x79;&#117;&#110;&#106;&#x69;&#x61;&#95;&#99;&#111;&#x6d;&#109;&#x75;&#x6e;&#105;&#x74;&#121;&#64;&#116;&#x65;&#x6e;&#99;&#x65;&#x6e;&#x74;&#x2e;&#x63;&#111;&#109;">&#x79;&#117;&#110;&#106;&#x69;&#x61;&#95;&#99;&#111;&#x6d;&#109;&#x75;&#x6e;&#105;&#x74;&#121;&#64;&#116;&#x65;&#x6e;&#99;&#x65;&#x6e;&#x74;&#x2e;&#x63;&#111;&#109;</a> 删除。</p>
 <p>原始发表时间：2021-07-05</p>
 <p>本文参与<a href="https://cloud.tencent.com/developer/support-plan">腾讯云自媒体分享计划</a>，欢迎正在阅读的你也加入，一起分享。</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>Vue3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue3笔记 --- 代码复用示例</title>
-    <url>/2021/06/15/Vue3%E7%AC%94%E8%AE%B0%20---%20%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E7%A4%BA%E4%BE%8B/</url>
-    <content><![CDATA[<p>记录整理Vue3代码的复用示例…</p>
-<span id="more"></span>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;组合式api架构&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;usemouse&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;position x: &#123;&#123;x&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;position y: &#123;&#123;y&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;h2&gt;useCount&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;count&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;add&quot;&gt;Add&lt;/button&gt;</span><br><span class="line">    &lt;button @click=&quot;minus&quot;&gt;Minus&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; onMounted, onUnmounted, ref &#125; from &quot;vue&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;CompositionApiArchitecture&quot;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const &#123; x, y &#125; = useMouse();</span><br><span class="line">    const &#123; count, add, minus &#125; = useCount();</span><br><span class="line">    return &#123; x, y, count, add, minus &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">  </span><br><span class="line">function useMouse() &#123;</span><br><span class="line">  const x = ref(0);</span><br><span class="line">  const y = ref(0);</span><br><span class="line">  const updateXY = (e) =&gt; &#123;</span><br><span class="line">    x.value = e.x;</span><br><span class="line">    y.value = e.y;</span><br><span class="line">  &#125;;</span><br><span class="line">  onMounted(() =&gt; &#123;</span><br><span class="line">    document.addEventListener(&quot;mousemove&quot;, updateXY);</span><br><span class="line">  &#125;);</span><br><span class="line">  onUnmounted(() =&gt; &#123;</span><br><span class="line">    document.removeEventListener(&quot;mousemove&quot;, updateXY);</span><br><span class="line">  &#125;);</span><br><span class="line">  return &#123; x, y &#125;;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">function useCount() &#123;</span><br><span class="line">  const count = ref(0);</span><br><span class="line">  const add = () =&gt; count.value++;</span><br><span class="line">  const minus = () =&gt; count.value--;</span><br><span class="line">  return &#123; count, add, minus &#125;;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210615133627881.png" alt="image-20210615133627881"></p>
 ]]></content>
       <categories>
         <category>前端</category>
@@ -688,6 +670,24 @@
 
 
 <h2 id="使用-this"><a href="#使用-this" class="headerlink" title="#使用 this"></a><a href="https://vue3js.cn/docs/zh/guide/composition-api-setup.html#%E4%BD%BF%E7%94%A8-this">#</a>使用 <code>this</code></h2><p><strong>在 <code>setup()</code> 内部，<code>this</code> 不会是该活跃实例的引用</strong>，因为 <code>setup()</code> 是在解析其它组件选项之前被调用的，所以 <code>setup()</code> 内部的 <code>this</code> 的行为与其它选项中的 <code>this</code> 完全不同。这在和其它选项式 API 一起使用 <code>setup()</code> 时可能会导致混淆。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue3笔记 --- 代码复用示例</title>
+    <url>/2021/06/15/Vue3%E7%AC%94%E8%AE%B0%20---%20%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E7%A4%BA%E4%BE%8B/</url>
+    <content><![CDATA[<p>记录整理Vue3代码的复用示例…</p>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;组合式api架构&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;usemouse&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;position x: &#123;&#123;x&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;position y: &#123;&#123;y&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;h2&gt;useCount&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;count&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;add&quot;&gt;Add&lt;/button&gt;</span><br><span class="line">    &lt;button @click=&quot;minus&quot;&gt;Minus&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; onMounted, onUnmounted, ref &#125; from &quot;vue&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;CompositionApiArchitecture&quot;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const &#123; x, y &#125; = useMouse();</span><br><span class="line">    const &#123; count, add, minus &#125; = useCount();</span><br><span class="line">    return &#123; x, y, count, add, minus &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">  </span><br><span class="line">function useMouse() &#123;</span><br><span class="line">  const x = ref(0);</span><br><span class="line">  const y = ref(0);</span><br><span class="line">  const updateXY = (e) =&gt; &#123;</span><br><span class="line">    x.value = e.x;</span><br><span class="line">    y.value = e.y;</span><br><span class="line">  &#125;;</span><br><span class="line">  onMounted(() =&gt; &#123;</span><br><span class="line">    document.addEventListener(&quot;mousemove&quot;, updateXY);</span><br><span class="line">  &#125;);</span><br><span class="line">  onUnmounted(() =&gt; &#123;</span><br><span class="line">    document.removeEventListener(&quot;mousemove&quot;, updateXY);</span><br><span class="line">  &#125;);</span><br><span class="line">  return &#123; x, y &#125;;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">function useCount() &#123;</span><br><span class="line">  const count = ref(0);</span><br><span class="line">  const add = () =&gt; count.value++;</span><br><span class="line">  const minus = () =&gt; count.value--;</span><br><span class="line">  return &#123; count, add, minus &#125;;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210615133627881.png" alt="image-20210615133627881"></p>
 ]]></content>
       <categories>
         <category>前端</category>
@@ -1102,7 +1102,7 @@
     <content><![CDATA[<p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
 <span id="more"></span>
 
-<h4 id="1-从程序目录打开Git-Bash"><a href="#1-从程序目录打开Git-Bash" class="headerlink" title="1.从程序目录打开Git Bash"></a>1.从程序目录打开Git Bash</h4><h4 id="2-ssh-keygen-t-rsa-C-“-101-x6d-97-105-108-x40-101-x6d-x61-x69-108-x2e-x63-111-109-“-101-109-97-x69-108-x40-101-109-x61-105-x6c-x2e-x63-111-x6d-是自己github账号"><a href="#2-ssh-keygen-t-rsa-C-“-101-x6d-97-105-108-x40-101-x6d-x61-x69-108-x2e-x63-111-109-“-101-109-97-x69-108-x40-101-109-x61-105-x6c-x2e-x63-111-x6d-是自己github账号" class="headerlink" title="2.ssh-keygen -t rsa -C “&#101;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;“ ,&#101;&#109;&#97;&#x69;&#108;&#x40;&#101;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;是自己github账号"></a>2.ssh-keygen -t rsa -C “<a href="mailto:&#101;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;">&#101;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;</a>“ ,<a href="mailto:&#101;&#109;&#97;&#x69;&#108;&#x40;&#101;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#101;&#109;&#97;&#x69;&#108;&#x40;&#101;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a>是自己github账号</h4><h4 id="3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了"><a href="#3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了" class="headerlink" title="3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了"></a>3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了</h4><h4 id="4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下"><a href="#4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下" class="headerlink" title="4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下"></a>4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下</h4><h4 id="5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容"><a href="#5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容" class="headerlink" title="5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容"></a>5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容</h4><h4 id="6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去"><a href="#6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去" class="headerlink" title="6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去"></a>6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去</h4><p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png"></p>
+<h4 id="1-从程序目录打开Git-Bash"><a href="#1-从程序目录打开Git-Bash" class="headerlink" title="1.从程序目录打开Git Bash"></a>1.从程序目录打开Git Bash</h4><h4 id="2-ssh-keygen-t-rsa-C-“-x65-x6d-97-x69-108-x40-101-109-97-x69-x6c-46-x63-x6f-x6d-“-101-109-x61-105-108-64-101-109-x61-x69-108-x2e-99-x6f-109-是自己github账号"><a href="#2-ssh-keygen-t-rsa-C-“-x65-x6d-97-x69-108-x40-101-109-97-x69-x6c-46-x63-x6f-x6d-“-101-109-x61-105-108-64-101-109-x61-x69-108-x2e-99-x6f-109-是自己github账号" class="headerlink" title="2.ssh-keygen -t rsa -C “&#x65;&#x6d;&#97;&#x69;&#108;&#x40;&#101;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;“ ,&#101;&#109;&#x61;&#105;&#108;&#64;&#101;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;是自己github账号"></a>2.ssh-keygen -t rsa -C “<a href="mailto:&#x65;&#x6d;&#97;&#x69;&#108;&#x40;&#101;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#x65;&#x6d;&#97;&#x69;&#108;&#x40;&#101;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a>“ ,<a href="mailto:&#101;&#109;&#x61;&#105;&#108;&#64;&#101;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;">&#101;&#109;&#x61;&#105;&#108;&#64;&#101;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;</a>是自己github账号</h4><h4 id="3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了"><a href="#3-提醒你输入key的名称，你可以不用输入，一路回车，就OK了" class="headerlink" title="3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了"></a>3.提醒你输入key的名称，你可以不用输入，一路回车，就OK了</h4><h4 id="4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下"><a href="#4-一般会在用户目录下生成三个文件，例如我生成的文件在C-Users-xxx-ssh目录下" class="headerlink" title="4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下"></a>4.一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\xxx\.ssh目录下</h4><h4 id="5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容"><a href="#5-进入该用户的目录下用命令cat-id-rsa-pub打开文件并复制里面的全部内容" class="headerlink" title="5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容"></a>5.进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容</h4><h4 id="6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去"><a href="#6-打开github账号–-gt-Settings–-gt-SSH-and-GPG-keys–-gt-New-SSH-key-并把复制好的内容全部粘贴进去" class="headerlink" title="6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去"></a>6.打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去</h4><p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png"></p>
 <p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh2.png"></p>
 <p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/git_ssh.png"></p>
 ]]></content>
@@ -1111,41 +1111,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>js获取公网和内网ip</title>
-    <url>/2021/05/27/js%E8%8E%B7%E5%8F%96%E5%85%AC%E7%BD%91%E5%92%8C%E5%86%85%E7%BD%91ip/</url>
-    <content><![CDATA[<p>记录一下js获取公网和内网ip的方法</p>
-<span id="more"></span>
-
-
-<p>貌似至少一年前就被提出来过的了，就算用 SS 和 VPN 也无法避免 —— 只要你用的是 Chrome 或者 Firefox 浏览器。</p>
-<p>之前看到过有关讨论，但是因为不会 javascript 就没关注，这个寒假补了下 javascript 和 jQuery ，倒是可以看懂一些了。</p>
-<p>Demo: <a href="https://diafygi.github.io/webrtc-ips/">https://diafygi.github.io/webrtc-ips/</a></p>
-<blockquote>
-<p>What this does</p>
-<p>Firefox and Chrome have implemented WebRTC that allow requests to STUN<br>servers be made that will return the local and public IP addresses for<br>the user. These request results are available to javascript, so you<br>can now obtain a users local and public IP addresses in javascript.<br>This demo is an example implementation of that.</p>
-<p>Additionally, these STUN requests are made outside of the normal<br>XMLHttpRequest procedure, so they are not visible in the developer<br>console or able to be blocked by plugins such as AdBlockPlus or<br>Ghostery. This makes these types of requests available for online<br>tracking if an advertiser sets up a STUN server with a wildcard<br>domain.</p>
-</blockquote>
-<p>就是说 Firefox 和 Chrome 内建的 WebRTC 允许向 STUN 服务器查询用户的本地和公共 IP 地址。查询结果对 javascript 可用，所以可以使用 javascript 得到用户的本地和公网地址。</p>
-<p><font color=red>但是需要特别注意的是需要打开浏览器的响应配置才可以获取到，操作见下图</font></p>
-<p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210527174417119.png" alt="image-20210527174417119"></p>
-<p>复制粘贴一下代码：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=utf-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span></span><br><span class="line">  Demo for:</span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://github.com/diafygi/webrtc-ips&quot;</span>&gt;</span></span><br><span class="line">    https://github.com/diafygi/webrtc-ips</span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  This demo secretly makes requests to STUN servers that can log your</span><br><span class="line">  request. These requests do not show up in developer consoles and</span><br><span class="line">  cannot be blocked by browser plugins (AdBlock, Ghostery, etc.).</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>Your local IP addresses:<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>Your public IP addresses:<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">//get the IP addresses associated with an account</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">getIPs</span>(<span class="params">callback</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> ip_dups = &#123;&#125;;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//compatibility for firefox and chrome</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> <span class="title class_">RTCPeerConnection</span> = <span class="variable language_">window</span>.<span class="property">RTCPeerConnection</span></span></span><br><span class="line"><span class="language-javascript">      || <span class="variable language_">window</span>.<span class="property">mozRTCPeerConnection</span></span></span><br><span class="line"><span class="language-javascript">      || <span class="variable language_">window</span>.<span class="property">webkitRTCPeerConnection</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> useWebKit = !!<span class="variable language_">window</span>.<span class="property">webkitRTCPeerConnection</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//bypass naive webrtc blocking</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>(!<span class="title class_">RTCPeerConnection</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//create an iframe node</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> iframe = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;iframe&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">      iframe.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&#x27;none&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//invalidate content script</span></span></span><br><span class="line"><span class="language-javascript">      iframe.<span class="property">sandbox</span> = <span class="string">&#x27;allow-same-origin&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//insert a listener to cutoff any attempts to</span></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//disable webrtc when inserting to the DOM</span></span></span><br><span class="line"><span class="language-javascript">      iframe.<span class="title function_">addEventListener</span>(<span class="string">&quot;DOMNodeInserted&quot;</span>, <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        e.<span class="title function_">stopPropagation</span>();</span></span><br><span class="line"><span class="language-javascript">      &#125;, <span class="literal">false</span>);</span></span><br><span class="line"><span class="language-javascript">      iframe.<span class="title function_">addEventListener</span>(<span class="string">&quot;DOMNodeInsertedIntoDocument&quot;</span>, <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        e.<span class="title function_">stopPropagation</span>();</span></span><br><span class="line"><span class="language-javascript">      &#125;, <span class="literal">false</span>);</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//insert into the DOM and get that iframe&#x27;s webrtc</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(iframe);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> win = iframe.<span class="property">contentWindow</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="title class_">RTCPeerConnection</span> = win.<span class="property">RTCPeerConnection</span></span></span><br><span class="line"><span class="language-javascript">        || win.<span class="property">mozRTCPeerConnection</span></span></span><br><span class="line"><span class="language-javascript">        || win.<span class="property">webkitRTCPeerConnection</span>;</span></span><br><span class="line"><span class="language-javascript">      useWebKit = !!win.<span class="property">webkitRTCPeerConnection</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//minimal requirements for data connection</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> mediaConstraints = &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">optional</span>: [&#123;<span class="title class_">RtpDataChannels</span>: <span class="literal">true</span>&#125;]</span></span><br><span class="line"><span class="language-javascript">    &#125;;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//firefox already has a default stun server in about:config</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//    media.peerconnection.default_iceservers =</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//    [&#123;&quot;url&quot;: &quot;stun:stun.services.mozilla.com&quot;&#125;]</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> servers = <span class="literal">undefined</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//add same stun server for chrome</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>(useWebKit)</span></span><br><span class="line"><span class="language-javascript">      servers = &#123;<span class="attr">iceServers</span>: [&#123;<span class="attr">urls</span>: <span class="string">&quot;stun:stun.services.mozilla.com&quot;</span>&#125;]&#125;;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//construct a new RTCPeerConnection</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> pc = <span class="keyword">new</span> <span class="title class_">RTCPeerConnection</span>(servers, mediaConstraints);</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">handleCandidate</span>(<span class="params">candidate</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//match just the IP address</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> ip_regex = <span class="regexp">/([0-9]&#123;1,3&#125;(\.[0-9]&#123;1,3&#125;)&#123;3&#125;)/</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> ip_addr = ip_regex.<span class="title function_">exec</span>(candidate)[<span class="number">1</span>];</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//remove duplicates</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span>(ip_dups[ip_addr] === <span class="literal">undefined</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">callback</span>(ip_addr);</span></span><br><span class="line"><span class="language-javascript">      ip_dups[ip_addr] = <span class="literal">true</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//listen for candidate events</span></span></span><br><span class="line"><span class="language-javascript">    pc.<span class="property">onicecandidate</span> = <span class="keyword">function</span>(<span class="params">ice</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//skip non-candidate events</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span>(ice.<span class="property">candidate</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">handleCandidate</span>(ice.<span class="property">candidate</span>.<span class="property">candidate</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//create a bogus data channel</span></span></span><br><span class="line"><span class="language-javascript">    pc.<span class="title function_">createDataChannel</span>(<span class="string">&quot;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//create an offer sdp</span></span></span><br><span class="line"><span class="language-javascript">    pc.<span class="title function_">createOffer</span>(<span class="keyword">function</span>(<span class="params">result</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//trigger the stun server request</span></span></span><br><span class="line"><span class="language-javascript">      pc.<span class="title function_">setLocalDescription</span>(result, <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;, <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;);</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//wait for a while to let everything done</span></span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//read candidate info from local description</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> lines = pc.<span class="property">localDescription</span>.<span class="property">sdp</span>.<span class="title function_">split</span>(<span class="string">&#x27;\n&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">      lines.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">line</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span>(line.<span class="title function_">indexOf</span>(<span class="string">&#x27;a=candidate:&#x27;</span>) === <span class="number">0</span>)</span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">handleCandidate</span>(line);</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">//insert IP addresses into the page</span></span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">getIPs</span>(<span class="keyword">function</span>(<span class="params">ip</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> li = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;li&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    li.<span class="property">textContent</span> = ip;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//local IPs</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (ip.<span class="title function_">match</span>(<span class="regexp">/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/</span>))</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;ul&quot;</span>)[<span class="number">0</span>].<span class="title function_">appendChild</span>(li);</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//assume the rest are public IPs</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">else</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;ul&quot;</span>)[<span class="number">1</span>].<span class="title function_">appendChild</span>(li);</span></span><br><span class="line"><span class="language-javascript">  &#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Wooyun 上一些 js 的其他用法：</strong></p>
-<blockquote>
-<p>获得flash版本 <a href="http://jsbin.com/rukirayuca">http://jsbin.com/rukirayuca</a><br>获得java版本 <a href="http://jsbin.com/cabirudale">http://jsbin.com/cabirudale</a><br>获得插件列表 <a href="http://jsbin.com/vejujatuxa">http://jsbin.com/vejujatuxa</a><br>获得内网IP <a href="http://jsbin.com/riyisavura">http://jsbin.com/riyisavura</a><br>扫描HTTP端口 <a href="http://jsbin.com/ziwununivo">http://jsbin.com/ziwununivo</a><br>扫描WEB容器 <a href="http://jsbin.com/piwemaquwa">http://jsbin.com/piwemaquwa</a><br>扫描FTP端口 <a href="http://jsbin.com/kulahicide">http://jsbin.com/kulahicide</a></p>
-</blockquote>
-<p>转载于:<a href="http://0x0d.im/archives/get-local-and-real-public-IP-via-WebRTC.html">通过WebRTC获取内网和公网真实IP地址</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>转载</tag>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1279,6 +1244,41 @@
       </tags>
   </entry>
   <entry>
+    <title>js获取公网和内网ip</title>
+    <url>/2021/05/27/js%E8%8E%B7%E5%8F%96%E5%85%AC%E7%BD%91%E5%92%8C%E5%86%85%E7%BD%91ip/</url>
+    <content><![CDATA[<p>记录一下js获取公网和内网ip的方法</p>
+<span id="more"></span>
+
+
+<p>貌似至少一年前就被提出来过的了，就算用 SS 和 VPN 也无法避免 —— 只要你用的是 Chrome 或者 Firefox 浏览器。</p>
+<p>之前看到过有关讨论，但是因为不会 javascript 就没关注，这个寒假补了下 javascript 和 jQuery ，倒是可以看懂一些了。</p>
+<p>Demo: <a href="https://diafygi.github.io/webrtc-ips/">https://diafygi.github.io/webrtc-ips/</a></p>
+<blockquote>
+<p>What this does</p>
+<p>Firefox and Chrome have implemented WebRTC that allow requests to STUN<br>servers be made that will return the local and public IP addresses for<br>the user. These request results are available to javascript, so you<br>can now obtain a users local and public IP addresses in javascript.<br>This demo is an example implementation of that.</p>
+<p>Additionally, these STUN requests are made outside of the normal<br>XMLHttpRequest procedure, so they are not visible in the developer<br>console or able to be blocked by plugins such as AdBlockPlus or<br>Ghostery. This makes these types of requests available for online<br>tracking if an advertiser sets up a STUN server with a wildcard<br>domain.</p>
+</blockquote>
+<p>就是说 Firefox 和 Chrome 内建的 WebRTC 允许向 STUN 服务器查询用户的本地和公共 IP 地址。查询结果对 javascript 可用，所以可以使用 javascript 得到用户的本地和公网地址。</p>
+<p><font color=red>但是需要特别注意的是需要打开浏览器的响应配置才可以获取到，操作见下图</font></p>
+<p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210527174417119.png" alt="image-20210527174417119"></p>
+<p>复制粘贴一下代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=utf-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span></span><br><span class="line">  Demo for:</span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://github.com/diafygi/webrtc-ips&quot;</span>&gt;</span></span><br><span class="line">    https://github.com/diafygi/webrtc-ips</span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  This demo secretly makes requests to STUN servers that can log your</span><br><span class="line">  request. These requests do not show up in developer consoles and</span><br><span class="line">  cannot be blocked by browser plugins (AdBlock, Ghostery, etc.).</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>Your local IP addresses:<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>Your public IP addresses:<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">//get the IP addresses associated with an account</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">getIPs</span>(<span class="params">callback</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> ip_dups = &#123;&#125;;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//compatibility for firefox and chrome</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> <span class="title class_">RTCPeerConnection</span> = <span class="variable language_">window</span>.<span class="property">RTCPeerConnection</span></span></span><br><span class="line"><span class="language-javascript">      || <span class="variable language_">window</span>.<span class="property">mozRTCPeerConnection</span></span></span><br><span class="line"><span class="language-javascript">      || <span class="variable language_">window</span>.<span class="property">webkitRTCPeerConnection</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> useWebKit = !!<span class="variable language_">window</span>.<span class="property">webkitRTCPeerConnection</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//bypass naive webrtc blocking</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>(!<span class="title class_">RTCPeerConnection</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//create an iframe node</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> iframe = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;iframe&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">      iframe.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&#x27;none&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//invalidate content script</span></span></span><br><span class="line"><span class="language-javascript">      iframe.<span class="property">sandbox</span> = <span class="string">&#x27;allow-same-origin&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//insert a listener to cutoff any attempts to</span></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//disable webrtc when inserting to the DOM</span></span></span><br><span class="line"><span class="language-javascript">      iframe.<span class="title function_">addEventListener</span>(<span class="string">&quot;DOMNodeInserted&quot;</span>, <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        e.<span class="title function_">stopPropagation</span>();</span></span><br><span class="line"><span class="language-javascript">      &#125;, <span class="literal">false</span>);</span></span><br><span class="line"><span class="language-javascript">      iframe.<span class="title function_">addEventListener</span>(<span class="string">&quot;DOMNodeInsertedIntoDocument&quot;</span>, <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        e.<span class="title function_">stopPropagation</span>();</span></span><br><span class="line"><span class="language-javascript">      &#125;, <span class="literal">false</span>);</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//insert into the DOM and get that iframe&#x27;s webrtc</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(iframe);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> win = iframe.<span class="property">contentWindow</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="title class_">RTCPeerConnection</span> = win.<span class="property">RTCPeerConnection</span></span></span><br><span class="line"><span class="language-javascript">        || win.<span class="property">mozRTCPeerConnection</span></span></span><br><span class="line"><span class="language-javascript">        || win.<span class="property">webkitRTCPeerConnection</span>;</span></span><br><span class="line"><span class="language-javascript">      useWebKit = !!win.<span class="property">webkitRTCPeerConnection</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//minimal requirements for data connection</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> mediaConstraints = &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">optional</span>: [&#123;<span class="title class_">RtpDataChannels</span>: <span class="literal">true</span>&#125;]</span></span><br><span class="line"><span class="language-javascript">    &#125;;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//firefox already has a default stun server in about:config</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//    media.peerconnection.default_iceservers =</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//    [&#123;&quot;url&quot;: &quot;stun:stun.services.mozilla.com&quot;&#125;]</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> servers = <span class="literal">undefined</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//add same stun server for chrome</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>(useWebKit)</span></span><br><span class="line"><span class="language-javascript">      servers = &#123;<span class="attr">iceServers</span>: [&#123;<span class="attr">urls</span>: <span class="string">&quot;stun:stun.services.mozilla.com&quot;</span>&#125;]&#125;;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//construct a new RTCPeerConnection</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> pc = <span class="keyword">new</span> <span class="title class_">RTCPeerConnection</span>(servers, mediaConstraints);</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">handleCandidate</span>(<span class="params">candidate</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//match just the IP address</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> ip_regex = <span class="regexp">/([0-9]&#123;1,3&#125;(\.[0-9]&#123;1,3&#125;)&#123;3&#125;)/</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> ip_addr = ip_regex.<span class="title function_">exec</span>(candidate)[<span class="number">1</span>];</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//remove duplicates</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span>(ip_dups[ip_addr] === <span class="literal">undefined</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">callback</span>(ip_addr);</span></span><br><span class="line"><span class="language-javascript">      ip_dups[ip_addr] = <span class="literal">true</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//listen for candidate events</span></span></span><br><span class="line"><span class="language-javascript">    pc.<span class="property">onicecandidate</span> = <span class="keyword">function</span>(<span class="params">ice</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//skip non-candidate events</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span>(ice.<span class="property">candidate</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">handleCandidate</span>(ice.<span class="property">candidate</span>.<span class="property">candidate</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//create a bogus data channel</span></span></span><br><span class="line"><span class="language-javascript">    pc.<span class="title function_">createDataChannel</span>(<span class="string">&quot;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//create an offer sdp</span></span></span><br><span class="line"><span class="language-javascript">    pc.<span class="title function_">createOffer</span>(<span class="keyword">function</span>(<span class="params">result</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//trigger the stun server request</span></span></span><br><span class="line"><span class="language-javascript">      pc.<span class="title function_">setLocalDescription</span>(result, <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;, <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;);</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//wait for a while to let everything done</span></span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">//read candidate info from local description</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> lines = pc.<span class="property">localDescription</span>.<span class="property">sdp</span>.<span class="title function_">split</span>(<span class="string">&#x27;\n&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">      lines.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">line</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span>(line.<span class="title function_">indexOf</span>(<span class="string">&#x27;a=candidate:&#x27;</span>) === <span class="number">0</span>)</span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">handleCandidate</span>(line);</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">//insert IP addresses into the page</span></span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">getIPs</span>(<span class="keyword">function</span>(<span class="params">ip</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> li = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;li&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    li.<span class="property">textContent</span> = ip;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//local IPs</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (ip.<span class="title function_">match</span>(<span class="regexp">/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/</span>))</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;ul&quot;</span>)[<span class="number">0</span>].<span class="title function_">appendChild</span>(li);</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//assume the rest are public IPs</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">else</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;ul&quot;</span>)[<span class="number">1</span>].<span class="title function_">appendChild</span>(li);</span></span><br><span class="line"><span class="language-javascript">  &#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Wooyun 上一些 js 的其他用法：</strong></p>
+<blockquote>
+<p>获得flash版本 <a href="http://jsbin.com/rukirayuca">http://jsbin.com/rukirayuca</a><br>获得java版本 <a href="http://jsbin.com/cabirudale">http://jsbin.com/cabirudale</a><br>获得插件列表 <a href="http://jsbin.com/vejujatuxa">http://jsbin.com/vejujatuxa</a><br>获得内网IP <a href="http://jsbin.com/riyisavura">http://jsbin.com/riyisavura</a><br>扫描HTTP端口 <a href="http://jsbin.com/ziwununivo">http://jsbin.com/ziwununivo</a><br>扫描WEB容器 <a href="http://jsbin.com/piwemaquwa">http://jsbin.com/piwemaquwa</a><br>扫描FTP端口 <a href="http://jsbin.com/kulahicide">http://jsbin.com/kulahicide</a></p>
+</blockquote>
+<p>转载于:<a href="http://0x0d.im/archives/get-local-and-real-public-IP-via-WebRTC.html">通过WebRTC获取内网和公网真实IP地址</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>转载</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>markerdown-Typora编辑器</title>
     <url>/2021/04/12/markerdown-Typora%E7%BC%96%E8%BE%91%E5%99%A8/</url>
     <content><![CDATA[<p>Typora 是一款支持实时预览的 Markdown 文本编辑器</p>
@@ -1401,6 +1401,14 @@
       </tags>
   </entry>
   <entry>
+    <title>关于我</title>
+    <url>/2021/03/11/me/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<p>姓名：侯湃<br>现居：沈阳<br>GitHub: houpai<br>QQ: 784950731<br>微信: houpai314</p>
+]]></content>
+  </entry>
+  <entry>
     <title>node自定义环境变量NODE_ENV</title>
     <url>/2021/04/26/node%E8%87%AA%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FNODE_ENV/</url>
     <content><![CDATA[<p>记录一下如何指定node自定义环境变量NODE_ENV…</p>
@@ -1429,238 +1437,6 @@
       <tags>
         <tag>原创</tag>
         <tag>Node</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于我</title>
-    <url>/2021/03/11/me/</url>
-    <content><![CDATA[<span id="more"></span>
-
-<p>姓名：侯湃<br>现居：沈阳<br>GitHub: houpai<br>QQ: 784950731<br>微信: houpai314</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>一款vue虚拟键盘(支持中文和手写)插件</title>
-    <url>/2021/05/07/%E4%B8%80%E6%AC%BEvue%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98(%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%92%8C%E6%89%8B%E5%86%99)%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<p>推荐一款vue虚拟键盘(支持中文和手写)插件…</p>
-<span id="more"></span>
-
-
-
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><h3 id="特性-🎉"><a href="#特性-🎉" class="headerlink" title="特性 🎉"></a>特性 🎉</h3><ul>
-<li>支持多达五种键盘模式</li>
-<li>支持自定义主题色</li>
-<li>已集成丰富的中文字库</li>
-<li>支持急速识别的手写能力</li>
-<li>vue3.0 组件开箱即用</li>
-</ul>
-<h2 id="支持环境"><a href="#支持环境" class="headerlink" title="支持环境"></a>支持环境</h2><table>
-<thead>
-<tr>
-<th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge"></a> Edge</th>
-<th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox"></a>Firefox</th>
-<th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome"></a>Chrome</th>
-<th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari"></a>Safari</th>
-<th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera"></a>Opera</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Edge</td>
-<td>last 2 versions</td>
-<td>last 2 versions</td>
-<td>last 2 versions</td>
-<td>last 2 versions</td>
-</tr>
-</tbody></table>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="使用-npm-或-yarn-安装"><a href="#使用-npm-或-yarn-安装" class="headerlink" title="使用 npm 或 yarn 安装"></a>使用 npm 或 yarn 安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install vue-keyboard-virtual-next --save</span><br><span class="line">$ yarn add vue-keyboard-virtual-next --save</span><br></pre></td></tr></table></figure>
-
-<p>如果你的网络环境不佳，推荐使用 <a href="https://github.com/cnpm/cnpm">cnpm</a>。</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="全局引入"><a href="#全局引入" class="headerlink" title="全局引入"></a>全局引入</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&quot;./app.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;vue-keyboard-virtual-next/keyboard.min.css&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">KeyBoard</span> <span class="keyword">from</span> <span class="string">&quot;vue-keyboard-virtual-next&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">createApp</span>(<span class="title class_">App</span>)</span><br><span class="line">  .<span class="title function_">use</span>(keyBoard)</span><br><span class="line">  .<span class="title function_">mount</span>(<span class="string">&quot;#app&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="局部引入"><a href="#局部引入" class="headerlink" title="局部引入"></a>局部引入</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- keyboard 只识别带有 data-mode 标识的输入框 --&gt;</span><br><span class="line">  &lt;input data-mode v-model=&quot;value&quot; /&gt;</span><br><span class="line">  &lt;Key-Board </span><br><span class="line">  	:handApi=&quot;&#x27;https://service.chaunve.com/HandWriteRecognizerService.asmx/Command&#x27;&quot; </span><br><span class="line">  	:color=&quot;&#x27;#06f&#x27;&quot;</span><br><span class="line">  /&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script lang=<span class="string">&quot;ts&quot;</span>&gt;</span><br><span class="line">  <span class="keyword">import</span> <span class="string">&quot;keyboard-virtual-vue/keyboard.min.css&quot;</span>;</span><br><span class="line">  <span class="keyword">import</span> <span class="title class_">KeyBoard</span> <span class="keyword">from</span> <span class="string">&quot;keyboard-virtual-vue&quot;</span>;</span><br><span class="line">  <span class="keyword">import</span> &#123; defineComponent, ref &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineComponent</span>(&#123;</span><br><span class="line">    <span class="attr">components</span>: &#123; <span class="title class_">KeyBoard</span> &#125;,</span><br><span class="line">    <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> value = ref&lt;string&gt;(<span class="string">&quot;你好&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        value,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h3><h3 id="Input标签属性"><a href="#Input标签属性" class="headerlink" title="Input标签属性"></a>Input标签属性</h3><table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>data-mode</strong></td>
-<td>弹出输入法的类型： <code>en</code> 英文小写 <code>number</code>数字 <code>symbol</code> 标点 <code>handwrite</code> 手写 <code>不传</code> 默认中文</td>
-<td>String</td>
-<td><code>en</code> <code>number</code> <code>symbol</code> <code>handwrite</code></td>
-<td><code>default as *</code></td>
-</tr>
-<tr>
-<td><strong>data-prop</strong></td>
-<td>注册的输入框的类型</td>
-<td>String</td>
-<td>*</td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id="Props属性"><a href="#Props属性" class="headerlink" title="Props属性"></a>Props属性</h3><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>默认值</th>
-<th>类型</th>
-<th>是否必须</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>v-model</td>
-<td><em>绑定的输入框value</em>,可同时双向绑定多个输入框，不传则只与当前focus输入框做数据绑定关系</td>
-<td></td>
-<td>string|number</td>
-<td>否</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>color</td>
-<td><em>主题色</em></td>
-<td><code>#eaa050</code></td>
-<td>string</td>
-<td>否</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>modeList</td>
-<td><em>键盘渲染模式列表</em>，若不传handApi则不会出现手写板</td>
-<td>[“handwrite”, “symbol”]</td>
-<td>string[]</td>
-<td>否</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>blurHide</td>
-<td><em>是否当前输入框blur事件触发隐藏</em></td>
-<td>true</td>
-<td>boolean</td>
-<td>否</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>showHandleBar</td>
-<td><em>是否显示拖拽句柄</em></td>
-<td>true</td>
-<td>boolean</td>
-<td>否</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>dargHandleText</td>
-<td>拖拽句柄提示文字</td>
-<td></td>
-<td>string</td>
-<td>否</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>modal</td>
-<td><em>是否显示遮罩层</em></td>
-<td>false</td>
-<td>boolean</td>
-<td>否</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>closeOnClickModal</td>
-<td>是否点击遮罩层隐藏键盘</td>
-<td>true</td>
-<td>boolean</td>
-<td>否</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>handApi</td>
-<td>手写识别接口，若不传则无法切换手写模块</td>
-<td></td>
-<td>string</td>
-<td>否</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>animateClass</td>
-<td>键盘显隐动画，内置slide动画，如若需要其他动画，可传入相应类名自定义动画</td>
-<td></td>
-<td>string</td>
-<td>否</td>
-<td>v1.0.0+</td>
-</tr>
-</tbody></table>
-<h3 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h3><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>keyChange</td>
-<td>按键触发事件，第一个参数为当前触发的按键的标识,<code>第二个参数为当前聚焦输入框的props值，若没有则直接返回当前聚焦的input元素（v1.0.1版本之后）</code></td>
-<td>(<em>value</em>: string,prop:string|HTMLInputElement) =&gt; void</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>change</td>
-<td>value改变事件，第一个参数为当前最新通过键盘输入的值，<code>第二个参数为当前聚焦输入框的props值，若没有则直接返回当前聚焦的input元素（v1.0.1版本之后）</code></td>
-<td>(<em>value</em>: string,prop:string|HTMLInputElement) =&gt; void</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>closed</td>
-<td>键盘关闭事件</td>
-<td>() =&gt; void</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>modalClick</td>
-<td>遮罩点击事件</td>
-<td>() =&gt; void</td>
-<td>v1.0.0+</td>
-</tr>
-</tbody></table>
-<h2 id="Component-Event"><a href="#Component-Event" class="headerlink" title="Component Event"></a>Component Event</h2><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>说明</th>
-<th>类型</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>reSignUp</td>
-<td>重新给input注册绑定键盘,当页面有新的input标签出现时调用此方法</td>
-<td>（）=&gt; void</td>
-<td>v1.0.0+</td>
-</tr>
-<tr>
-<td>getCurrentInput</td>
-<td>获取当前聚焦的输入框</td>
-<td>（）=&gt; HTMLInputElement | null</td>
-<td>v1.0.1+</td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- keyboard 只识别带有 data-mode 标识的输入框 --&gt;</span><br><span class="line">  &lt;input data-mode v-model=&quot;value&quot; /&gt;</span><br><span class="line">  &lt;Key-Board </span><br><span class="line">  	:handApi=&quot;&#x27;https://service.chaunve.com/HandWriteRecognizerService.asmx/Command&#x27;&quot; </span><br><span class="line">  	:color=&quot;&#x27;#06f&#x27;&quot;</span><br><span class="line">  /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot;&gt;</span><br><span class="line">import &quot;vue-keyboard-virtual-next/keyboard.min.css&quot;;</span><br><span class="line">import KeyBoard from &quot;vue-keyboard-virtual-next&quot;;</span><br><span class="line">import &#123; defineComponent, ref, onMounted &#125; from &quot;vue&quot;;</span><br><span class="line">export default defineComponent(&#123;</span><br><span class="line">  components: &#123; KeyBoard &#125;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const value = ref&lt;string&gt;(&quot;你好&quot;);</span><br><span class="line">    const keyBoardRef = ref&lt;typeof KeyBoard | null&gt;(null);</span><br><span class="line">      </span><br><span class="line">    onMounted(() =&gt; &#123;</span><br><span class="line">        // xxxx逻辑 给键盘重新注册输入框</span><br><span class="line">        keyBoardRef.value?.reSignUp();</span><br><span class="line">    &#125;)</span><br><span class="line">      </span><br><span class="line">    return &#123;</span><br><span class="line">      value,</span><br><span class="line">      keyBoardRef</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-        <tag>Npm</tag>
       </tags>
   </entry>
   <entry>
@@ -2008,6 +1784,230 @@
       </tags>
   </entry>
   <entry>
+    <title>一款vue虚拟键盘(支持中文和手写)插件</title>
+    <url>/2021/05/07/%E4%B8%80%E6%AC%BEvue%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98(%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%92%8C%E6%89%8B%E5%86%99)%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<p>推荐一款vue虚拟键盘(支持中文和手写)插件…</p>
+<span id="more"></span>
+
+
+
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><h3 id="特性-🎉"><a href="#特性-🎉" class="headerlink" title="特性 🎉"></a>特性 🎉</h3><ul>
+<li>支持多达五种键盘模式</li>
+<li>支持自定义主题色</li>
+<li>已集成丰富的中文字库</li>
+<li>支持急速识别的手写能力</li>
+<li>vue3.0 组件开箱即用</li>
+</ul>
+<h2 id="支持环境"><a href="#支持环境" class="headerlink" title="支持环境"></a>支持环境</h2><table>
+<thead>
+<tr>
+<th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge"></a> Edge</th>
+<th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox"></a>Firefox</th>
+<th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome"></a>Chrome</th>
+<th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari"></a>Safari</th>
+<th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera"></a>Opera</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Edge</td>
+<td>last 2 versions</td>
+<td>last 2 versions</td>
+<td>last 2 versions</td>
+<td>last 2 versions</td>
+</tr>
+</tbody></table>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="使用-npm-或-yarn-安装"><a href="#使用-npm-或-yarn-安装" class="headerlink" title="使用 npm 或 yarn 安装"></a>使用 npm 或 yarn 安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install vue-keyboard-virtual-next --save</span><br><span class="line">$ yarn add vue-keyboard-virtual-next --save</span><br></pre></td></tr></table></figure>
+
+<p>如果你的网络环境不佳，推荐使用 <a href="https://github.com/cnpm/cnpm">cnpm</a>。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="全局引入"><a href="#全局引入" class="headerlink" title="全局引入"></a>全局引入</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&quot;./app.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;vue-keyboard-virtual-next/keyboard.min.css&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">KeyBoard</span> <span class="keyword">from</span> <span class="string">&quot;vue-keyboard-virtual-next&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">createApp</span>(<span class="title class_">App</span>)</span><br><span class="line">  .<span class="title function_">use</span>(keyBoard)</span><br><span class="line">  .<span class="title function_">mount</span>(<span class="string">&quot;#app&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="局部引入"><a href="#局部引入" class="headerlink" title="局部引入"></a>局部引入</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- keyboard 只识别带有 data-mode 标识的输入框 --&gt;</span><br><span class="line">  &lt;input data-mode v-model=&quot;value&quot; /&gt;</span><br><span class="line">  &lt;Key-Board </span><br><span class="line">  	:handApi=&quot;&#x27;https://service.chaunve.com/HandWriteRecognizerService.asmx/Command&#x27;&quot; </span><br><span class="line">  	:color=&quot;&#x27;#06f&#x27;&quot;</span><br><span class="line">  /&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script lang=<span class="string">&quot;ts&quot;</span>&gt;</span><br><span class="line">  <span class="keyword">import</span> <span class="string">&quot;keyboard-virtual-vue/keyboard.min.css&quot;</span>;</span><br><span class="line">  <span class="keyword">import</span> <span class="title class_">KeyBoard</span> <span class="keyword">from</span> <span class="string">&quot;keyboard-virtual-vue&quot;</span>;</span><br><span class="line">  <span class="keyword">import</span> &#123; defineComponent, ref &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineComponent</span>(&#123;</span><br><span class="line">    <span class="attr">components</span>: &#123; <span class="title class_">KeyBoard</span> &#125;,</span><br><span class="line">    <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> value = ref&lt;string&gt;(<span class="string">&quot;你好&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        value,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h3><h3 id="Input标签属性"><a href="#Input标签属性" class="headerlink" title="Input标签属性"></a>Input标签属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>data-mode</strong></td>
+<td>弹出输入法的类型： <code>en</code> 英文小写 <code>number</code>数字 <code>symbol</code> 标点 <code>handwrite</code> 手写 <code>不传</code> 默认中文</td>
+<td>String</td>
+<td><code>en</code> <code>number</code> <code>symbol</code> <code>handwrite</code></td>
+<td><code>default as *</code></td>
+</tr>
+<tr>
+<td><strong>data-prop</strong></td>
+<td>注册的输入框的类型</td>
+<td>String</td>
+<td>*</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="Props属性"><a href="#Props属性" class="headerlink" title="Props属性"></a>Props属性</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>默认值</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v-model</td>
+<td><em>绑定的输入框value</em>,可同时双向绑定多个输入框，不传则只与当前focus输入框做数据绑定关系</td>
+<td></td>
+<td>string|number</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>color</td>
+<td><em>主题色</em></td>
+<td><code>#eaa050</code></td>
+<td>string</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>modeList</td>
+<td><em>键盘渲染模式列表</em>，若不传handApi则不会出现手写板</td>
+<td>[“handwrite”, “symbol”]</td>
+<td>string[]</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>blurHide</td>
+<td><em>是否当前输入框blur事件触发隐藏</em></td>
+<td>true</td>
+<td>boolean</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>showHandleBar</td>
+<td><em>是否显示拖拽句柄</em></td>
+<td>true</td>
+<td>boolean</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>dargHandleText</td>
+<td>拖拽句柄提示文字</td>
+<td></td>
+<td>string</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>modal</td>
+<td><em>是否显示遮罩层</em></td>
+<td>false</td>
+<td>boolean</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>closeOnClickModal</td>
+<td>是否点击遮罩层隐藏键盘</td>
+<td>true</td>
+<td>boolean</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>handApi</td>
+<td>手写识别接口，若不传则无法切换手写模块</td>
+<td></td>
+<td>string</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>animateClass</td>
+<td>键盘显隐动画，内置slide动画，如若需要其他动画，可传入相应类名自定义动画</td>
+<td></td>
+<td>string</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+</tbody></table>
+<h3 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>keyChange</td>
+<td>按键触发事件，第一个参数为当前触发的按键的标识,<code>第二个参数为当前聚焦输入框的props值，若没有则直接返回当前聚焦的input元素（v1.0.1版本之后）</code></td>
+<td>(<em>value</em>: string,prop:string|HTMLInputElement) =&gt; void</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>change</td>
+<td>value改变事件，第一个参数为当前最新通过键盘输入的值，<code>第二个参数为当前聚焦输入框的props值，若没有则直接返回当前聚焦的input元素（v1.0.1版本之后）</code></td>
+<td>(<em>value</em>: string,prop:string|HTMLInputElement) =&gt; void</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>键盘关闭事件</td>
+<td>() =&gt; void</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>modalClick</td>
+<td>遮罩点击事件</td>
+<td>() =&gt; void</td>
+<td>v1.0.0+</td>
+</tr>
+</tbody></table>
+<h2 id="Component-Event"><a href="#Component-Event" class="headerlink" title="Component Event"></a>Component Event</h2><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>类型</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>reSignUp</td>
+<td>重新给input注册绑定键盘,当页面有新的input标签出现时调用此方法</td>
+<td>（）=&gt; void</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>getCurrentInput</td>
+<td>获取当前聚焦的输入框</td>
+<td>（）=&gt; HTMLInputElement | null</td>
+<td>v1.0.1+</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- keyboard 只识别带有 data-mode 标识的输入框 --&gt;</span><br><span class="line">  &lt;input data-mode v-model=&quot;value&quot; /&gt;</span><br><span class="line">  &lt;Key-Board </span><br><span class="line">  	:handApi=&quot;&#x27;https://service.chaunve.com/HandWriteRecognizerService.asmx/Command&#x27;&quot; </span><br><span class="line">  	:color=&quot;&#x27;#06f&#x27;&quot;</span><br><span class="line">  /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot;&gt;</span><br><span class="line">import &quot;vue-keyboard-virtual-next/keyboard.min.css&quot;;</span><br><span class="line">import KeyBoard from &quot;vue-keyboard-virtual-next&quot;;</span><br><span class="line">import &#123; defineComponent, ref, onMounted &#125; from &quot;vue&quot;;</span><br><span class="line">export default defineComponent(&#123;</span><br><span class="line">  components: &#123; KeyBoard &#125;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const value = ref&lt;string&gt;(&quot;你好&quot;);</span><br><span class="line">    const keyBoardRef = ref&lt;typeof KeyBoard | null&gt;(null);</span><br><span class="line">      </span><br><span class="line">    onMounted(() =&gt; &#123;</span><br><span class="line">        // xxxx逻辑 给键盘重新注册输入框</span><br><span class="line">        keyBoardRef.value?.reSignUp();</span><br><span class="line">    &#125;)</span><br><span class="line">      </span><br><span class="line">    return &#123;</span><br><span class="line">      value,</span><br><span class="line">      keyBoardRef</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Npm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>了不起的 tsconfig.json 指南</title>
     <url>/2021/06/01/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%20tsconfig.json%20%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<p>tsconfig.json配置详细说明…</p>
@@ -2235,29 +2235,6 @@
       </tags>
   </entry>
   <entry>
-    <title>前端中常见字节编码(base64、hex、utf8)及其转换</title>
-    <url>/2021/05/07/%E5%89%8D%E7%AB%AF%E4%B8%AD%E5%B8%B8%E8%A7%81%E5%AD%97%E8%8A%82%E7%BC%96%E7%A0%81(base64%E3%80%81hex%E3%80%81utf8)%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<p>前端中常见字节编码(base64、hex、utf8)及其转换…</p>
-<span id="more"></span>
-
-<p>本文章向大家介绍前端中常见字节编码(base64、hex、utf8)及其转换，主要包括前端中常见字节编码(base64、hex、utf8)及其转换使用实例、应用技巧、基本知识点总结和需要注意事项，具有一定的参考价值，需要的朋友可以参考一下。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 字节编码转换</span></span><br><span class="line"><span class="comment">* 首先都需要转为二级制数组 (ArrayBuffer)</span></span><br><span class="line"><span class="comment">* 然后才能转换对应的编码字符</span></span><br><span class="line"><span class="comment">* 前端常见编码：</span></span><br><span class="line"><span class="comment">* base64：就是将二进制转为字符串,将每6个字节转为一个特定的字符串(A-Za-z0-9/+=)。</span></span><br><span class="line"><span class="comment">* hex：将二进制每8个字节转为对应的2个十六进制的字符串</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// utf8 转为 base64/hex</span></span><br><span class="line"><span class="keyword">let</span> output = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;utf8的字符串&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output.<span class="title function_">toString</span>(<span class="string">&#x27;base64&#x27;</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output.<span class="title function_">toString</span>(<span class="string">&#x27;hex&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// base64/hex 转为 utf8</span></span><br><span class="line">output = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;75746638e79a84e5ad97e7aca6e4b8b2&#x27;</span>, <span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output.<span class="title function_">toString</span>(<span class="string">&#x27;utf8&#x27;</span>))</span><br><span class="line">output = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;dXRmOOeahOWtl+espuS4sg==&#x27;</span>, <span class="string">&#x27;base64&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output.<span class="title function_">toString</span>(<span class="string">&#x27;utf8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取文件传入编码</span></span><br><span class="line">input = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;test.txt&#x27;</span>)  <span class="comment">// 默认是二进制 Buffer</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(input)</span><br><span class="line"><span class="keyword">let</span> input = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;test.txt&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(input)</span><br><span class="line">input = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;test.txt&#x27;</span>, <span class="string">&#x27;base64&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(input)</span><br><span class="line">input = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;test.txt&#x27;</span>, <span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(input)</span><br></pre></td></tr></table></figure>
-
-<p>　　</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line">* 加密需注意</span><br><span class="line">* 加密数据类型：Buffer 或者 字符串(hex/base64/utf8)</span><br><span class="line">* 参数传入参数：vi - 填充</span><br><span class="line">* 参数传入参数：mode - 模式</span><br><span class="line">* 参数传入参数：padding - 填充类型</span><br><span class="line">* 加密输出类型：Buffer 或者 字符串(hex/base64/utf8)</span><br><span class="line">* */</span><br></pre></td></tr></table></figure>
-
-<p>　　</p>
-<p>原文地址：<a href="https://www.cnblogs.com/jiebba/p/12023652.html">https://www.cnblogs.com/jiebba/p/12023652.html</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>转载</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用npm发布一个vue组件</title>
     <url>/2021/05/28/%E4%BD%BF%E7%94%A8npm%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AAvue%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<p>记录一下js获取公网和内网ip的方法</p>
@@ -2433,6 +2410,29 @@
         <tag>Vue</tag>
         <tag>转载</tag>
         <tag>Npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端中常见字节编码(base64、hex、utf8)及其转换</title>
+    <url>/2021/05/07/%E5%89%8D%E7%AB%AF%E4%B8%AD%E5%B8%B8%E8%A7%81%E5%AD%97%E8%8A%82%E7%BC%96%E7%A0%81(base64%E3%80%81hex%E3%80%81utf8)%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p>前端中常见字节编码(base64、hex、utf8)及其转换…</p>
+<span id="more"></span>
+
+<p>本文章向大家介绍前端中常见字节编码(base64、hex、utf8)及其转换，主要包括前端中常见字节编码(base64、hex、utf8)及其转换使用实例、应用技巧、基本知识点总结和需要注意事项，具有一定的参考价值，需要的朋友可以参考一下。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 字节编码转换</span></span><br><span class="line"><span class="comment">* 首先都需要转为二级制数组 (ArrayBuffer)</span></span><br><span class="line"><span class="comment">* 然后才能转换对应的编码字符</span></span><br><span class="line"><span class="comment">* 前端常见编码：</span></span><br><span class="line"><span class="comment">* base64：就是将二进制转为字符串,将每6个字节转为一个特定的字符串(A-Za-z0-9/+=)。</span></span><br><span class="line"><span class="comment">* hex：将二进制每8个字节转为对应的2个十六进制的字符串</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// utf8 转为 base64/hex</span></span><br><span class="line"><span class="keyword">let</span> output = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;utf8的字符串&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output.<span class="title function_">toString</span>(<span class="string">&#x27;base64&#x27;</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output.<span class="title function_">toString</span>(<span class="string">&#x27;hex&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// base64/hex 转为 utf8</span></span><br><span class="line">output = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;75746638e79a84e5ad97e7aca6e4b8b2&#x27;</span>, <span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output.<span class="title function_">toString</span>(<span class="string">&#x27;utf8&#x27;</span>))</span><br><span class="line">output = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;dXRmOOeahOWtl+espuS4sg==&#x27;</span>, <span class="string">&#x27;base64&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output.<span class="title function_">toString</span>(<span class="string">&#x27;utf8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取文件传入编码</span></span><br><span class="line">input = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;test.txt&#x27;</span>)  <span class="comment">// 默认是二进制 Buffer</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(input)</span><br><span class="line"><span class="keyword">let</span> input = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;test.txt&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(input)</span><br><span class="line">input = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;test.txt&#x27;</span>, <span class="string">&#x27;base64&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(input)</span><br><span class="line">input = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;test.txt&#x27;</span>, <span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(input)</span><br></pre></td></tr></table></figure>
+
+<p>　　</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line">* 加密需注意</span><br><span class="line">* 加密数据类型：Buffer 或者 字符串(hex/base64/utf8)</span><br><span class="line">* 参数传入参数：vi - 填充</span><br><span class="line">* 参数传入参数：mode - 模式</span><br><span class="line">* 参数传入参数：padding - 填充类型</span><br><span class="line">* 加密输出类型：Buffer 或者 字符串(hex/base64/utf8)</span><br><span class="line">* */</span><br></pre></td></tr></table></figure>
+
+<p>　　</p>
+<p>原文地址：<a href="https://www.cnblogs.com/jiebba/p/12023652.html">https://www.cnblogs.com/jiebba/p/12023652.html</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>转载</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
