@@ -29,17 +29,17 @@ categories:
 
 ​	下载安装完毕后,参照[文档](https://picgo.github.io/PicGo-Doc/zh/guide/config.html)进行配置,如图是糖糖的配置项
 
-​	![image-20210324162149788](https://cdn.jsdelivr.net/gh/tangyuxian/blog_image@latest/PicGo/20210324162152.png)
+​	![image-20210324162149788](https://fastly.jsdelivr.net/gh/tangyuxian/blog_image@latest/PicGo/20210324162152.png)
 
 这里推荐[github配置](https://picgo.github.io/PicGo-Doc/zh/guide/config.html#github图床),设定的自定义域名为**jsdelivr**可享有免费的CDN加速
 
-https://cdn.jsdelivr.net/gh/`[github用户名]`/`[仓库名]`@`[版本分支]`
+https://fastly.jsdelivr.net/gh/`[github用户名]`/`[仓库名]`@`[版本分支]`
 
-例如:https://cdn.jsdelivr.net/gh/tangyuxian/blog_image@latest
+例如:https://fastly.jsdelivr.net/gh/tangyuxian/blog_image@latest
 
 #### 2 在Typora中配置
 
-<img src="https://cdn.jsdelivr.net/gh/tangyuxian/blog_image@latest/PicGo/20210324162544.png" alt="image-20210324162542890"  />
+<img src="https://fastly.jsdelivr.net/gh/tangyuxian/blog_image@latest/PicGo/20210324162544.png" alt="image-20210324162542890"  />
 
 在`文件`->`偏好设置`->`图像`中配置`上传服务设定`
 

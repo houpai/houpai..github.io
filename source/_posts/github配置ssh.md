@@ -24,8 +24,8 @@ categories:
 
 
 
-![](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png)
+![](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh1.png)
 
-![](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh2.png)
+![](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/ssh2.png)
 
-![](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/git_ssh.png)
+![](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/git_ssh.png)

@@ -53,7 +53,7 @@ cat ~/.ssh/id_rsa.pub
 
 1. 添加公钥
 
-   ![image-20210806130257753](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130257753.png)
+   ![image-20210806130257753](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130257753.png)
 
 2. 测试
 
@@ -143,9 +143,9 @@ git pull xxxxx  # 根据自己的需要自行编写
 
 1. 测试服务
 
-   ![image-20210806130418973](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130418973.png)
+   ![image-20210806130418973](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130418973.png)
 
-![image-20210806130444529](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130444529.png)
+![image-20210806130444529](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130444529.png)
 
 显示ok，说明成功
 
@@ -161,7 +161,7 @@ pm2 start webhook.js
 pm2 monit # 可以通过此命令查看服务的状态
 ```
 
-![image-20210806130519710](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130519710.png)
+![image-20210806130519710](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210806130519710.png)
 
 上图显示了一些应用的基本信息，可以更好的观察到服务的状态
 

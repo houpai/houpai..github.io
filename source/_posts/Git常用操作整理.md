@@ -15,9 +15,9 @@ Git常用操作整理...
 
   git clone https://gitee.com/houpai/git-demo.git（仓库地址）
 
-![image-20210813100147449](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813100147449.png)
+![image-20210813100147449](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813100147449.png)
 
-![image-20210813100121447](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813100121447.png)
+![image-20210813100121447](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813100121447.png)
 
 - ##### git status查看本地工作区状态
 
@@ -25,7 +25,7 @@ Git常用操作整理...
 
   
 
-  ![image-20210813102546895](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813102546895.png)
+  ![image-20210813102546895](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813102546895.png)
 
   如图上所示Untacked files提示该文件为添加到版本追踪里
 
@@ -37,9 +37,9 @@ Git常用操作整理...
 
   
 
-![image-20210813104533648](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813104533648.png)
+![image-20210813104533648](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813104533648.png)
 
-![image-20210813104738794](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813104738794.png)
+![image-20210813104738794](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813104738794.png)
 
 
 
@@ -47,7 +47,7 @@ Git常用操作整理...
 
   
 
-  ![image-20210813105228259](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813105228259.png)
+  ![image-20210813105228259](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813105228259.png)
 
 
 
@@ -55,7 +55,7 @@ Git常用操作整理...
 
   
 
-![image-20210813105329430](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813105329430.png)
+![image-20210813105329430](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813105329430.png)
 
 > `PS：在未commit命令之前，如果想撤销add , 可以用命令：git reset；`
 
@@ -75,13 +75,13 @@ Git常用操作整理...
 
   
 
-  ![image-20210813115345755](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813115345755.png)
+  ![image-20210813115345755](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813115345755.png)
 
 ​	
 
 ​		git log –p: 选项展开显示每次提交的内容差异		
 
-![image-20210813115526464](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813115526464.png)
+![image-20210813115526464](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813115526464.png)
 
 > `PS:退出 :q`
 
@@ -89,19 +89,19 @@ Git常用操作整理...
 
 ​	git log -1 : 后面加数字，显示最近的几次提交
 
-![image-20210813132434260](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813132434260.png)
+![image-20210813132434260](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813132434260.png)
 
 
 
 ​	git log –p –word-diff : 单词层面上的对比
 
-![image-20210813132632230](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813132632230.png)
+![image-20210813132632230](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813132632230.png)
 
 
 
 - ##### git pull : 将本地仓更新至远程仓的最新状态，获取代码并自动合并
 
-  ![image-20210813132746452](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813132746452.png)
+  ![image-20210813132746452](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813132746452.png)
 
 
 
@@ -115,13 +115,13 @@ Git常用操作整理...
 
   
 
-  ![image-20210813133729555](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813133729555.png)
+  ![image-20210813133729555](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813133729555.png)
 
   
 
   > `更改分支名称：git branch –m 改之前的分支名称  改之后的分支名称`
 
-  ![image-20210813134333892](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813134333892.png)
+  ![image-20210813134333892](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813134333892.png)
 
 
 
@@ -133,11 +133,11 @@ Git常用操作整理...
 
   > `PS: git checkout –b dev是 git branch dev  ; git checkout dev 两条命令的简写`
 
-![image-20210813134601212](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813134601212.png)
+![image-20210813134601212](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813134601212.png)
 
 ​		如果本地已经存在dev分支，则会提示；
 
-![image-20210813134706819](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813134706819.png)	
+![image-20210813134706819](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813134706819.png)	
 
 
 
@@ -145,9 +145,9 @@ Git常用操作整理...
 
 
 
-![image-20210813135718369](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813135718369.png)
+![image-20210813135718369](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813135718369.png)
 
-![image-20210813140211171](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813140211171.png)
+![image-20210813140211171](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813140211171.png)
 
 > ​	`PS: git checkout --filename :该命令适用于：已经add后，后来又修改了文件，想要恢复之前add 的内容，则就可以把暂存区的内容替换到工作区了；或者没add 之前，我想把修改的内容恢复，也可以用git checkout filename;`
 
@@ -155,7 +155,7 @@ Git常用操作整理...
 
 - ##### git revert :撤销某次操作，并把此次撤销作为新的提交( 请谨慎操作！）
 
-  ![image-20210813140902822](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813140902822.png)
+  ![image-20210813140902822](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813140902822.png)
 
 
 
@@ -175,9 +175,9 @@ Git常用操作整理...
 
   git reset HEAD~1 : 将HEAD从顶端的commit往下移动一个commit；从暂存区取出，替换到工作区；
 
-![image-20210813141313715](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813141313715.png)
+![image-20210813141313715](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813141313715.png)
 
-![image-20210813141558893](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813141558893.png)
+![image-20210813141558893](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813141558893.png)
 
 
 
@@ -193,21 +193,21 @@ Git常用操作整理...
 
   使用场景：当前工作区有变更，且作业没完成，但是需要切换到其他分支进行其他作业，需要干净的工作区间；
 
-  ![image-20210813145829941](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813145829941.png)
+  ![image-20210813145829941](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813145829941.png)
 
-  ![image-20210813150225555](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813150225555.png)
+  ![image-20210813150225555](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813150225555.png)
 
 
 
 ​	查看现有的所有储存：git stash list 
 
-​	![image-20210813150419586](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813150419586.png)
+​	![image-20210813150419586](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813150419586.png)
 
 
 
 其他分支作业完成后，返回之前分支，继续之前作业：git stash pop
 
-![image-20210813150550178](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813150550178.png)
+![image-20210813150550178](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813150550178.png)
 
 
 
@@ -219,15 +219,15 @@ Git常用操作整理...
 
   首先切换到要合并的目标分支，比如把dev分支合并到master分支上，先切到master分支；
 
-![image-20210813151449597](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813151449597.png)
+![image-20210813151449597](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813151449597.png)
 
 ​	git merge dev :把dev 分支合并到当前分支
 
-![image-20210813151548854](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813151548854.png)
+![image-20210813151548854](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813151548854.png)
 
 ​	 如果没有冲突的话，merge完成。有冲突的话，git会提示那个文件中有冲突，比如有如下冲突：
 
-​	![image-20210813151658048](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813151658048.png)
+​	![image-20210813151658048](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813151658048.png)
 
 ​	可以看到 ======= 隔开的上半部分，是 master 分支冲突的内容，下半部分是在 dev分支冲突的内容。
 
@@ -245,21 +245,21 @@ Git常用操作整理...
 
   使用场景2：本地开发多次提交合并，便于管理跟踪，比如：dev 分支从master分支上创建，然后dev分支上自己提交了多个commit , 
 
-![image-20210813155225050](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155225050.png)
+![image-20210813155225050](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155225050.png)
 
-![image-20210813155241666](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155241666.png)
+![image-20210813155241666](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155241666.png)
 
-![image-20210813155250923](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155250923.png)
+![image-20210813155250923](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155250923.png)
 
 ​	我们设置第二个”pick 657a291 add 2.txt” 为” s 657a291 add 2.txt”这里的s就是squash命令的简写。
 
-![image-20210813155306599](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155306599.png)
+![image-20210813155306599](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155306599.png)
 
-![image-20210813155316585](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155316585.png)
+![image-20210813155316585](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155316585.png)
 
 ​	删除之前的两条message(ESC dd)，设置一总的message 然后保存退出。(ESC wq)
 
-![image-20210813155333578](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155333578.png)
+![image-20210813155333578](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155333578.png)
 
 
 
@@ -271,15 +271,15 @@ Git常用操作整理...
 
   查看项目的目前存在的分支情况，包括本地和远程 : git branch -a
 
-![image-20210813155514556](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155514556.png)
+![image-20210813155514556](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155514556.png)
 
 删除本地分支 ：git branch –d dev (-d , 删除分支； -D ,强制删除分支)
 
-![image-20210813155822581](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155822581.png)
+![image-20210813155822581](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155822581.png)
 
 删除远程分支: git push origin :dev
 
-![image-20210813155923526](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155923526.png)
+![image-20210813155923526](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813155923526.png)
 
 
 
@@ -289,15 +289,15 @@ Git常用操作整理...
 
   文件修改：本地打开.git à config 文件，别用记事本，修改[branch "master"]这一项是修改本地分支‘master’的远程追踪关系分支，直接修改merge = refs/heads/master为merge = refs/heads/dev；
 
-  ![image-20210813160042246](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160042246.png)
+  ![image-20210813160042246](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160042246.png)
 
-![image-20210813160058861](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160058861.png)
+![image-20210813160058861](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160058861.png)
 
 ​	命令修改：git branch --set-upstream-to=origin/master
 
-![image-20210813160112683](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160112683.png)
+![image-20210813160112683](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160112683.png)
 
-![image-20210813160130746](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160130746.png)
+![image-20210813160130746](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160130746.png)
 
 
 
@@ -305,7 +305,7 @@ Git常用操作整理...
 
   git remote –v:
 
-![image-20210813160215210](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160215210.png)
+![image-20210813160215210](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813160215210.png)
 
 
 
@@ -315,7 +315,7 @@ Git常用操作整理...
 
   http执行：git remote set-url origin  https://github.com/NECKLI/git-test.git
 
-![image-20210813161758028](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813161758028.png)
+![image-20210813161758028](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813161758028.png)
 
 
 
@@ -331,7 +331,7 @@ Git常用操作整理...
 
   git reflog –-date=local
 
-![image-20210813162919105](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813162919105.png)
+![image-20210813162919105](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813162919105.png)
 
 
 
@@ -339,13 +339,13 @@ Git常用操作整理...
 
   在修改分支上查看日志，找到对应的提交id
 
-  ![image-20210813163337230](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813163337230.png)
+  ![image-20210813163337230](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813163337230.png)
 
   切换到指定分支: git checkout master1
 
   再把指定的提交合并到当前分支：git cherry-pick commit-id
 
-![image-20210813163622576](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813163622576.png)
+![image-20210813163622576](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813163622576.png)
 
 
 
@@ -353,15 +353,15 @@ Git常用操作整理...
 
   先查看提交日志，找到要回退的版本，git log
 
-![image-20210813163821444](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813163821444.png)
+![image-20210813163821444](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813163821444.png)
 
 ​	复制对应的commit id，`假如：e80d1d2e91b39a88908a3a0a31d15966d743c2df ；的提交； 本地版本回退：git reset --hard commit-id (如果确定不要该提交之后的提交，则可以用hard参数，如果要修改保留，则把hard参数去掉，重新提交)`
 
 本地之前的提交会全部丢失，使用的时候要谨慎；
 
-![image-20210813165148007](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813165148007.png)
+![image-20210813165148007](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813165148007.png)
 
-![image-20210813165633739](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813165633739.png)
+![image-20210813165633739](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813165633739.png)
 
 
 
@@ -373,19 +373,19 @@ Git常用操作整理...
 
   例子：如现在有master , dev 分支，现在本地想以dev 分支为基分支创建新分支，并推送远程仓库, git checkout –b newDev
 
-  ![image-20210813170306723](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813170306723.png)
+  ![image-20210813170306723](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813170306723.png)
 
   将本地newDev 分支作为远程newDev分支: git push origin newDev
 
-  ![image-20210813170314683](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813170314683.png)
+  ![image-20210813170314683](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813170314683.png)
 
-  ![image-20210813170329076](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813170329076.png)
+  ![image-20210813170329076](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813170329076.png)
 
   跟远程对应仓建立追踪关系： git branch --set-upstream-to=origin/newDev
 
-  ![image-20210813170336371](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813170336371.png)
+  ![image-20210813170336371](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813170336371.png)
 
-  ![image-20210813170345098](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813170345098.png)
+  ![image-20210813170345098](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210813170345098.png)
 
   这个时候创建远程仓完成；在仓库里创建新分支比较简单，方便
 

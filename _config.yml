@@ -44,18 +44,22 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+# _config.yml
 highlight:
-  enable: false
-  line_number: true
+  enable: true
   auto_detect: false
+  line_number: true
+  line_threshold: 0
   tab_replace: ''
+  exclude_languages:
+    - example
   wrap: true
-  hljs: true
-
+  hljs: false
 prismjs:
   enable: false
-  preprocess: false
+  preprocess: true
   line_number: true
+  line_threshold: 0
   tab_replace: ''
 
 
@@ -104,7 +108,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-ayer
+theme: butterfly
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

@@ -33,7 +33,7 @@ npx tsc --init
 
 初始化配置成功会提示如下
 
-![image-20210601133709223](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210601133709223.png)
+![image-20210601133709223](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210601133709223.png)
 
 我们这里搭建的是便于学习ts的开发环境，我们再添加一些目录文件，index.html，和webpack配置文件build/webpack.config.js src/main.ts、tslint.json...
 

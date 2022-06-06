@@ -39,7 +39,7 @@ Demo: https://diafygi.github.io/webrtc-ips/
 
 <font color=red>但是需要特别注意的是需要打开浏览器的响应配置才可以获取到，操作见下图</font>
 
-![image-20210527174417119](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210527174417119.png)
+![image-20210527174417119](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210527174417119.png)
 
 复制粘贴一下代码：
 
