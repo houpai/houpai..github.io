@@ -150,7 +150,7 @@ utf8ArrayToStr: array => {
 
 最后，新版本微服务框架工作情况尚可，可喜可贺~
 
-![](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/CollplexDemo-1024x494.png)
+![](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/CollplexDemo-1024x494.png)
 
 转载于:[在微信小程序中使用 Protocol Buffer 的方法](https://iedon.com/2020/08/18/790.html)
 

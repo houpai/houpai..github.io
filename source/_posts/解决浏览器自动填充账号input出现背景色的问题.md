@@ -13,11 +13,11 @@ categories:
 
 ##### 解决前:
 
-![image-20210428160033842](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210428160033842.png)
+![image-20210428160033842](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210428160033842.png)
 
 ##### 解决后：
 
-![image-20210428160115081](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210428160115081.png)
+![image-20210428160115081](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210428160115081.png)
 
 ##### 解决方法：
 

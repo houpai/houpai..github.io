@@ -234,7 +234,7 @@ ps：按住ctrl点击链接可直接打开
 
 公式如下：
 
-![](https://cdn.jsdelivr.net/gh/tangyuxian/blog_image@latest/PicGo/20210324155609.png)
+![](https://fastly.jsdelivr.net/gh/tangyuxian/blog_image@latest/PicGo/20210324155609.png)
 
 ##### 3.13 矩阵表示
 

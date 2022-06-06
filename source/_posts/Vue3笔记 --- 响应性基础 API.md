@@ -266,7 +266,7 @@ export default {
 </script>
 ```
 
-![image-20210603154819179](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603154819179.png)
+![image-20210603154819179](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603154819179.png)
 
 
 
@@ -347,7 +347,7 @@ export default {
 </script>
 ```
 
-![image-20210603141847906](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603141847906.png)
+![image-20210603141847906](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603141847906.png)
 
 如果是这种使用方式，则会报错 ❌，而不是警告 ⚠️，
 
@@ -364,7 +364,7 @@ export default {
 
 
 
-![image-20210603142037622](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603142037622.png)
+![image-20210603142037622](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603142037622.png)
 
 
 
@@ -402,4 +402,4 @@ export default {
 </script>
 ```
 
-![image-20210603142503777](https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603142503777.png)
+![image-20210603142503777](https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603142503777.png)
