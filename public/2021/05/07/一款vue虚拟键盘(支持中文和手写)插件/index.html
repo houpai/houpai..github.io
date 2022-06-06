@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8"/>
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>
+        一款vue虚拟键盘(支持中文和手写)插件 |
+        
+        houpai
+    </title>
+  <meta name="generator" content="hexo-theme-ayer">
+    
+        <link rel="shortcut icon" href="/favicon.ico"/>
+    
+    
+<link rel="stylesheet" href="/dist/main.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+    
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+        <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css"
+          crossorigin>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <style>
+        .todark, .totop {
+            background-color: #999 !important;
+        }
+
+        #daodream-container .daodream-launcher-button {
+            width: 3.2rem !important;
+            height: 3.2rem !important;
+            background-size: 3.2rem !important;
+        }
+
+        #daodream-container .daodream-launcher {
+            width: 3.2rem !important;
+            height: 3.2rem !important;
+            right: 50px !important;
+            bottom: 5rem !important;
+            transform: scale(1.2) !important;
+        }
+
+        .daodream-powered-by {
+            display: none !important;
+        }
+
+        body.darkmode .todark, body.darkmode .totop {
+            background-color: #ffffff !important;
+        }
+
+        @media (max-width: 768px) {
+            #daodream-container .daodream-launcher {
+                right: 10px !important;
+            }
+        }
+
+    </style>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["DaoVoiceObject"] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        a.charset = "utf-8";
+        m.parentNode.insertBefore(a, m)
+      })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/5d756096.js", "daovoice")
+      daovoice('init', {
+        app_id: "5d756096"
+      });
+      daovoice('update');
+
+    </script>
+    
+
+    
+
+<link rel="alternate" href="/atom.xml" title="houpai" type="application/atom+xml">
+</head>
+
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-一款vue虚拟键盘(支持中文和手写)插件"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  一款vue虚拟键盘(支持中文和手写)插件
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/05/07/%E4%B8%80%E6%AC%BEvue%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98(%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%92%8C%E6%89%8B%E5%86%99)%E6%8F%92%E4%BB%B6/" class="article-date">
+  <time datetime="2021-05-07T01:09:55.000Z" itemprop="datePublished">2021-05-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">999</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">4 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      <style>
+    .tocbot::-webkit-scrollbar { width: 0 !important }
+    .tocbot .toc-list-item {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .is-position-fixed {
+        right: 8rem;
+    }
+</style>
+
+    <div class="tocbot" style="bottom: 0;overflow-y: scroll"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>推荐一款vue虚拟键盘(支持中文和手写)插件…</p>
+<span id="more"></span>
+
+
+
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><h3 id="特性-🎉"><a href="#特性-🎉" class="headerlink" title="特性 🎉"></a>特性 🎉</h3><ul>
+<li>支持多达五种键盘模式</li>
+<li>支持自定义主题色</li>
+<li>已集成丰富的中文字库</li>
+<li>支持急速识别的手写能力</li>
+<li>vue3.0 组件开箱即用</li>
+</ul>
+<h2 id="支持环境"><a href="#支持环境" class="headerlink" title="支持环境"></a>支持环境</h2><table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge"></a> Edge</th>
+<th><a target="_blank" rel="noopener" href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox"></a>Firefox</th>
+<th><a target="_blank" rel="noopener" href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome"></a>Chrome</th>
+<th><a target="_blank" rel="noopener" href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari"></a>Safari</th>
+<th><a target="_blank" rel="noopener" href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera"></a>Opera</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Edge</td>
+<td>last 2 versions</td>
+<td>last 2 versions</td>
+<td>last 2 versions</td>
+<td>last 2 versions</td>
+</tr>
+</tbody></table>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="使用-npm-或-yarn-安装"><a href="#使用-npm-或-yarn-安装" class="headerlink" title="使用 npm 或 yarn 安装"></a>使用 npm 或 yarn 安装</h3><pre><code>$ npm install vue-keyboard-virtual-next --save
+$ yarn add vue-keyboard-virtual-next --save
+</code></pre>
+<p>如果你的网络环境不佳，推荐使用 <a target="_blank" rel="noopener" href="https://github.com/cnpm/cnpm">cnpm</a>。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="全局引入"><a href="#全局引入" class="headerlink" title="全局引入"></a>全局引入</h3><pre><code class="js">import App from &quot;./app.vue&quot;;
+import &#123; createApp &#125; from &quot;vue&quot;;
+import &quot;vue-keyboard-virtual-next/keyboard.min.css&quot;;
+import KeyBoard from &quot;vue-keyboard-virtual-next&quot;;
+
+createApp(App)
+  .use(keyBoard)
+  .mount(&quot;#app&quot;);
+</code></pre>
+<h3 id="局部引入"><a href="#局部引入" class="headerlink" title="局部引入"></a>局部引入</h3><pre><code class="vuejs">&lt;template&gt;
+  &lt;!-- keyboard 只识别带有 data-mode 标识的输入框 --&gt;
+  &lt;input data-mode v-model=&quot;value&quot; /&gt;
+  &lt;Key-Board 
+      :handApi=&quot;&#39;https://service.chaunve.com/HandWriteRecognizerService.asmx/Command&#39;&quot; 
+      :color=&quot;&#39;#06f&#39;&quot;
+  /&gt;
+&lt;/template&gt;
+</code></pre>
+<pre><code class="js">&lt;script lang=&quot;ts&quot;&gt;
+  import &quot;keyboard-virtual-vue/keyboard.min.css&quot;;
+  import KeyBoard from &quot;keyboard-virtual-vue&quot;;
+  import &#123; defineComponent, ref &#125; from &quot;vue&quot;;
+  export default defineComponent(&#123;
+    components: &#123; KeyBoard &#125;,
+    setup() &#123;
+      const value = ref&lt;string&gt;(&quot;你好&quot;);
+      return &#123;
+        value,
+      &#125;;
+    &#125;,
+  &#125;);
+&lt;/script&gt;
+</code></pre>
+<h3 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h3><h3 id="Input标签属性"><a href="#Input标签属性" class="headerlink" title="Input标签属性"></a>Input标签属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>data-mode</strong></td>
+<td>弹出输入法的类型： <code>en</code> 英文小写 <code>number</code>数字 <code>symbol</code> 标点 <code>handwrite</code> 手写 <code>不传</code> 默认中文</td>
+<td>String</td>
+<td><code>en</code> <code>number</code> <code>symbol</code> <code>handwrite</code></td>
+<td><code>default as *</code></td>
+</tr>
+<tr>
+<td><strong>data-prop</strong></td>
+<td>注册的输入框的类型</td>
+<td>String</td>
+<td>*</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="Props属性"><a href="#Props属性" class="headerlink" title="Props属性"></a>Props属性</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>默认值</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v-model</td>
+<td><em>绑定的输入框value</em>,可同时双向绑定多个输入框，不传则只与当前focus输入框做数据绑定关系</td>
+<td></td>
+<td>string|number</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>color</td>
+<td><em>主题色</em></td>
+<td><code>#eaa050</code></td>
+<td>string</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>modeList</td>
+<td><em>键盘渲染模式列表</em>，若不传handApi则不会出现手写板</td>
+<td>[“handwrite”, “symbol”]</td>
+<td>string[]</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>blurHide</td>
+<td><em>是否当前输入框blur事件触发隐藏</em></td>
+<td>true</td>
+<td>boolean</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>showHandleBar</td>
+<td><em>是否显示拖拽句柄</em></td>
+<td>true</td>
+<td>boolean</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>dargHandleText</td>
+<td>拖拽句柄提示文字</td>
+<td></td>
+<td>string</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>modal</td>
+<td><em>是否显示遮罩层</em></td>
+<td>false</td>
+<td>boolean</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>closeOnClickModal</td>
+<td>是否点击遮罩层隐藏键盘</td>
+<td>true</td>
+<td>boolean</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>handApi</td>
+<td>手写识别接口，若不传则无法切换手写模块</td>
+<td></td>
+<td>string</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>animateClass</td>
+<td>键盘显隐动画，内置slide动画，如若需要其他动画，可传入相应类名自定义动画</td>
+<td></td>
+<td>string</td>
+<td>否</td>
+<td>v1.0.0+</td>
+</tr>
+</tbody></table>
+<h3 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>keyChange</td>
+<td>按键触发事件，第一个参数为当前触发的按键的标识,<code>第二个参数为当前聚焦输入框的props值，若没有则直接返回当前聚焦的input元素（v1.0.1版本之后）</code></td>
+<td>(<em>value</em>: string,prop:string|HTMLInputElement) =&gt; void</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>change</td>
+<td>value改变事件，第一个参数为当前最新通过键盘输入的值，<code>第二个参数为当前聚焦输入框的props值，若没有则直接返回当前聚焦的input元素（v1.0.1版本之后）</code></td>
+<td>(<em>value</em>: string,prop:string|HTMLInputElement) =&gt; void</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>键盘关闭事件</td>
+<td>() =&gt; void</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>modalClick</td>
+<td>遮罩点击事件</td>
+<td>() =&gt; void</td>
+<td>v1.0.0+</td>
+</tr>
+</tbody></table>
+<h2 id="Component-Event"><a href="#Component-Event" class="headerlink" title="Component Event"></a>Component Event</h2><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>类型</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>reSignUp</td>
+<td>重新给input注册绑定键盘,当页面有新的input标签出现时调用此方法</td>
+<td>（）=&gt; void</td>
+<td>v1.0.0+</td>
+</tr>
+<tr>
+<td>getCurrentInput</td>
+<td>获取当前聚焦的输入框</td>
+<td>（）=&gt; HTMLInputElement | null</td>
+<td>v1.0.1+</td>
+</tr>
+</tbody></table>
+<pre><code class="vuejs">&lt;template&gt;
+  &lt;!-- keyboard 只识别带有 data-mode 标识的输入框 --&gt;
+  &lt;input data-mode v-model=&quot;value&quot; /&gt;
+  &lt;Key-Board 
+      :handApi=&quot;&#39;https://service.chaunve.com/HandWriteRecognizerService.asmx/Command&#39;&quot; 
+      :color=&quot;&#39;#06f&#39;&quot;
+  /&gt;
+&lt;/template&gt;
+
+&lt;script lang=&quot;ts&quot;&gt;
+import &quot;vue-keyboard-virtual-next/keyboard.min.css&quot;;
+import KeyBoard from &quot;vue-keyboard-virtual-next&quot;;
+import &#123; defineComponent, ref, onMounted &#125; from &quot;vue&quot;;
+export default defineComponent(&#123;
+  components: &#123; KeyBoard &#125;,
+  setup() &#123;
+    const value = ref&lt;string&gt;(&quot;你好&quot;);
+    const keyBoardRef = ref&lt;typeof KeyBoard | null&gt;(null);
+      
+    onMounted(() =&gt; &#123;
+        // xxxx逻辑 给键盘重新注册输入框
+        keyBoardRef.value?.reSignUp();
+    &#125;)
+      
+    return &#123;
+      value,
+      keyBoardRef
+    &#125;;
+  &#125;,
+&#125;);
+&lt;/script&gt;
+</code></pre>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://houpai.github.io/2021/05/07/%E4%B8%80%E6%AC%BEvue%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98(%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%92%8C%E6%89%8B%E5%86%99)%E6%8F%92%E4%BB%B6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Npm/" rel="tag">Npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/05/07/%E5%89%8D%E7%AB%AF%E4%B8%AD%E5%B8%B8%E8%A7%81%E5%AD%97%E8%8A%82%E7%BC%96%E7%A0%81(base64%E3%80%81hex%E3%80%81utf8)%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            前端中常见字节编码(base64、hex、utf8)及其转换
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/05/04/%E6%97%85%E8%A1%8C/%E6%9C%AC%E6%BA%AA%E5%A4%A7%E7%9F%B3%E6%B9%96%E4%B8%80%E6%97%A5%E6%B8%B8/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">本溪大石湖一日游</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "TFvQenFJGwvlrbLWvshSW3FJ-gzGzoHsz",
+    app_key: "m7VUh44S9zqdyh6u5i53hK17",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+  .vpower {
+    display: none !important;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021-2022
+        <i class="ri-heart-fill heart_icon"></i> houpai
+      </li>
+    </ul>
+<!--    <ul>-->
+<!--      <li>-->
+<!--        -->
+<!--        -->
+<!--        -->
+<!--        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动-->
+<!--        <span class="division">|</span>-->
+<!--        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>-->
+<!--        -->
+<!--      </li>-->
+<!--    </ul>-->
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="http://www.beian.miit.gov.cn/" target="_black" rel="nofollow">辽ICP备2021002704号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/me.jpg" alt="houpai"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://vvip-houpai.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about/me.html">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯卡布奇诺吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/wechat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+<!-- hexo injector body_end start -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+
+<script src="/lib/codeBlock/codeBlockFuction.js"></script>
+
+<script src="/lib/codeBlock/codeLang.js"></script>
+
+<script src="/lib/codeBlock/codeCopy.js"></script>
+
+<link rel="stylesheet" href="/lib/codeBlock/matery.css">
+<!-- hexo injector body_end end --></body>
+
+</html>

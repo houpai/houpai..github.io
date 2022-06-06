@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8"/>
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>
+        100行代码实现一个迷你Vue |
+        
+        houpai
+    </title>
+  <meta name="generator" content="hexo-theme-ayer">
+    
+        <link rel="shortcut icon" href="/favicon.ico"/>
+    
+    
+<link rel="stylesheet" href="/dist/main.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+    
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+        <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css"
+          crossorigin>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <style>
+        .todark, .totop {
+            background-color: #999 !important;
+        }
+
+        #daodream-container .daodream-launcher-button {
+            width: 3.2rem !important;
+            height: 3.2rem !important;
+            background-size: 3.2rem !important;
+        }
+
+        #daodream-container .daodream-launcher {
+            width: 3.2rem !important;
+            height: 3.2rem !important;
+            right: 50px !important;
+            bottom: 5rem !important;
+            transform: scale(1.2) !important;
+        }
+
+        .daodream-powered-by {
+            display: none !important;
+        }
+
+        body.darkmode .todark, body.darkmode .totop {
+            background-color: #ffffff !important;
+        }
+
+        @media (max-width: 768px) {
+            #daodream-container .daodream-launcher {
+                right: 10px !important;
+            }
+        }
+
+    </style>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["DaoVoiceObject"] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        a.charset = "utf-8";
+        m.parentNode.insertBefore(a, m)
+      })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/5d756096.js", "daovoice")
+      daovoice('init', {
+        app_id: "5d756096"
+      });
+      daovoice('update');
+
+    </script>
+    
+
+    
+
+<link rel="alternate" href="/atom.xml" title="houpai" type="application/atom+xml">
+</head>
+
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-100行代码实现一个迷你Vue"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  100行代码实现一个迷你Vue
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/10/14/100%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%BF%B7%E4%BD%A0Vue/" class="article-date">
+  <time datetime="2021-10-14T01:20:55.000Z" itemprop="datePublished">2021-10-14</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">17 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      <style>
+    .tocbot::-webkit-scrollbar { width: 0 !important }
+    .tocbot .toc-list-item {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .is-position-fixed {
+        right: 8rem;
+    }
+</style>
+
+    <div class="tocbot" style="bottom: 0;overflow-y: scroll"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>100行代码实现一个迷你Vue…</p>
+<span id="more"></span>
+
+<h2 id="从MVVM谈起"><a href="#从MVVM谈起" class="headerlink" title="从MVVM谈起"></a>从MVVM谈起</h2><p>MVVM全称是Model-View-ViewModel。经历过还没有React、Vue等框架的那个年代的前端们应该都知道，手动去同步页面上的数据与视图是一件多么麻烦的事情，特别是在数据和交互较复杂的页面上，手动同步会带来代码冗余、容易出错、难以追踪错误等问题。</p>
+<p>MVVM框架的出现解决了这个问题。我们只要建立好数据结构以及数据与视图的对应关系，在之后的开发中，只需要把关注点放在处理数据上，框架会自动帮我们处理好数据变动带来的视图更新。</p>
+<h2 id="如何造一个MVVM"><a href="#如何造一个MVVM" class="headerlink" title="如何造一个MVVM"></a>如何造一个MVVM</h2><p>MVVM的核心功能在于将数据和视图关联起来。即监听数据变动的事件，事件触发时对关联这个数据的视图进行更新。</p>
+<p>我们先明确想要实现的功能，再去思考怎么实现。这里用一个例子来说明： 现在有格式如下的数据</p>
+<pre><code class="js">let data = &#123; text: &#39;world&#39; &#125;;            
+</code></pre>
+<p>以及语法如下的视图</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;div&gt;hello&lt;/div&gt;
+    &lt;div&gt;&#123;&#123; text &#125;&#125;&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>咱们想要实现的是： 初始化后，<div></div>会被解析为<div>world</div>渲染到页面上。执行data.text = ‘vue’ 后，该DOM节点会被重新解析为<div>vue</div>，并在页面上更新。</p>
+<p>要达到这个效果，我们需要做的东西有：</p>
+<ol>
+<li>能监听数据变化的观察者（Observer），来监听data.text的变化</li>
+<li>编译DOM的编译器（Compiler），将<div></div>中的text替换成对应数据，并更新该DOM节点。</li>
+<li>连接Observer和Compiler的桥梁（Dependence &amp; Watcher），它的作用是当Observer监听到某数据变化时，去通知所有依赖该数据的Compiler，让它们重新编译并更新DOM。</li>
+</ol>
+<p>OK，思路整理完毕，接下来一步步实现。</p>
+<h2 id="动手实现迷你Vue"><a href="#动手实现迷你Vue" class="headerlink" title="动手实现迷你Vue"></a>动手实现迷你Vue</h2><h2 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h2><p>数据是存放在data对象上的，要监听数据变化也就是监听对象的键值变化（这里先不讨论有数组的情况），此时可以借助Reflect的defineProperty来实现。</p>
+<p>先来做个小实验，执行下列代码</p>
+<pre><code class="js">let data = &#123; text: &#39;world&#39; &#125;;
+let val = data.text;
+Reflect.defineProperty(data, &#39;text&#39;, &#123;
+    get () &#123;
+        console.log(&#39;get: &#39; + val);
+        return val;
+    &#125;,
+    set (newVal) &#123;
+        console.log(&#39;set: &#39; + newVal);
+        val = newVal;
+    &#125;
+&#125;);
+data.text = &#39;vue&#39;;
+console.log(data.text);
+
+// 控制台输出如下
+// &#39;set: vue&#39;
+// &#39;get: vue&#39;
+// &#39;vue&#39;
+</code></pre>
+<p>可以看到date.text设值和取值的过程都被监听到了，这样我们可以在getter和setter中加入逻辑来完成对数据变动的监听。</p>
+<p>虽然监听成功了，但是还需要对这个方法加工一下，使其能够应对对象有多个键以及对象里面还有对象的情况</p>
+<pre><code class="js">let data = &#123; text: &#39;world&#39; &#125;;
+
+function observe (data) &#123; // 监听对象
+    if (Object.prototype.toString.call(data) === &#39;[object Object]&#39;) &#123; // 确保监听对象是Object
+        for (let prop in data) &#123;
+            defineReactive(data, prop, data[prop]);
+        &#125;
+    &#125;
+&#125;
+
+function defineReactive (obj, key, val) &#123; // 对对象的key进行监听
+    Reflect.defineProperty(obj, key, &#123;
+        enumerable: true,
+        configurable: true,
+        get () &#123;
+            return val;
+        &#125;,
+        set (newVal) &#123;
+            if (newVal === val) return;
+            val = newVal;
+            observe(newVal); // 监听新的键值
+        &#125;
+    &#125;);
+    observe(val); // 递归监听对象的键值
+&#125;
+
+observe(data);
+</code></pre>
+<p>这时我们已经能够对data对象里的数据变动进行监听了。这里要注意的是，直接对对象的一个新key赋值是不会被监听到的（因为这个新的key并没有被设置getter/setter），所以需要在一开始就把data中需要的key先列出来，使其被监听到。</p>
+<p>接下来我们为每个key构造一个容器。这个容器（Dependence）需要能够接受这个key的数据变动事件，然后通知给关心该事件的所有订阅者（Subscription），所以它的方法应该有：1. 添加订阅者 2. 删除订阅者 3. 通知所有订阅者。这一步我们不去管订阅者怎么实现，先把这个容器写出来，后面再完善。</p>
+<pre><code class="js">class Dep &#123;
+    constructor () &#123;
+        this.subs = new Set();
+    &#125;
+    addSub (sub) &#123; // 添加订阅者，因为用了Set，所以这里可以保证添加进来的订阅者不会重复
+        this.subs.add(sub);
+    &#125;
+    removeSub (sub) &#123; // 删除订阅者
+        this.subs.delete(sub);
+    &#125;
+    notify () &#123; // 通知所有订阅者（调用每个订阅者的update方法）
+        for (let sub of this.subs) &#123;
+            sub.update();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>然后把这个容器和前面的defineReactive函数结合起来</p>
+<pre><code class="js">function defineReactive (obj, key, val) &#123;
+    const dep = new Dep(); // 为每个key构造一个存放关心该key的订阅者的容器
+    Reflect.defineProperty(obj, key, &#123;
+        enumerable: true,
+        configurable: true,
+        get () &#123;
+            return val;
+        &#125;,
+        set (newVal) &#123;
+            if (newVal === val) return;
+            val = newVal;
+            observe(newVal);
+            dep.notify(); // 当key变化时通知该容器下的所有订阅者
+        &#125;
+    &#125;);
+    observe(val);
+&#125;
+</code></pre>
+<p>观察者（Observer）已经基本上完成了。下一步我们来实现编译器（Compiler）。</p>
+<h2 id="Compiler"><a href="#Compiler" class="headerlink" title="Compiler"></a>Compiler</h2><p>现在我们需要一个编译器来遍历DOM树，并把需要编译的部分替换成编译的结果。</p>
+<p>第一步是模板编译。</p>
+<p>我们以一个简单例子开始，定义一个数据源</p>
+<pre><code class="js">let data = &#123; text: &#39;world&#39; &#125;;
+</code></pre>
+<pre><code class="js">以及这样一段模板：hello &#123;&#123; text &#125;&#125; !
+我们想要的编译效果是，把&#123;&#123;&#125;&#125;之外的内容用字符串原封不动地输出，把&#123;&#123;&#125;&#125;之内的代码作为js表达式输出，然后把它们拼接到一起，供之后的代码使用。要实现这个效果，需要对模板进行正则解析
+</code></pre>
+<pre><code class="js">function textToExp (text) &#123;
+    let pieces = text.split(/(&#123;&#123;.+?&#125;&#125;)/g);
+    pieces = pieces.map(piece =&gt; &#123;
+        if (piece.match(/&#123;&#123;.+?&#125;&#125;/g)) &#123; // &#123;&#123;&#125;&#125;内的代码，以js表达式输出
+            piece = '(' + piece.replace(/^&#123;&#123;|&#125;&#125;$/g, &#39;&#39;) + &#39;)&#39;;
+        &#125; else &#123; // &#123;&#123;&#125;&#125;外的代码，以字符串输出
+            piece = '`' + piece.replace(/`/g, '\\`') + '`'; // 需要对字符串中的`转义
+        &#125;
+        return piece;
+    &#125;);
+    return pieces.join('+');
+&#125;
+
+console.log(textToExp('hello &#123;&#123; text &#125;&#125; !&#39;));
+
+// 控制台输出
+// &#39;`hello `+( text )+` !`&#39;
+</code></pre>
+<p>拼接好的这段字符串可以用Function的构造函数转化成可执行代码，用法类似这样</p>
+<pre><code class="js">function expToFunc (exp) &#123;
+    return new Function(&#39;return &#39; + exp);
+&#125;
+
+let fn = expToFunc(&#39;`hi ` + name&#39;);
+let name = &#39;nossika&#39;;
+
+console.log(fn());
+
+// 控制台输出
+// &#39;hi nossika&#39;
+</code></pre>
+<p>但这样有一个问题，数据源data是一个对象，如何把表达式中的变量对应到data的属性上（比如text要对应到data.text）？</p>
+<p>这个问题好像只要编译的时候在变量前面加上前缀data.编译成data.key这样的格式就可以解决。但是表达式不一定只是类似于的一个简单变量，也有可能是类似于 hi undefined的一些复杂情况，这时候可能就得再引入一个词法解析器来把表达式解析成抽象语法树，才能找出并操作里面的变量。</p>
+<p>有个方法可以方便地解决这个加前缀的问题：使用with。虽然with并不被推荐使用，但对于这个问题使用with确实能省事不少。下面使用with来改造一下expToFunc函数，结合模板编译的例子 测试一下：</p>
+<pre><code class="js">let data = &#123; text: &#39;world&#39; &#125;;
+
+function expToFunc (exp, scope) &#123;
+    // 把数据源绑定到函数的this，函数内部加上with(this)&#123;&#125;，这样函数内的变量访问的就是数据源上的key
+    return new Function(&#39;with(this)&#123;return &#39; + exp + &#39;&#125;&#39;).bind(scope); 
+&#125;
+
+let fn = expToFunc(&#39;`hello `+( text )+` !`&#39;, data);
+
+console.log(fn());
+
+// 控制台输出
+// &#39;hello world !&#39;
+</code></pre>
+<p>现在我们已经能够结合数据源对文本进行编译了，但我们需要的功能是：传入一个DOM树和数据源，DOM树上的节点会被遍历并编译，所以得再封装一下：</p>
+<pre><code class="js">function textToExp (text) &#123;
+    // ...
+&#125;
+    
+function expToFunc (exp, scope) &#123;
+    // ...
+&#125;
+
+function walkChildren (el, scope) &#123;
+    // el.childNodes获取到的是NodeList对象，先把它转化Array
+    [].slice.call(el.childNodes).forEach(node =&gt; &#123;
+        if (node.nodeType === 3) &#123; // 对文本节点编译并替换文本内容
+            compileText(node, scope);
+        &#125; else if (node.nodeType === 1) &#123; // 对元素节点则继续遍历
+            walkChildren(node, scope);
+        &#125;
+    &#125;);
+&#125;
+
+function compileText (node, scope) &#123; // 结合 textToExp 和 expToFunc 来完成文本编译
+    let exp = textToExp(node.textContent);
+    node.textContent = expToFunc(exp, scope)();
+&#125;
+</code></pre>
+<p>然后结合DOM测试一下walkChildren：</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;div&gt;hello&lt;/div&gt;
+        &lt;div&gt;&#123;&#123; text &#125;&#125;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    // ...
+    let data = &#123; text: &#39;world&#39; &#125;;
+    walkChildren(document.querySelector(&#39;#app&#39;), data);
+&lt;/script&gt;
+</code></pre>
+<p>执行完walkChildren后，页面上最终的DOM被渲染成：</p>
+<pre><code class="html">&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;div&gt;hello&lt;/div&gt;
+        &lt;div&gt;world&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>编译器（Compiler）也基本上完成了，现在还剩下最后一步：我们需要在data中的数据改变的时候，重新触发对应的Compiler来对DOM进行更新。所以我们再引入一个Watcher，来把Observer和Compiler关联起来。</p>
+<h2 id="Watcher"><a href="#Watcher" class="headerlink" title="Watcher"></a>Watcher</h2><p>在前面的Observer一节中，我们为数据源的每个key创建了一个Dep实例，这个Dep能够容纳多个订阅者，并且能够在key改变的时候通知这些订阅者（即触发订阅者的update方法）。这里所说的订阅者就是本节的Watcher，订阅者的update方法就是去调用Compiler。</p>
+<p>为满足我们的需求，Watcher应该存放三样东西：原始表达式（exp）、数据源（scope）、DOM更新函数（callback）。当触发它的update方法时，它会根据数据源和原始表达式来编译出最新的文本，然后调用DOM更新函数来更新DOM。下面先把Watcher的大致样子写出来：</p>
+<pre><code class="js">class Watcher &#123;
+    constructor (exp, scope, callback) &#123;
+        this.value = null; // 存放当前编译结果
+        this.getValue = expToFunc(exp, scope); // 生成编译结果的函数
+        this.callback = callback;
+        this.update(); // 绑定时需要编译一次
+    &#125;
+    get () &#123;
+        return this.getValue();
+    &#125;
+    update () &#123;
+        let newVal = this.get();  // 获取最新编译结果
+        if (this.value !== newVal) &#123; // 如果最新编译结果和当前的不一样，则调用callback更新DOM
+            this.value = newVal;
+            this.callback &amp;&amp; this.callback(newVal);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>然后修改一下Compiler中的逻辑，编译文本节点时，为这个文本节点创建一个Watcher，把它交给Watcher来更新。其实就是对compileText函数小小的修改一下：</p>
+<pre><code class="text">// 原来的compileText
+function compileText (node, scope) &#123;
+    let exp = textToExp(node.textContent);
+    node.textContent = expToFunc(exp, scope)();
+&#125;
+</code></pre>
+<p>改为</p>
+<pre><code class="js">// 结合Watcher的原来的compileText
+function compileText (node, scope) &#123;
+    let exp = textToExp(node.textContent);
+    // Watcher绑定时会先编译一次，所以这里不需要再手动修改node.textContent
+    new Watcher(exp, scope, newVal =&gt; &#123;
+        node.textContent = newVal;
+    &#125;);
+&#125;
+</code></pre>
+<p>现在再理一下思路，我们整理出来的流程是：数据源的key改变时，会去调用该key下的Dep中的每个Watcher的update方法来更新DOM。现在Dep有了，Watcher也有了。</p>
+<p>接下来就是最关键的一步了，怎么把Watcher添加到对应的Dep中呢？</p>
+<p>似乎应该在绑定Watcher的时候，去解析表达式中关联了数据源中的哪些key，然后把这个Watcher添加到这些key下的Dep中。如果这样处理的话还是得引入一个词法解析器才能解析出表达式中关联的key。</p>
+<p>Vue中用了一个非常精妙的方法解决了这个问题：利用getter。</p>
+<p>Watcher的编译是用到了expToFunc(this.exp, this.scope)()，这个过程会把表达式变成类似with(scope){return prop1 + prop2}的函数，写得更直观一点就是return scope.prop1 + scope.prop2，并且执行它来求表达式的值。所以在这个过程中其实已经调用了表达式中关联的scope的key的getter。所以只要在key的getter中把这个Watcher添加到Dep就可以了。</p>
+<p>为实现这个效果，我们需要引入一个全局标记，初始值是null，在Watcher执行编译前把这个标记指向当前Watcher实例。编译过程中会触发各个key的getter，getter中需要判断标记指向的是否指向一个Watcher，是的话把该Watcher添加到Dep中。编译结束后再把这个标记指向null。</p>
+<p>这个全局标记可以挂在Dep的静态属性上，我们给Dep添加一条静态属性target：</p>
+<pre><code class="js">class Dep &#123;
+    static target = null;
+    // ...
+&#125;
+</code></pre>
+<p>然后修改一下Watcher，在编译前后改变target的指向：</p>
+<pre><code class="js">class Watcher &#123;
+    // ...
+    get () &#123;
+        Dep.target = this; // 编译前把target指向当前Watcher实例
+        let value = this.getValue(); // 这个编译过程中会触发关联的key的getter
+        Dep.target = null; // 编译后把target重置
+        return value;
+    &#125;
+    // ...
+&#125;
+</code></pre>
+<p>最后修改一下Observer中defineReactive，在getter中把target指向的Watcher添加到Dep：</p>
+<pre><code class="js">function defineReactive (obj, key, val) &#123;
+    const dep = new Dep();
+    Reflect.defineProperty(obj, key, &#123;
+        enumerable: true,
+        configurable: true,
+        get () &#123;
+            // 如果target指向了Watcher，就把这个Watcher添加到Dep
+            // Dep的addSub是一个Set，所以不会把一个相同的Watcher添加多次
+            Dep.target &amp;&amp; dep.addSub(Dep.target);
+            return val;
+        &#125;,
+        set (newVal) &#123;
+            if (newVal === val) return;
+            val = newVal;
+            observe(newVal);
+            dep.notify();
+        &#125;
+    &#125;);
+    observe(val);
+&#125;
+</code></pre>
+<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><p>到这里我们已经把所有的部分（Observer，Compiler，Dep，Watcher）都实现了，现在把它们组装到一起：</p>
+<pre><code class="js">class Vue &#123;
+    constructor (options) &#123;
+        this.$data = options.data;
+        this.$el = document.querySelector(options.el);
+        observe(this.$data);
+        walkChildren(this.$el, this.$data);
+    &#125;
+&#125;
+</code></pre>
+<p>然后像这样去调用：</p>
+<pre><code class="js">let vm = new Vue(&#123;
+    el: &#39;#app&#39;,
+    data: &#123;
+        text: &#39;world&#39;
+    &#125;
+&#125;);
+</code></pre>
+<p>这里还可以做一个优化，目前改变数据需要像vm.$data.text = ‘new value’这样写，如果能够像vm.text = ‘new value’这样就要方便多了。我们加个代理函数proxy：</p>
+<pre><code class="js">function proxy (vm, options) &#123;
+    for (let prop in options.data) &#123;
+        Reflect.defineProperty(vm, prop, &#123;
+            enumerable: true,
+            configurable: true,
+            get () &#123;
+                return vm.$data[prop]; // 调用vm.$data的getter
+            &#125;,
+            set (newVal) &#123;
+                vm.$data[prop] = newVal; // 调用vm.$data的setter
+            &#125;
+        &#125;)
+    &#125;
+&#125;
+
+class Vue &#123;
+    constructor (options) &#123;
+        this.$data = options.data;
+        this.$el = document.querySelector(options.el);
+        observe(this.$data);
+        proxy(this, options);
+        walkChildren(this.$el, this.$data);
+    &#125;
+&#125;
+</code></pre>
+<p>这样就可以直接对vm.text直接取值和赋值了。</p>
+<p>到这里，我们要做的迷你Vue已经全部完成了，它实现了MVVM核心的数据视图绑定功能。有兴趣的读者可移步到<a href="https://link.zhihu.com/?target=https://github.com/nossika/little-vue">github:little-vue</a>自行查看源码，其中实现了更多Vue的api（支持对数组监听，支持v-if等属性节点编译、更多options选项，nextTick优化等）。</p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码:"></a>完整代码:</h2><pre><code class="js">// Observer
+
+function observe (data) &#123;
+    if (Object.prototype.toString.call(data) === &#39;[object Object]&#39;) &#123;
+        for (let prop in data) &#123;
+            defineReactive(data, prop, data[prop]);
+        &#125;
+    &#125;
+&#125;
+
+function defineReactive (obj, key, val) &#123;
+    const dep = new Dep();
+    Reflect.defineProperty(obj, key, &#123;
+        enumerable: true,
+        configurable: true,
+        get () &#123;
+            Dep.target &amp;&amp; dep.addSub(Dep.target);
+            return val;
+        &#125;,
+        set (newVal) &#123;
+            if (newVal === val) return;
+            val = newVal;
+            observe(newVal);
+            dep.notify();
+        &#125;
+    &#125;);
+    observe(val);
+&#125;
+
+// Dep
+
+class Dep &#123;
+    constructor () &#123;
+        this.subs = new Set();
+    &#125;
+    addSub (sub) &#123;
+        this.subs.add(sub);
+    &#125;
+    removeSub (sub) &#123;
+        this.subs.delete(sub);
+    &#125;
+    notify () &#123;
+        for (let sub of this.subs) &#123;
+            sub.update();
+        &#125;
+    &#125;
+&#125;
+Dep.target = null;
+
+// Compiler
+
+function textToExp (text) &#123;
+    let pieces = text.split(/(&#123;&#123;.+?&#125;&#125;)/g);
+    pieces = pieces.map(piece =&gt; &#123;
+        if (piece.match(/&#123;&#123;.+?&#125;&#125;/g)) &#123;
+            piece = &#39;(&#39; + piece.replace(/^&#123;&#123;|&#125;&#125;$/g, &#39;&#39;) + &#39;)&#39;;
+        &#125; else &#123;
+            piece = &#39;`&#39; + piece.replace(/`/g, &#39;\\`&#39;) + &#39;`&#39;;
+        &#125;
+        return piece;
+    &#125;);
+    return pieces.join(&#39;+&#39;);
+&#125;
+
+function expToFunc (exp, scope) &#123;
+    return new Function(&#39;with(this)&#123;return &#39; + exp + &#39;&#125;&#39;).bind(scope);
+&#125;
+
+function walkChildren (el, scope) &#123;
+    [].slice.call(el.childNodes).forEach(node =&gt; &#123;
+        if (node.nodeType === 3) &#123;
+            compileText(node, scope);
+        &#125; else if (node.nodeType === 1) &#123;
+            walkChildren(node, scope);
+        &#125;
+    &#125;);
+&#125;
+
+function compileText (node, scope) &#123;
+    let exp = textToExp(node.textContent);
+    new Watcher(exp, scope, newVal =&gt; &#123;
+        node.textContent = newVal;
+    &#125;);
+&#125;
+
+// Watcher
+
+class Watcher &#123;
+    constructor (exp, scope, callback) &#123;
+        this.value = null;
+        this.getValue = expToFunc(exp, scope);
+        this.callback = callback;
+        this.update();
+    &#125;
+    get () &#123;
+        Dep.target = this;
+        let value = this.getValue();
+        Dep.target = null;
+        return value;
+    &#125;
+    update () &#123;
+        let newVal = this.get();
+        if (this.value !== newVal) &#123;
+            this.value = newVal;
+            this.callback &amp;&amp; this.callback(newVal);
+        &#125;
+    &#125;
+&#125;
+
+// Vue
+
+function proxy (vm, options) &#123;
+    for (let prop in options.data) &#123;
+        Reflect.defineProperty(vm, prop, &#123;
+            enumerable: true,
+            configurable: true,
+            get () &#123;
+                return vm.$data[prop];
+            &#125;,
+            set (newVal) &#123;
+                vm.$data[prop] = newVal;
+            &#125;
+        &#125;)
+    &#125;
+&#125;
+
+class Vue &#123;
+    constructor (options) &#123;
+        this.$data = options.data;
+        this.$el = document.querySelector(options.el);
+        observe(this.$data);
+        proxy(this, options);
+        walkChildren(this.$el, this.$data);
+    &#125;
+&#125;
+</code></pre>
+<p>转载于:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29629337">100行代码实现一个迷你Vue</a></p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://houpai.github.io/2021/10/14/100%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%BF%B7%E4%BD%A0Vue/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2021/10/14/%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8ProtocolBuffer%E7%9A%84%E6%96%B9%E6%B3%95/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">在微信小程序中使用ProtocolBuffer的方法</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "TFvQenFJGwvlrbLWvshSW3FJ-gzGzoHsz",
+    app_key: "m7VUh44S9zqdyh6u5i53hK17",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+  .vpower {
+    display: none !important;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021-2022
+        <i class="ri-heart-fill heart_icon"></i> houpai
+      </li>
+    </ul>
+<!--    <ul>-->
+<!--      <li>-->
+<!--        -->
+<!--        -->
+<!--        -->
+<!--        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动-->
+<!--        <span class="division">|</span>-->
+<!--        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>-->
+<!--        -->
+<!--      </li>-->
+<!--    </ul>-->
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="http://www.beian.miit.gov.cn/" target="_black" rel="nofollow">辽ICP备2021002704号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/me.jpg" alt="houpai"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://vvip-houpai.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about/me.html">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯卡布奇诺吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/wechat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+<!-- hexo injector body_end start -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+
+<script src="/lib/codeBlock/codeBlockFuction.js"></script>
+
+<script src="/lib/codeBlock/codeLang.js"></script>
+
+<script src="/lib/codeBlock/codeCopy.js"></script>
+
+<link rel="stylesheet" href="/lib/codeBlock/matery.css">
+<!-- hexo injector body_end end --></body>
+
+</html>

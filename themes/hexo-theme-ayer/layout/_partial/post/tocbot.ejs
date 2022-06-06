@@ -1,0 +1,17 @@
+<style>
+    .tocbot::-webkit-scrollbar { width: 0 !important }
+    .tocbot .toc-list-item {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .is-position-fixed {
+        right: 8rem;
+    }
+</style>
+<% if (post.toc != false && toc(page.content).length!==0){ %>
+    <div class="tocbot" style="bottom: 0;overflow-y: scroll"></div>
+<% } %>
+
+
+

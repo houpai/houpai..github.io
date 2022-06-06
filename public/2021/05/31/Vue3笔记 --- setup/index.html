@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8"/>
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>
+        Vue3笔记 --- setup |
+        
+        houpai
+    </title>
+  <meta name="generator" content="hexo-theme-ayer">
+    
+        <link rel="shortcut icon" href="/favicon.ico"/>
+    
+    
+<link rel="stylesheet" href="/dist/main.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+    
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+        <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css"
+          crossorigin>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <style>
+        .todark, .totop {
+            background-color: #999 !important;
+        }
+
+        #daodream-container .daodream-launcher-button {
+            width: 3.2rem !important;
+            height: 3.2rem !important;
+            background-size: 3.2rem !important;
+        }
+
+        #daodream-container .daodream-launcher {
+            width: 3.2rem !important;
+            height: 3.2rem !important;
+            right: 50px !important;
+            bottom: 5rem !important;
+            transform: scale(1.2) !important;
+        }
+
+        .daodream-powered-by {
+            display: none !important;
+        }
+
+        body.darkmode .todark, body.darkmode .totop {
+            background-color: #ffffff !important;
+        }
+
+        @media (max-width: 768px) {
+            #daodream-container .daodream-launcher {
+                right: 10px !important;
+            }
+        }
+
+    </style>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["DaoVoiceObject"] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        a.charset = "utf-8";
+        m.parentNode.insertBefore(a, m)
+      })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/5d756096.js", "daovoice")
+      daovoice('init', {
+        app_id: "5d756096"
+      });
+      daovoice('update');
+
+    </script>
+    
+
+    
+
+<link rel="alternate" href="/atom.xml" title="houpai" type="application/atom+xml">
+</head>
+
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Vue3笔记 --- setup"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Vue3笔记 --- setup
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/05/31/Vue3%E7%AC%94%E8%AE%B0%20---%20setup/" class="article-date">
+  <time datetime="2021-05-31T02:09:55.000Z" itemprop="datePublished">2021-05-31</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">16 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      <style>
+    .tocbot::-webkit-scrollbar { width: 0 !important }
+    .tocbot .toc-list-item {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .is-position-fixed {
+        right: 8rem;
+    }
+</style>
+
+    <div class="tocbot" style="bottom: 0;overflow-y: scroll"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Composition API、setup…</p>
+<span id="more"></span>
+
+<h4 id="什么是Composition-API（组合API）"><a href="#什么是Composition-API（组合API）" class="headerlink" title="什么是Composition API（组合API）"></a>什么是Composition API（组合API）</h4><p>在vue3中提出了这样的一个概念，那到底什么是Composition API呢，让我们来看一下官方文档上是怎么介绍的…</p>
+<p>通过创建 Vue 组件，我们可以将接口的可重复部分及其功能提取到可重用的代码段中。仅此一项就可以使我们的应用程序在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用程序变得非常大的时候——想想几百个组件。在处理如此大的应用程序时，共享和重用代码变得尤为重要。</p>
+<p>假设在我们的应用程序中，我们有一个视图来显示某个用户的仓库列表。除此之外，我们还希望应用搜索和筛选功能。处理此视图的组件可能如下所示：</p>
+<pre><code class="js">// src/components/UserRepositories.vue
+
+export default &#123;
+  components: &#123; RepositoriesFilters, RepositoriesSortBy, RepositoriesList &#125;,
+  props: &#123;
+    user: &#123; type: String &#125;
+  &#125;,
+  data () &#123;
+    return &#123;
+      repositories: [], // 1
+      filters: &#123; ... &#125;, // 3
+      searchQuery: &#39;&#39; // 2
+    &#125;
+  &#125;,
+  computed: &#123;
+    filteredRepositories () &#123; ... &#125;, // 3
+    repositoriesMatchingSearchQuery () &#123; ... &#125;, // 2
+  &#125;,
+  watch: &#123;
+    user: &#39;getUserRepositories&#39; // 1
+  &#125;,
+  methods: &#123;
+    getUserRepositories () &#123;
+      // 使用 `this.user` 获取用户仓库
+    &#125;, // 1
+    updateFilters () &#123; ... &#125;, // 3
+  &#125;,
+  mounted () &#123;
+    this.getUserRepositories() // 1
+  &#125;
+&#125;
+</code></pre>
+<p>该组件有以下几个职责：</p>
+<ol>
+<li>从假定的外部 API 获取该用户名的仓库，并在用户更改时刷新它</li>
+<li>使用 <code>searchQuery</code> 字符串搜索存储库</li>
+<li>使用 <code>filters</code> 对象筛选仓库</li>
+</ol>
+<p>用组件的选项 (<code>data</code>、<code>computed</code>、<code>methods</code>、<code>watch</code>) 组织逻辑在大多数情况下都有效。然而，当我们的组件变得更大时，<strong>逻辑关注点</strong>的列表也会增长。这可能会导致组件难以阅读和理解，尤其是对于那些一开始就没有编写这些组件的人来说。</p>
+<p><img src="https://user-images.githubusercontent.com/499550/62783021-7ce24400-ba89-11e9-9dd3-36f4f6b1fae2.png" alt="Vue 选项式 API: 按选项类型分组的代码"></p>
+<p>一个大型组件的示例，其中<strong>逻辑关注点</strong>是按颜色分组。</p>
+<p>这种碎片化使得理解和维护复杂组件变得困难。选项的分离掩盖了潜在的逻辑问题。此外，在处理单个逻辑关注点时，我们必须不断地“跳转”相关代码的选项块。</p>
+<p>如果我们能够将与同一个逻辑关注点相关的代码配置在一起会更好。而这正是组合式 API 使我们能够做到的。</p>
+<h4 id="组合式-API-基础-–-setup"><a href="#组合式-API-基础-–-setup" class="headerlink" title="组合式 API 基础 – setup"></a>组合式 API 基础 – setup</h4><p>新的 <code>setup</code> 组件选项在<strong>创建组件之前</strong>执行，一旦 <code>props</code> 被解析，并充当合成 API 的入口点。</p>
+<p><code>setup</code> 选项应该是一个接受 <code>props</code> 和 <code>context</code> 的函数，我们将在<a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-setup.html#%E5%8F%82%E6%95%B0">稍后</a>讨论。此外，我们从 <code>setup</code> 返回的所有内容都将暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。</p>
+<p>让我们添加 <code>setup</code> 到我们的组件中：</p>
+<p>让我们添加 <code>setup</code> 到我们的组件中：</p>
+<pre><code class="js">// src/components/UserRepositories.vue
+
+export default &#123;
+  components: &#123; RepositoriesFilters, RepositoriesSortBy, RepositoriesList &#125;,
+  props: &#123;
+    user: &#123; type: String &#125;
+  &#125;,
+  setup(props) &#123;
+    console.log(props) // &#123; user: &#39;&#39; &#125;
+
+    return &#123;&#125; // 这里返回的任何内容都可以用于组件的其余部分
+  &#125;
+  // 组件的“其余部分”
+&#125;
+</code></pre>
+<p>现在让我们从提取第一个逻辑关注点开始 (在原始代码段中标记为“1”)。</p>
+<blockquote>
+<ol>
+<li>从假定的外部 API 获取该用户名的仓库，并在用户更改时刷新它</li>
+</ol>
+</blockquote>
+<p>我们将从最明显的部分开始：</p>
+<ul>
+<li>仓库列表</li>
+<li>更新仓库列表的函数</li>
+<li>返回列表和函数，以便其他组件选项可以访问它们</li>
+</ul>
+<pre><code class="js">// src/components/UserRepositories.vue `setup` function
+import &#123; fetchUserRepositories &#125; from &#39;@/api/repositories&#39;
+
+// 在我们的组件内
+setup (props) &#123;
+  let repositories = []
+  const getUserRepositories = async () =&gt; &#123;
+    repositories = await fetchUserRepositories(props.user)
+  &#125;
+
+  return &#123;
+    repositories,
+    getUserRepositories // 返回的函数与方法的行为相同
+  &#125;
+&#125;
+</code></pre>
+<p>这是我们的出发点，但它还不能工作，因为我们的 <code>repositories</code> 变量是非响应式的。这意味着从用户的角度来看，仓库列表将保持为空。我们来解决这个问题！</p>
+<h3 id="带-ref-的响应式变量"><a href="#带-ref-的响应式变量" class="headerlink" title="#带 ref 的响应式变量"></a><a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-introduction.html#%E5%B8%A6-ref-%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8F%98%E9%87%8F">#</a>带 <code>ref</code> 的响应式变量</h3><p>在 Vue 3.0 中，我们可以通过一个新的 <code>ref</code> 函数使任何响应式变量在任何地方起作用，如下所示：</p>
+<pre><code class="js">import &#123; ref &#125; from &#39;vue&#39;
+
+const counter = ref(0)
+</code></pre>
+<p><code>ref</code> 接受参数并返回它包装在具有 <code>value</code> property 的对象中，然后可以使用该 property 访问或更改响应式变量的值：</p>
+<pre><code class="js">import &#123; ref &#125; from &#39;vue&#39;
+
+const counter = ref(0)
+
+console.log(counter) // &#123; value: 0 &#125;
+console.log(counter.value) // 0
+
+counter.value++
+console.log(counter.value) // 1
+</code></pre>
+<p>中包装值似乎不必要，但在 JavaScript 中保持不同数据类型的行为统一是必需的。这是因为在 JavaScript 中，<code>Number</code> 或 <code>String</code> 等基本类型是通过值传递的，而不是通过引用传递的：</p>
+<p><img src="https://blog.penjee.com/wp-content/uploads/2015/02/pass-by-reference-vs-pass-by-value-animation.gif" alt="按引用传递与按值传递"></p>
+<p>在任何值周围都有一个包装器对象，这样我们就可以在整个应用程序中安全地传递它，而不必担心在某个地方失去它的响应性。</p>
+<p>提示</p>
+<p>换句话说，<code>ref</code> 对我们的值创建了一个<strong>响应式引用</strong>。使用<strong>引用</strong>的概念将在整个组合式 API 中经常使用。</p>
+<p>回到我们的例子，让我们创建一个响应式的 <code>repositories</code> 变量：</p>
+<pre><code class="js">// src/components/UserRepositories.vue `setup` function
+import &#123; fetchUserRepositories &#125; from &#39;@/api/repositories&#39;
+import &#123; ref &#125; from &#39;vue&#39;
+
+// in our component
+setup (props) &#123;
+  const repositories = ref([])
+  const getUserRepositories = async () =&gt; &#123;
+    repositories.value = await fetchUserRepositories(props.user)
+  &#125;
+
+  return &#123;
+    repositories,
+    getUserRepositories
+  &#125;
+&#125;
+</code></pre>
+<p>完成！现在，每当我们调用 <code>getUserRepositories</code> 时，<code>repositories</code> 都将发生变化，视图将更新以反映更改。我们的组件现在应该如下所示：</p>
+<pre><code class="js">// src/components/UserRepositories.vue
+import &#123; fetchUserRepositories &#125; from &#39;@/api/repositories&#39;
+import &#123; ref &#125; from &#39;vue&#39;
+
+export default &#123;
+  components: &#123; RepositoriesFilters, RepositoriesSortBy, RepositoriesList &#125;,
+  props: &#123;
+    user: &#123; type: String &#125;
+  &#125;,
+  setup (props) &#123;
+    const repositories = ref([])
+    const getUserRepositories = async () =&gt; &#123;
+      repositories.value = await fetchUserRepositories(props.user)
+    &#125;
+
+    return &#123;
+      repositories,
+      getUserRepositories
+    &#125;
+  &#125;,
+  data () &#123;
+    return &#123;
+      filters: &#123; ... &#125;, // 3
+      searchQuery: &#39;&#39; // 2
+    &#125;
+  &#125;,
+  computed: &#123;
+    filteredRepositories () &#123; ... &#125;, // 3
+    repositoriesMatchingSearchQuery () &#123; ... &#125;, // 2
+  &#125;,
+  watch: &#123;
+    user: &#39;getUserRepositories&#39; // 1
+  &#125;,
+  methods: &#123;
+    updateFilters () &#123; ... &#125;, // 3
+  &#125;,
+  mounted () &#123;
+    this.getUserRepositories() // 1
+  &#125;
+&#125;
+</code></pre>
+<p>我们已经将第一个逻辑关注点中的几个部分移到了 <code>setup</code> 方法中，它们彼此非常接近。剩下的就是在 <code>mounted</code> 钩子中调用 <code>getUserRepositories</code>，并设置一个监听器，以便在 <code>user</code> prop 发生变化时执行此操作。</p>
+<p>我们将从生命周期钩子开始。</p>
+<h4 id="生命周期钩子注册内部-setup"><a href="#生命周期钩子注册内部-setup" class="headerlink" title="生命周期钩子注册内部 setup"></a>生命周期钩子注册内部 <code>setup</code></h4><p>为了让composition-api更加完善（相比于options-api），还可以在setup里注册生命周期函数，需要从Vue中导出几个函数，代码如下</p>
+<pre><code class="js">// src/components/UserRepositories.vue `setup` function
+import &#123; fetchUserRepositories &#125; from &#39;@/api/repositories&#39;
+import &#123; ref, onMounted &#125; from &#39;vue&#39;
+
+// in our component
+setup (props) &#123;
+  const repositories = ref([])
+  const getUserRepositories = async () =&gt; &#123;
+    repositories.value = await fetchUserRepositories(props.user)
+  &#125;
+
+  onMounted(getUserRepositories) // on `mounted` call `getUserRepositories`
+
+  return &#123;
+    repositories,
+    getUserRepositories
+  &#125;
+&#125;
+</code></pre>
+<p>还可以在setup里引入watch</p>
+<h4 id="watch-响应式更改（新的composition-api，区别于原来的options-api的使用方法）"><a href="#watch-响应式更改（新的composition-api，区别于原来的options-api的使用方法）" class="headerlink" title="watch 响应式更改（新的composition-api，区别于原来的options-api的使用方法）"></a><code>watch</code> 响应式更改（新的composition-api，区别于原来的options-api的使用方法）</h4><p>它接受 3 个参数：</p>
+<ul>
+<li>一个<strong>响应式引用</strong>或我们想要侦听的 getter 函数</li>
+<li>一个回调</li>
+<li>可选的配置选项</li>
+</ul>
+<p>代码如下</p>
+<pre><code class="js">import &#123; ref, watch &#125; from &#39;vue&#39;
+
+const counter = ref(0)
+watch(counter, (newValue, oldValue) =&gt; &#123;
+  console.log(&#39;The new counter value is: &#39; + counter.value)
+&#125;)
+</code></pre>
+<p><strong>现在我们将其放在我们上面的demo代码中使用</strong></p>
+<pre><code class="js">// src/components/UserRepositories.vue `setup` function
+import &#123; fetchUserRepositories &#125; from &#39;@/api/repositories&#39;
+import &#123; ref, onMounted, watch, toRefs &#125; from &#39;vue&#39;
+
+// 在我们组件中
+setup (props) &#123;
+  // 使用 `toRefs` 创建对prop的 `user` property 的响应式引用
+  const &#123; user &#125; = toRefs(props)
+
+  const repositories = ref([])
+  const getUserRepositories = async () =&gt; &#123;
+    // 更新 `prop.user` 到 `user.value` 访问引用值
+    repositories.value = await fetchUserRepositories(user.value)
+  &#125;
+
+  onMounted(getUserRepositories)
+
+  // 在用户 prop 的响应式引用上设置一个侦听器
+  watch(user, getUserRepositories)
+
+  return &#123;
+    repositories,
+    getUserRepositories
+  &#125;
+&#125;
+</code></pre>
+<p><strong><code>你可能已经注意到在我们的 setup 的顶部使用了 toRefs。这是为了确保我们的侦听器能够对 user prop 所做的更改做出反应。</code></strong></p>
+<p>有了这些变化，我们就把第一个逻辑关注点移到了一个地方。我们现在可以对第二个关注点执行相同的操作——基于 <code>searchQuery</code> 进行过滤，这次是使用计算属性。</p>
+<h4 id="独立的-computed-属性"><a href="#独立的-computed-属性" class="headerlink" title="#独立的 computed 属性"></a><a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-introduction.html#%E7%8B%AC%E7%AB%8B%E7%9A%84-computed-%E5%B1%9E%E6%80%A7">#</a>独立的 <code>computed</code> 属性</h4><p>与 <code>ref</code> 和 <code>watch</code> 类似，也可以使用从 Vue 导入的 <code>computed</code> 函数在 Vue 组件外部创建计算属性。让我们回到我们的 counter 例子：</p>
+<pre><code class="js">import &#123; ref, computed &#125; from &#39;vue&#39;
+
+const counter = ref(0)
+const twiceTheCounter = computed(() =&gt; counter.value * 2)
+
+counter.value++
+console.log(counter.value) // 1
+console.log(twiceTheCounter.value) // 2
+</code></pre>
+<p>放到上面的完整demo中</p>
+<pre><code class="js">// src/components/UserRepositories.vue `setup` function
+import &#123; fetchUserRepositories &#125; from &#39;@/api/repositories&#39;
+import &#123; ref, onMounted, watch, toRefs, computed &#125; from &#39;vue&#39;
+
+// in our component
+setup (props) &#123;
+  // 使用 `toRefs` 创建对 props 的 `user` property 的响应式引用
+  const &#123; user &#125; = toRefs(props)
+
+  const repositories = ref([])
+  const getUserRepositories = async () =&gt; &#123;
+    // 更新 `props.user ` 到 `user.value` 访问引用值
+    repositories.value = await fetchUserRepositories(user.value)
+  &#125;
+
+  onMounted(getUserRepositories)
+
+  // 在用户 prop 的响应式引用上设置一个侦听器
+  watch(user, getUserRepositories)
+
+  const searchQuery = ref(&#39;&#39;)
+  const repositoriesMatchingSearchQuery = computed(() =&gt; &#123;
+    return repositories.value.filter(
+      repository =&gt; repository.name.includes(searchQuery.value)
+    )
+  &#125;)
+
+  return &#123;
+    repositories,
+    getUserRepositories,
+    searchQuery,
+    repositoriesMatchingSearchQuery
+  &#125;
+&#125;
+</code></pre>
+<p>对于其他的<strong>逻辑关注点</strong>我们也可以这样做，但是你可能已经在问这个问题了——<em>这不就是把代码移到 <code>setup</code> 选项并使它变得非常大吗</em>？嗯，那是真的。这就是为什么在继续其他任务之前，我们将首先将上述代码提取到一个独立的<strong>组合式函数</strong>。让我们从创建 <code>useUserRepositories</code> 开始：</p>
+<pre><code class="js">// src/composables/useUserRepositories.js
+
+import &#123; fetchUserRepositories &#125; from &#39;@/api/repositories&#39;
+import &#123; ref, onMounted, watch &#125; from &#39;vue&#39;
+
+export default function useUserRepositories(user) &#123;
+  const repositories = ref([])
+  const getUserRepositories = async () =&gt; &#123;
+    repositories.value = await fetchUserRepositories(user.value)
+  &#125;
+
+  onMounted(getUserRepositories)
+  watch(user, getUserRepositories)
+
+  return &#123;
+    repositories,
+    getUserRepositories
+  &#125;
+&#125;
+</code></pre>
+<p>然后是搜索功能：</p>
+<pre><code class="js">// src/composables/useRepositoryNameSearch.js
+
+import &#123; ref, computed &#125; from &#39;vue&#39;
+
+export default function useRepositoryNameSearch(repositories) &#123;
+  const searchQuery = ref(&#39;&#39;)
+  const repositoriesMatchingSearchQuery = computed(() =&gt; &#123;
+    return repositories.value.filter(repository =&gt; &#123;
+      return repository.name.includes(searchQuery.value)
+    &#125;)
+  &#125;)
+
+  return &#123;
+    searchQuery,
+    repositoriesMatchingSearchQuery
+  &#125;
+&#125;
+</code></pre>
+<p><strong>现在在单独的文件中有了这两个功能，我们就可以开始在组件中使用它们了。以下是如何做到这一点：</strong></p>
+<pre><code class="js">// src/components/UserRepositories.vue
+import useUserRepositories from &#39;@/composables/useUserRepositories&#39;
+import useRepositoryNameSearch from &#39;@/composables/useRepositoryNameSearch&#39;
+import &#123; toRefs &#125; from &#39;vue&#39;
+
+export default &#123;
+  components: &#123; RepositoriesFilters, RepositoriesSortBy, RepositoriesList &#125;,
+  props: &#123;
+    user: &#123; type: String &#125;
+  &#125;,
+  setup (props) &#123;
+    const &#123; user &#125; = toRefs(props)
+
+    const &#123; repositories, getUserRepositories &#125; = useUserRepositories(user)
+
+    const &#123;
+      searchQuery,
+      repositoriesMatchingSearchQuery
+    &#125; = useRepositoryNameSearch(repositories)
+
+    return &#123;
+      // 因为我们并不关心未经过滤的仓库
+      // 我们可以在 `repositories` 名称下暴露过滤后的结果
+      repositories: repositoriesMatchingSearchQuery,
+      getUserRepositories,
+      searchQuery,
+    &#125;
+  &#125;,
+  data () &#123;
+    return &#123;
+      filters: &#123; ... &#125;, // 3
+    &#125;
+  &#125;,
+  computed: &#123;
+    filteredRepositories () &#123; ... &#125;, // 3
+  &#125;,
+  methods: &#123;
+    updateFilters () &#123; ... &#125;, // 3
+  &#125;
+&#125;
+</code></pre>
+<p>此时，你可能已经知道了这个练习，所以让我们跳到最后，迁移剩余的过滤功能。</p>
+<pre><code class="js">// src/components/UserRepositories.vue
+import &#123; toRefs &#125; from &#39;vue&#39;
+import useUserRepositories from &#39;@/composables/useUserRepositories&#39;
+import useRepositoryNameSearch from &#39;@/composables/useRepositoryNameSearch&#39;
+import useRepositoryFilters from &#39;@/composables/useRepositoryFilters&#39;
+
+export default &#123;
+  components: &#123; RepositoriesFilters, RepositoriesSortBy, RepositoriesList &#125;,
+  props: &#123;
+    user: &#123; type: String &#125;
+  &#125;,
+  setup(props) &#123;
+    const &#123; user &#125; = toRefs(props)
+
+    const &#123; repositories, getUserRepositories &#125; = useUserRepositories(user)
+
+    const &#123;
+      searchQuery,
+      repositoriesMatchingSearchQuery
+    &#125; = useRepositoryNameSearch(repositories)
+
+    const &#123;
+      filters,
+      updateFilters,
+      filteredRepositories
+    &#125; = useRepositoryFilters(repositoriesMatchingSearchQuery)
+
+    return &#123;
+      // 因为我们并不关心未经过滤的仓库
+      // 我们可以在 `repositories` 名称下暴露过滤后的结果
+      repositories: filteredRepositories,
+      getUserRepositories,
+      searchQuery,
+      filters,
+      updateFilters
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<h1 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h1><blockquote>
+<p>本节使用<a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/single-file-component.html">单文件组件</a>代码示例的语法</p>
+</blockquote>
+<blockquote>
+<p>本指南假定你已经阅读了<a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-introduction.html">组合式 API 简介</a>和<a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/reactivity-fundamentals.html">响应性原理</a>。如果你不熟悉组合式 API，请先阅读这篇文章。</p>
+</blockquote>
+<h2 id="参数"><a href="#参数" class="headerlink" title="#参数"></a><a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-setup.html#%E5%8F%82%E6%95%B0">#</a>参数</h2><p>使用 <code>setup</code> 函数时，它将接受两个参数：</p>
+<ol>
+<li><code>props</code></li>
+<li><code>context</code></li>
+</ol>
+<p>让我们更深入地研究如何使用每个参数。</p>
+<h3 id="Props"><a href="#Props" class="headerlink" title="#Props"></a><a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-setup.html#props">#</a>Props</h3><p><code>setup</code> 函数中的第一个参数是 <code>props</code>。正如在一个标准组件中所期望的那样，<code>setup</code> 函数中的 <code>props</code> 是响应式的，当传入新的 prop 时，它将被更新。</p>
+<pre><code class="js">// MyBook.vue
+
+export default &#123;
+  props: &#123;
+    title: String
+  &#125;,
+  setup(props) &#123;
+    console.log(props.title)
+  &#125;
+&#125;
+</code></pre>
+<p>WARNING</p>
+<p>但是，因为 <code>props</code> 是响应式的，你<strong>不能使用 ES6 解构</strong>，因为它会消除 prop 的响应性。</p>
+<p>如果需要解构 prop，可以通过使用 <code>setup</code> 函数中的 <a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/reactivity-fundamentals.html#%E5%93%8D%E5%BA%94%E5%BC%8F%E7%8A%B6%E6%80%81%E8%A7%A3%E6%9E%84"><code>toRefs</code></a> 来安全地完成此操作。</p>
+<pre><code class="js">// MyBook.vue
+
+import &#123; toRefs &#125; from &#39;vue&#39;
+
+setup(props) &#123;
+    const &#123; title &#125; = toRefs(props)
+
+    console.log(title.value)
+&#125;
+</code></pre>
+<h3 id="上下文"><a href="#上下文" class="headerlink" title="#上下文"></a><a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-setup.html#%E4%B8%8A%E4%B8%8B%E6%96%87">#</a>上下文</h3><p>传递给 <code>setup</code> 函数的第二个参数是 <code>context</code>。<code>context</code> 是一个普通的 JavaScript 对象，它暴露三个组件的 property：</p>
+<pre><code class="js">// MyBook.vue
+
+export default &#123;
+  setup(props, context) &#123;
+    // Attribute (非响应式对象)
+    console.log(context.attrs)
+
+    // 插槽 (非响应式对象)
+    console.log(context.slots)
+
+    // 触发事件 (方法)
+    console.log(context.emit)
+  &#125;
+&#125;
+</code></pre>
+<p><code>context</code> 是一个普通的 JavaScript 对象，也就是说，它不是响应式的，这意味着你可以安全地对 <code>context</code> 使用 ES6 解构。</p>
+<pre><code class="js">// MyBook.vue
+export default &#123;
+  setup(props, &#123; attrs, slots, emit &#125;) &#123;
+    ...
+  &#125;
+&#125;
+</code></pre>
+<p><code>attrs</code> 和 <code>slots</code> 是有状态的对象，它们总是会随组件本身的更新而更新。这意味着你应该避免对它们进行解构，并始终以 <code>attrs.x</code> 或 <code>slots.x</code> 的方式引用 property。请注意，与 <code>props</code> 不同，<code>attrs</code> 和 <code>slots</code> 是<strong>非</strong>响应式的。如果你打算根据 <code>attrs</code> 或 <code>slots</code> 更改应用副作用，那么应该在 <code>onUpdated</code> 生命周期钩子中执行此操作。</p>
+<h2 id="访问组件的-property"><a href="#访问组件的-property" class="headerlink" title="#访问组件的 property"></a><a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-setup.html#%E8%AE%BF%E9%97%AE%E7%BB%84%E4%BB%B6%E7%9A%84-property">#</a>访问组件的 property</h2><p>执行 <code>setup</code> 时，组件实例尚未被创建。因此，你只能访问以下 property：</p>
+<ul>
+<li><code>props</code></li>
+<li><code>attrs</code></li>
+<li><code>slots</code></li>
+<li><code>emit</code></li>
+</ul>
+<p>换句话说，你<strong>将无法访问</strong>以下组件选项：</p>
+<ul>
+<li><code>data</code></li>
+<li><code>computed</code></li>
+<li><code>methods</code></li>
+</ul>
+<h2 id="结合模板使用"><a href="#结合模板使用" class="headerlink" title="#结合模板使用"></a><a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-setup.html#%E7%BB%93%E5%90%88%E6%A8%A1%E6%9D%BF%E4%BD%BF%E7%94%A8">#</a>结合模板使用</h2><p>如果 <code>setup</code> 返回一个对象，则可以在组件的模板中像传递给 <code>setup</code> 的 <code>props</code> property 一样访问该对象的 property：</p>
+<pre><code class="javascript">&lt;!-- MyBook.vue --&gt;
+&lt;template&gt;
+  &lt;div&gt;&#123;&#123; readersNumber &#125;&#125; &#123;&#123; book.title &#125;&#125;&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  import &#123; ref, reactive &#125; from &#39;vue&#39;
+
+  export default &#123;
+    setup() &#123;
+      const readersNumber = ref(0)
+      const book = reactive(&#123; title: &#39;Vue 3 Guide&#39; &#125;)
+
+      // expose to template
+      return &#123;
+        readersNumber,
+        book
+      &#125;
+    &#125;
+  &#125;
+&lt;/script&gt;
+</code></pre>
+<p>注意，从 <code>setup</code> 返回的 <a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/api/refs-api.html#ref">refs</a> 在模板中访问时是<a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/reactivity-fundamentals.html#ref-%E8%A7%A3%E5%BC%80">被自动解开</a>的，因此不应在模板中使用 <code>.value</code>。</p>
+<h2 id="使用渲染函数"><a href="#使用渲染函数" class="headerlink" title="#使用渲染函数"></a><a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-setup.html#%E4%BD%BF%E7%94%A8%E6%B8%B2%E6%9F%93%E5%87%BD%E6%95%B0">#</a>使用渲染函数</h2><p><code>setup</code> 还可以返回一个渲染函数，该函数可以直接使用在同一作用域中声明的响应式状态：</p>
+<pre><code class="js">// MyBook.vue
+
+import &#123; h, ref, reactive &#125; from &#39;vue&#39;
+
+export default &#123;
+  setup() &#123;
+    const readersNumber = ref(0)
+    const book = reactive(&#123; title: &#39;Vue 3 Guide&#39; &#125;)
+    // Please note that we need to explicitly expose ref value here
+    return () =&gt; h(&#39;div&#39;, [readersNumber.value, book.title])
+  &#125;
+&#125;
+</code></pre>
+<h2 id="使用-this"><a href="#使用-this" class="headerlink" title="#使用 this"></a><a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/guide/composition-api-setup.html#%E4%BD%BF%E7%94%A8-this">#</a>使用 <code>this</code></h2><p><strong>在 <code>setup()</code> 内部，<code>this</code> 不会是该活跃实例的引用</strong>，因为 <code>setup()</code> 是在解析其它组件选项之前被调用的，所以 <code>setup()</code> 内部的 <code>this</code> 的行为与其它选项中的 <code>this</code> 完全不同。这在和其它选项式 API 一起使用 <code>setup()</code> 时可能会导致混淆。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://houpai.github.io/2021/05/31/Vue3%E7%AC%94%E8%AE%B0%20---%20setup/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue3/" rel="tag">Vue3</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/06/01/%E6%90%AD%E5%BB%BAts%E7%AE%80%E6%98%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            搭建ts简易开发环境
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/05/28/%E4%BD%BF%E7%94%A8npm%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AAvue%E7%BB%84%E4%BB%B6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">使用npm发布一个vue组件</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "TFvQenFJGwvlrbLWvshSW3FJ-gzGzoHsz",
+    app_key: "m7VUh44S9zqdyh6u5i53hK17",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+  .vpower {
+    display: none !important;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021-2022
+        <i class="ri-heart-fill heart_icon"></i> houpai
+      </li>
+    </ul>
+<!--    <ul>-->
+<!--      <li>-->
+<!--        -->
+<!--        -->
+<!--        -->
+<!--        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动-->
+<!--        <span class="division">|</span>-->
+<!--        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>-->
+<!--        -->
+<!--      </li>-->
+<!--    </ul>-->
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="http://www.beian.miit.gov.cn/" target="_black" rel="nofollow">辽ICP备2021002704号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/me.jpg" alt="houpai"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://vvip-houpai.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about/me.html">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯卡布奇诺吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/wechat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+<!-- hexo injector body_end start -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+
+<script src="/lib/codeBlock/codeBlockFuction.js"></script>
+
+<script src="/lib/codeBlock/codeLang.js"></script>
+
+<script src="/lib/codeBlock/codeCopy.js"></script>
+
+<link rel="stylesheet" href="/lib/codeBlock/matery.css">
+<!-- hexo injector body_end end --></body>
+
+</html>
