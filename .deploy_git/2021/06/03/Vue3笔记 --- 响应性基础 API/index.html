@@ -1,1056 +1,219 @@
-<!DOCTYPE html>
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Vue3笔记 --- 响应性基础API | houpai</title><meta name="keywords" content="Vue3"><meta name="author" content="houpai"><meta name="copyright" content="houpai"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录整理Vue3的响应性API…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue3笔记 --- 响应性基础API">
+<meta property="og:url" content="https://houpai.github.io/2021/06/03/Vue3%E7%AC%94%E8%AE%B0%20---%20%E5%93%8D%E5%BA%94%E6%80%A7%E5%9F%BA%E7%A1%80%20API/index.html">
+<meta property="og:site_name" content="houpai">
+<meta property="og:description" content="记录整理Vue3的响应性API…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg">
+<meta property="article:published_time" content="2021-06-03T02:09:55.000Z">
+<meta property="article:modified_time" content="2022-06-06T03:29:34.048Z">
+<meta property="article:author" content="houpai">
+<meta property="article:tag" content="Vue3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://houpai.github.io/2021/06/03/Vue3%E7%AC%94%E8%AE%B0%20---%20%E5%93%8D%E5%BA%94%E6%80%A7%E5%9F%BA%E7%A1%80%20API/"><link rel="preconnect" href="//fastly.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vue3笔记 --- 响应性基础API',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-06 11:29:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-<html lang="zh-CN">
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
 
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
 
-<head>
-    <meta charset="utf-8"/>
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-    
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <title>
-        Vue3笔记 --- 响应性基础API |
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-        houpai
-    </title>
-  <meta name="generator" content="hexo-theme-ayer">
-    
-        <link rel="shortcut icon" href="/favicon.ico"/>
-    
-    
-<link rel="stylesheet" href="/dist/main.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
-    
-<link rel="stylesheet" href="/css/custom.css">
-
-    
-        <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-    
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css"
-          crossorigin>
-
-    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
-
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-    <style>
-        .todark, .totop {
-            background-color: #999 !important;
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
         }
-
-        #daodream-container .daodream-launcher-button {
-            width: 3.2rem !important;
-            height: 3.2rem !important;
-            background-size: 3.2rem !important;
-        }
-
-        #daodream-container .daodream-launcher {
-            width: 3.2rem !important;
-            height: 3.2rem !important;
-            right: 50px !important;
-            bottom: 5rem !important;
-            transform: scale(1.2) !important;
-        }
-
-        .daodream-powered-by {
-            display: none !important;
-        }
-
-        body.darkmode .todark, body.darkmode .totop {
-            background-color: #ffffff !important;
-        }
-
-        @media (max-width: 768px) {
-            #daodream-container .daodream-launcher {
-                right: 10px !important;
-            }
-        }
-
-    </style>
-    <script>
-      (function (i, s, o, g, r, a, m) {
-        i["DaoVoiceObject"] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        a.charset = "utf-8";
-        m.parentNode.insertBefore(a, m)
-      })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/5d756096.js", "daovoice")
-      daovoice('init', {
-        app_id: "5d756096"
-      });
-      daovoice('update');
-
-    </script>
+      }
     
-
-    
-
-<link rel="alternate" href="/atom.xml" title="houpai" type="application/atom+xml">
-</head>
-
-</html>
-
-
-<body>
-  <div id="app">
-    
-      
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
-      
-    <main class="content on">
-      <section class="outer">
-  <article
-  id="post-Vue3笔记 --- 响应性基础 API"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Vue3笔记 --- 响应性基础API
-</h1>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/06/03/Vue3%E7%AC%94%E8%AE%B0%20---%20%E5%93%8D%E5%BA%94%E6%80%A7%E5%9F%BA%E7%A1%80%20API/" class="article-date">
-  <time datetime="2021-06-03T02:09:55.000Z" itemprop="datePublished">2021-06-03</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-  
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.9k</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">9 分钟</span>
-        </span>
-    </span>
-</div>
- 
-    </div>
-      <style>
-    .tocbot::-webkit-scrollbar { width: 0 !important }
-    .tocbot .toc-list-item {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
     }
-    .is-position-fixed {
-        right: 8rem;
-    }
-</style>
-
-    <div class="tocbot" style="bottom: 0;overflow-y: scroll"></div>
-
-
-
-
-  
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>记录整理Vue3的响应性API…</p>
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="houpai" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGodde27b8860204eff9b04d6fd262db6ae!400x400.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">houpai</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Vue3笔记 --- 响应性基础API</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-03T02:09:55.000Z" title="发表于 2021-06-03 10:09:55">2021-06-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-06T03:29:34.048Z" title="更新于 2022-06-06 11:29:34">2022-06-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vue3笔记 --- 响应性基础API"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>记录整理Vue3的响应性API…</p>
 <span id="more"></span>
 <h4 id="响应性基础-API"><a href="#响应性基础-API" class="headerlink" title="响应性基础 API"></a>响应性基础 API</h4><p>Vue3 提供了两种方式构建响应式数据：ref 和 reactive<br>ref 用于构建简单值的响应式数据，基于 Object.defineProperty 监听 value 值<br>reactive 用于构建复杂的响应式数据，基于 Proxy 对数据进行深度监听</p>
 <h5 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h5><p>接受一个内部值并返回一个响应式且可变的 ref 对象。ref 对象具有指向内部值的单个 property <code>.value</code>。</p>
 <p>有时我们可能需要为 ref 的内部值指定复杂类型。我们可以通过在调用 <code>ref</code> 来覆盖默认推断时传递一个泛型参数来简洁地做到这一点：</p>
-<pre><code class="ts">const foo = ref&lt;string | number&gt;(&#39;foo&#39;) // foo&#39;s type: Ref&lt;string | number&gt;
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = ref&lt;<span class="built_in">string</span> | <span class="built_in">number</span>&gt;(<span class="string">&#x27;foo&#x27;</span>) <span class="comment">// foo&#x27;s type: Ref&lt;string | number&gt;</span></span><br><span class="line"></span><br><span class="line">foo.<span class="property">value</span> = <span class="number">123</span> <span class="comment">// ok!</span></span><br></pre></td></tr></table></figure>
 
-foo.value = 123 // ok!
-</code></pre>
 <p>如果泛型的类型未知，建议将 <code>ref</code> 转换为 <code>Ref&lt;T&gt;</code>：</p>
-<pre><code class="js">function useState&lt;State extends string&gt;(initial: State) &#123;
-  const state = ref(initial) as Ref&lt;State&gt; // state.value -&gt; State extends string
-  return state
-&#125;
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> useState&lt;<span class="title class_">State</span> <span class="keyword">extends</span> string&gt;(<span class="attr">initial</span>: <span class="title class_">State</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> state = <span class="title function_">ref</span>(initial) <span class="keyword">as</span> <span class="title class_">Ref</span>&lt;<span class="title class_">State</span>&gt; <span class="comment">// state.value -&gt; State extends string</span></span><br><span class="line">  <span class="keyword">return</span> state</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h5 id="toRef"><a href="#toRef" class="headerlink" title="toRef"></a>toRef</h5><p>可以用来为源响应式对象上的 property 性创建一个 <a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/api/refs-api.html#ref"><code>ref</code></a>。然后可以将 ref 传递出去，从而保持对其源 property 的响应式连接。接收两个参数：源响应式对象和属性名，返回一个ref数据。例如使用父组件传递的props数据时，要引用props的某个属性且要保持响应式连接时就很有用。<code>详细示例在文章结尾的代码块</code></p>
 <ul>
 <li>获取数据值的时候需要加.value</li>
 <li><code>toRef后的ref数据不是原始数据的拷贝，而是引用，改变结果数据的值也会同时改变原始数据</code></li>
 </ul>
-<pre><code class="js">import &#123; defineComponent, toRef &#125; from &#39;vue&#39;
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineComponent, toRef &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineComponent</span>(&#123;</span><br><span class="line">  <span class="attr">props</span>: [title],</span><br><span class="line">  </span><br><span class="line">  setup (props) &#123;</span><br><span class="line">    <span class="comment">// 创建变量myTitle</span></span><br><span class="line">    <span class="keyword">const</span> myTitle = <span class="title function_">toRef</span>(props, <span class="string">&#x27;title&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(myTitle.<span class="property">value</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-export default defineComponent(&#123;
-  props: [title],
-  
-  setup (props) &#123;
-    // 创建变量myTitle
-    const myTitle = toRef(props, &#39;title&#39;)
-    console.log(myTitle.value)
-  &#125;
-&#125;)
-</code></pre>
+
+
 <h5 id="toRefs"><a href="#toRefs" class="headerlink" title="toRefs"></a>toRefs</h5><p>将响应式对象转换为普通对象，其中结果对象的每个 property 都是指向原始对象相应 property 的<a target="_blank" rel="noopener" href="https://vue3js.cn/docs/zh/api/refs-api.html#ref"><code>ref</code></a>。</p>
-<pre><code class="vuejs">&lt;template&gt;
-  &lt;div&gt;
-    &lt;h1&gt;解构响应式对象数据&lt;/h1&gt;
-    &lt;p&gt;Username: &#123;&#123;username&#125;&#125;&lt;/p&gt;
-    &lt;p&gt;Age: &#123;&#123;age&#125;&#125;&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;解构响应式对象数据&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;Username: &#123;&#123;username&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;Age: &#123;&#123;age&#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; reactive, toRefs &#125; from &quot;vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;DestructReactiveObject&quot;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const user = reactive(&#123;</span><br><span class="line">      username: &quot;haihong&quot;,</span><br><span class="line">      age: 10000,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return &#123; ...toRefs(user) &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-&lt;script&gt;
-import &#123; reactive, toRefs &#125; from &quot;vue&quot;;
-
-export default &#123;
-  name: &quot;DestructReactiveObject&quot;,
-  setup() &#123;
-    const user = reactive(&#123;
-      username: &quot;haihong&quot;,
-      age: 10000,
-    &#125;);
-
-    return &#123; ...toRefs(user) &#125;;
-  &#125;,
-&#125;;
-&lt;/script&gt;
-</code></pre>
 <p>当想要从一个组合逻辑函数中返回响应式对象时，用 toRefs 是很有效的，该 API 让消费组件可以 解构 / 扩展（使用 … 操作符）返回的对象，并不会丢失响应性：</p>
-<pre><code class="js">function useFeatureX() &#123;
-  const state = reactive(&#123;
-    foo: 1,
-    bar: 2,
-  &#125;)
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">useFeatureX</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> state = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">    <span class="attr">foo</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">bar</span>: <span class="number">2</span>,</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 对 state 的逻辑操作</span></span><br><span class="line">  <span class="comment">// ....</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 返回时将属性都转为 ref</span></span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">toRefs</span>(state)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 可以解构，不会丢失响应性</span></span><br><span class="line">    <span class="keyword">const</span> &#123; foo, bar &#125; = <span class="title function_">useFeatureX</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      foo,</span><br><span class="line">      bar,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  // 对 state 的逻辑操作
-  // ....
 
-  // 返回时将属性都转为 ref
-  return toRefs(state)
-&#125;
 
-export default &#123;
-  setup() &#123;
-    // 可以解构，不会丢失响应性
-    const &#123; foo, bar &#125; = useFeatureX()
-
-    return &#123;
-      foo,
-      bar,
-    &#125;
-  &#125;,
-&#125;
-</code></pre>
 <h5 id="readonly-–-深层”的只读-代理"><a href="#readonly-–-深层”的只读-代理" class="headerlink" title="readonly – 深层”的只读**代理"></a>readonly – 深层”的只读**代理</h5><p>传入一个对象（响应式或普通）或 ref，返回一个原始对象的只读代理。一个只读的代理是“深层的”，对象内部任何嵌套的属性也都是只读的。</p>
-<pre><code class="vuejs">&lt;template&gt;
-  &lt;div&gt;
-    &lt;h1&gt;readonly - “深层”的只读代理&lt;/h1&gt;
-    &lt;p&gt;original.count: &#123;&#123;original.count&#125;&#125;&lt;/p&gt;
-    &lt;p&gt;copy.count: &#123;&#123;copy.count&#125;&#125;&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-import &#123; reactive, readonly &#125; from &quot;vue&quot;;
-
-export default &#123;
-  name: &quot;Readonly&quot;,
-  setup() &#123;
-    const original = reactive(&#123; count: 0 &#125;);
-    const copy = readonly(original);
-
-    setInterval(() =&gt; &#123;
-      original.count++;
-      copy.count++; // 报警告，Set operation on key &quot;count&quot; failed: target is readonly. Proxy &#123;count: 1&#125;
-    &#125;, 1000);
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;readonly - “深层”的只读代理&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;original.count: &#123;&#123;original.count&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;copy.count: &#123;&#123;copy.count&#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; reactive, readonly &#125; from &quot;vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;Readonly&quot;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const original = reactive(&#123; count: 0 &#125;);</span><br><span class="line">    const copy = readonly(original);</span><br><span class="line"></span><br><span class="line">    setInterval(() =&gt; &#123;</span><br><span class="line">      original.count++;</span><br><span class="line">      copy.count++; // 报警告，Set operation on key &quot;count&quot; failed: target is readonly. Proxy &#123;count: 1&#125;</span><br><span class="line">    &#125;, 1000);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return &#123; original, copy &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 
-    return &#123; original, copy &#125;;
-  &#125;,
-&#125;;
-&lt;/script&gt;
-</code></pre>
+
 <h5 id="reactive"><a href="#reactive" class="headerlink" title="reactive"></a>reactive</h5><p>返回对象的响应式副本,完整示例如下</p>
-<pre><code class="vuejs">&lt;template&gt;
-  &lt;div class=&quot;about&quot;&gt;
-    &lt;button @click.stop=&quot;obj.increase&quot;&gt;increase&lt;/button&gt;
-
-    &lt;button @click.stop=&quot;reverse&quot;&gt;reverse&lt;/button&gt;
-
-    &lt;h1&gt;&#123;&#123; obj.count &#125;&#125;&lt;/h1&gt;
-
-    &lt;h1&gt;&#123;&#123; obj.double &#125;&#125;&lt;/h1&gt;
-
-    &lt;h1&gt;&#123;&#123; obj.title &#125;&#125;&lt;/h1&gt;
-
-    --------------------
-
-    &lt;h1&gt;&#123;&#123; count &#125;&#125;&lt;/h1&gt;
-
-    &lt;h1&gt;&#123;&#123; double &#125;&#125;&lt;/h1&gt;
-
-    &lt;h1&gt;&#123;&#123; title &#125;&#125;&lt;/h1&gt;
-
-    &lt;componentA :count=&quot;obj.count&quot;/&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;about&quot;&gt;</span><br><span class="line">    &lt;button @click.stop=&quot;obj.increase&quot;&gt;increase&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;button @click.stop=&quot;reverse&quot;&gt;reverse&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h1&gt;&#123;&#123; obj.count &#125;&#125;&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h1&gt;&#123;&#123; obj.double &#125;&#125;&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h1&gt;&#123;&#123; obj.title &#125;&#125;&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">    --------------------</span><br><span class="line"></span><br><span class="line">    &lt;h1&gt;&#123;&#123; count &#125;&#125;&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h1&gt;&#123;&#123; double &#125;&#125;&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h1&gt;&#123;&#123; title &#125;&#125;&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">    &lt;componentA :count=&quot;obj.count&quot;/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot;&gt;</span><br><span class="line"></span><br><span class="line">  import &#123;reactive, ref, computed, toRefs &#125; from &quot;vue&quot;;</span><br><span class="line"></span><br><span class="line">  import componentA from &quot;./components/componentA.vue&quot;;</span><br><span class="line"></span><br><span class="line">  interface ObjProps &#123;</span><br><span class="line">    title: string;</span><br><span class="line">    count: number;</span><br><span class="line">    double: number;</span><br><span class="line">    reverse: () =&gt; void;</span><br><span class="line">    increase: () =&gt; void;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  export default &#123;</span><br><span class="line">    components: &#123;componentA&#125;,</span><br><span class="line">    setup(props: any) &#123;</span><br><span class="line">      // ref返回普通数据类型的响应式副本</span><br><span class="line">      const count = ref(0);</span><br><span class="line">      // reactive返回对象的响应式副本</span><br><span class="line">      const obj: ObjProps = reactive(&#123;</span><br><span class="line">        title: &quot;hello world&quot;,</span><br><span class="line">        count: 0,</span><br><span class="line">        double: computed(() =&gt; obj.count * 2),</span><br><span class="line">        reverse: () =&gt; &#123;</span><br><span class="line">          obj.title = obj.title.split(&quot;&quot;).reverse().join(&quot;&quot;);</span><br><span class="line">        &#125;,</span><br><span class="line">        increase: () =&gt; &#123;</span><br><span class="line">          obj.count++;</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;);</span><br><span class="line">	  const count = toRef(obj, &#x27;count&#x27;)</span><br><span class="line">      const objToRefs = toRefs(obj)</span><br><span class="line">      return &#123;</span><br><span class="line">        obj,</span><br><span class="line">        title: objToRefs.title,</span><br><span class="line">        count: objToRefs.count,</span><br><span class="line">        double: objToRefs.double,</span><br><span class="line">        reverse: objToRefs.reverse,</span><br><span class="line">        increase: objToRefs.increase</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 
-&lt;script lang=&quot;ts&quot;&gt;
 
-  import &#123;reactive, ref, computed, toRefs &#125; from &quot;vue&quot;;
-
-  import componentA from &quot;./components/componentA.vue&quot;;
-
-  interface ObjProps &#123;
-    title: string;
-    count: number;
-    double: number;
-    reverse: () =&gt; void;
-    increase: () =&gt; void;
-  &#125;
-
-  export default &#123;
-    components: &#123;componentA&#125;,
-    setup(props: any) &#123;
-      // ref返回普通数据类型的响应式副本
-      const count = ref(0);
-      // reactive返回对象的响应式副本
-      const obj: ObjProps = reactive(&#123;
-        title: &quot;hello world&quot;,
-        count: 0,
-        double: computed(() =&gt; obj.count * 2),
-        reverse: () =&gt; &#123;
-          obj.title = obj.title.split(&quot;&quot;).reverse().join(&quot;&quot;);
-        &#125;,
-        increase: () =&gt; &#123;
-          obj.count++;
-        &#125;,
-      &#125;);
-      const count = toRef(obj, &#39;count&#39;)
-      const objToRefs = toRefs(obj)
-      return &#123;
-        obj,
-        title: objToRefs.title,
-        count: objToRefs.count,
-        double: objToRefs.double,
-        reverse: objToRefs.reverse,
-        increase: objToRefs.increase
-      &#125;;
-    &#125;,
-  &#125;;
-&lt;/script&gt;
-</code></pre>
 <h5 id="watchEffect"><a href="#watchEffect" class="headerlink" title="watchEffect"></a>watchEffect</h5><p>立即执行传入的一个函数，并响应式追踪其依赖，并在其依赖变更时重新运行该函数。</p>
-<pre><code class="vuejs">&lt;template&gt;
-  &lt;div&gt;
-    &lt;h1&gt;watchEffect - 侦听器&lt;/h1&gt;
-    &lt;p&gt;&#123;&#123;data.count&#125;&#125;&lt;/p&gt;
-    &lt;button @click=&quot;stop&quot;&gt;手动关闭侦听器&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;watchEffect - 侦听器&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;data.count&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;stop&quot;&gt;手动关闭侦听器&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; reactive, watchEffect &#125; from &quot;vue&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;WatchEffect&quot;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const data = reactive(&#123; count: 1 &#125;);</span><br><span class="line">    const stop = watchEffect(() =&gt; console.log(`侦听器：$&#123;data.count&#125;`));</span><br><span class="line">    setInterval(() =&gt; &#123;</span><br><span class="line">      data.count++;</span><br><span class="line">    &#125;, 1000);</span><br><span class="line">    return &#123; data, stop &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-&lt;script&gt;
-import &#123; reactive, watchEffect &#125; from &quot;vue&quot;;
-export default &#123;
-  name: &quot;WatchEffect&quot;,
-  setup() &#123;
-    const data = reactive(&#123; count: 1 &#125;);
-    const stop = watchEffect(() =&gt; console.log(`侦听器：$&#123;data.count&#125;`));
-    setInterval(() =&gt; &#123;
-      data.count++;
-    &#125;, 1000);
-    return &#123; data, stop &#125;;
-  &#125;,
-&#125;;
-&lt;/script&gt;
-</code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603154819179.png" alt="image-20210603154819179"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603154819179.png" alt="image-20210603154819179"></p>
 <h5 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h5><p>对比<code>watchEffect</code>，<code>watch</code>允许我们：</p>
 <ul>
 <li>懒执行副作用，也就是说仅在侦听的源变更时才执行回调；</li>
 <li><code>更明确哪些状态的改变会触发侦听器重新运行副作用；</code></li>
 <li>访问侦听状态变化前后的值。</li>
 </ul>
-<pre><code class="vuejs">&lt;template&gt;
-  &lt;div&gt;
-    &lt;h1&gt;watch - 侦听器&lt;/h1&gt;
-    &lt;p&gt;count1: &#123;&#123;data.count1&#125;&#125;&lt;/p&gt;
-    &lt;p&gt;count2: &#123;&#123;data.count2&#125;&#125;&lt;/p&gt;
-    &lt;button @click=&quot;stopAll&quot;&gt;Stop All&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;watch - 侦听器&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;count1: &#123;&#123;data.count1&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;count2: &#123;&#123;data.count2&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;stopAll&quot;&gt;Stop All&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; reactive, watch &#125; from &quot;vue&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;Watch&quot;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const data = reactive(&#123; count1: 0, count2: 0 &#125;);</span><br><span class="line">    // 侦听单个数据源</span><br><span class="line">    const stop1 = watch(data, () =&gt;</span><br><span class="line">      console.log(&quot;watch1&quot;, data.count1, data.count2)</span><br><span class="line">    );</span><br><span class="line">    // 侦听多个数据源</span><br><span class="line">    const stop2 = watch([data], () =&gt; &#123;</span><br><span class="line">      console.log(&quot;watch2&quot;, data.count1, data.count2);</span><br><span class="line">    &#125;);</span><br><span class="line">    setInterval(() =&gt; &#123;</span><br><span class="line">      data.count1++;</span><br><span class="line">    &#125;, 1000);</span><br><span class="line">    return &#123;</span><br><span class="line">      data,</span><br><span class="line">      stopAll: () =&gt; &#123;</span><br><span class="line">        stop1();</span><br><span class="line">        stop2();</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-&lt;script&gt;
-import &#123; reactive, watch &#125; from &quot;vue&quot;;
-export default &#123;
-  name: &quot;Watch&quot;,
-  setup() &#123;
-    const data = reactive(&#123; count1: 0, count2: 0 &#125;);
-    // 侦听单个数据源
-    const stop1 = watch(data, () =&gt;
-      console.log(&quot;watch1&quot;, data.count1, data.count2)
-    );
-    // 侦听多个数据源
-    const stop2 = watch([data], () =&gt; &#123;
-      console.log(&quot;watch2&quot;, data.count1, data.count2);
-    &#125;);
-    setInterval(() =&gt; &#123;
-      data.count1++;
-    &#125;, 1000);
-    return &#123;
-      data,
-      stopAll: () =&gt; &#123;
-        stop1();
-        stop2();
-      &#125;,
-    &#125;;
-  &#125;,
-&#125;;
-&lt;/script&gt;
-</code></pre>
+
+
 <h5 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h5><p>返回一个默认不可手动修改的 ref 对象。</p>
 <ul>
 <li><h6 id="只传-getter"><a href="#只传-getter" class="headerlink" title="只传 getter"></a>只传 getter</h6></li>
 </ul>
-<pre><code class="vuejs">&lt;template&gt;
-  &lt;div&gt;
-    &lt;h1&gt;computed - 计算属性&lt;/h1&gt;
-    &lt;p&gt;&#123;&#123;username&#125;&#125;&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;computed - 计算属性&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;username&#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; reactive, computed &#125; from &quot;vue&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;Computed&quot;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const user = reactive(&#123; firstname: &quot;chen&quot;, lastname: &quot;haihong&quot; &#125;);</span><br><span class="line">    const username = computed(() =&gt; user.firstname + &quot; &quot; + user.lastname);</span><br><span class="line">    username.value = &quot;hello world&quot;; // 报警告，computed value is readonly</span><br><span class="line">    return &#123; username &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-&lt;script&gt;
-import &#123; reactive, computed &#125; from &quot;vue&quot;;
-export default &#123;
-  name: &quot;Computed&quot;,
-  setup() &#123;
-    const user = reactive(&#123; firstname: &quot;chen&quot;, lastname: &quot;haihong&quot; &#125;);
-    const username = computed(() =&gt; user.firstname + &quot; &quot; + user.lastname);
-    username.value = &quot;hello world&quot;; // 报警告，computed value is readonly
-    return &#123; username &#125;;
-  &#125;,
-&#125;;
-&lt;/script&gt;
-</code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603141847906.png" alt="image-20210603141847906"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603141847906.png" alt="image-20210603141847906"></p>
 <p>如果是这种使用方式，则会报错 ❌，而不是警告 ⚠️，</p>
-<pre><code class="javascript"> setup() &#123;
-    const user = reactive(&#123; firstname: &quot;chen&quot;, lastname: &quot;haihong&quot; &#125;);
-    const username = computed(&#123;
-      get: () =&gt; user.firstname + &quot; &quot; + user.lastname,
-    &#125;);
-    username.value = &quot;hello world&quot;; // ❌ computed value is readonly
-    return &#123; username &#125;;
-  &#125;,
-</code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603142037622.png" alt="image-20210603142037622"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="keyword">const</span> user = <span class="title function_">reactive</span>(&#123; <span class="attr">firstname</span>: <span class="string">&quot;chen&quot;</span>, <span class="attr">lastname</span>: <span class="string">&quot;haihong&quot;</span> &#125;);</span><br><span class="line">   <span class="keyword">const</span> username = <span class="title function_">computed</span>(&#123;</span><br><span class="line">     <span class="attr">get</span>: <span class="function">() =&gt;</span> user.<span class="property">firstname</span> + <span class="string">&quot; &quot;</span> + user.<span class="property">lastname</span>,</span><br><span class="line">   &#125;);</span><br><span class="line">   username.<span class="property">value</span> = <span class="string">&quot;hello world&quot;</span>; <span class="comment">// ❌ computed value is readonly</span></span><br><span class="line">   <span class="keyword">return</span> &#123; username &#125;;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603142037622.png" alt="image-20210603142037622"></p>
 <ul>
 <li><h6 id="同时传-getter、setter"><a href="#同时传-getter、setter" class="headerlink" title="同时传 getter、setter"></a>同时传 getter、setter</h6><p>创建一个可手动修改的计算状态。</p>
 </li>
 </ul>
-<pre><code class="vuejs">&lt;template&gt;
-  &lt;div&gt;
-    &lt;h1&gt;computed - 计算属性&lt;/h1&gt;
-    &lt;p&gt;firstname: &lt;input v-model=&quot;user.firstname&quot; /&gt;&lt;/p&gt;
-    &lt;p&gt;lastname: &lt;input v-model=&quot;user.lastname&quot; /&gt;&lt;/p&gt;
-    &lt;p&gt;username: &lt;input v-model=&quot;username&quot; /&gt;&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;computed - 计算属性&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;firstname: &lt;input v-model=&quot;user.firstname&quot; /&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;lastname: &lt;input v-model=&quot;user.lastname&quot; /&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;username: &lt;input v-model=&quot;username&quot; /&gt;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; reactive, computed &#125; from &quot;vue&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;Computed2&quot;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const user = reactive(&#123; firstname: &quot;Chen&quot;, lastname: &quot;Haihong&quot; &#125;);</span><br><span class="line">    const username = computed(&#123;</span><br><span class="line">      get: () =&gt; user.firstname + &quot; &quot; + user.lastname,</span><br><span class="line">      set: (value) =&gt; &#123;</span><br><span class="line">        const [firstname, lastname] = value.trim().split(&quot; &quot;);</span><br><span class="line">        user.firstname = firstname;</span><br><span class="line">        user.lastname = lastname;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">    return &#123; user, username &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-&lt;script&gt;
-import &#123; reactive, computed &#125; from &quot;vue&quot;;
-export default &#123;
-  name: &quot;Computed2&quot;,
-  setup() &#123;
-    const user = reactive(&#123; firstname: &quot;Chen&quot;, lastname: &quot;Haihong&quot; &#125;);
-    const username = computed(&#123;
-      get: () =&gt; user.firstname + &quot; &quot; + user.lastname,
-      set: (value) =&gt; &#123;
-        const [firstname, lastname] = value.trim().split(&quot; &quot;);
-        user.firstname = firstname;
-        user.lastname = lastname;
-      &#125;,
-    &#125;);
-    return &#123; user, username &#125;;
-  &#125;,
-&#125;;
-&lt;/script&gt;
-</code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603142503777.png" alt="image-20210603142503777"></p>
- 
-      <!-- reward -->
-      
-      <div id="reword-out">
-        <div id="reward-btn">
-          打赏
-        </div>
-      </div>
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <div class="declare">
-      <ul class="post-copyright">
-        <li>
-          <i class="ri-copyright-line"></i>
-          <strong>版权声明： </strong>
-          
-          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
-          
-        </li>
-      </ul>
-    </div>
-    
-    <footer class="article-footer">
-       
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://houpai.github.io/2021/06/03/Vue3%E7%AC%94%E8%AE%B0%20---%20%E5%93%8D%E5%BA%94%E6%80%A7%E5%9F%BA%E7%A1%80%20API/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue3/" rel="tag">Vue3</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-  <nav class="article-nav">
-    
-      <a href="/2021/06/09/Vue3%E7%AC%94%E8%AE%B0%20---%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Vue3笔记 --- 生命周期
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2021/06/01/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%20tsconfig.json%20%E6%8C%87%E5%8D%97/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">了不起的 tsconfig.json 指南</div>
-      </a>
-    
-  </nav>
-
-   
-<!-- valine评论 -->
-<div id="vcomments-box">
-  <div id="vcomments"></div>
-</div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
-<script>
-  new Valine({
-    el: "#vcomments",
-    app_id: "TFvQenFJGwvlrbLWvshSW3FJ-gzGzoHsz",
-    app_key: "m7VUh44S9zqdyh6u5i53hK17",
-    path: window.location.pathname,
-    avatar: "monsterid",
-    placeholder: "给我的文章加点评论吧~",
-    recordIP: true,
-  });
-  const infoEle = document.querySelector("#vcomments .info");
-  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
-    infoEle.childNodes.forEach(function (item) {
-      item.parentNode.removeChild(item);
-    });
-  }
-</script>
-<style>
-  #vcomments-box {
-    padding: 5px 30px;
-  }
-
-  @media screen and (max-width: 800px) {
-    #vcomments-box {
-      padding: 5px 0px;
-    }
-  }
-
-  #vcomments-box #vcomments {
-    background-color: #fff;
-  }
-
-  .v .vlist .vcard .vh {
-    padding-right: 20px;
-  }
-
-  .v .vlist .vcard {
-    padding-left: 10px;
-  }
-  .vpower {
-    display: none !important;
-  }
-</style>
-
- 
-   
-     
-</article>
-
-</section>
-      <footer class="footer">
-  <div class="outer">
-    <ul>
-      <li>
-        Copyrights &copy;
-        2021-2022
-        <i class="ri-heart-fill heart_icon"></i> houpai
-      </li>
-    </ul>
-<!--    <ul>-->
-<!--      <li>-->
-<!--        -->
-<!--        -->
-<!--        -->
-<!--        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动-->
-<!--        <span class="division">|</span>-->
-<!--        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>-->
-<!--        -->
-<!--      </li>-->
-<!--    </ul>-->
-    <ul>
-      <li>
-        
-        
-        <span>
-  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
-  <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
-</span>
-        
-      </li>
-    </ul>
-    <ul>
-      
-        <li>
-          <a href="http://www.beian.miit.gov.cn/" target="_black" rel="nofollow">辽ICP备2021002704号</a>
-        </li>
-        
-    </ul>
-    <ul>
-      
-    </ul>
-    <ul>
-      <li>
-        <!-- cnzz统计 -->
-        
-      </li>
-    </ul>
-  </div>
-</footer>
-
-      <div class="float_btns">
-        <div class="totop" id="totop">
-  <i class="ri-arrow-up-line"></i>
-</div>
-
-<div class="todark" id="todark">
-  <i class="ri-moon-line"></i>
-</div>
-
-      </div>
-    </main>
-    <aside class="sidebar on">
-      <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/me.jpg" alt="houpai"></a>
-  </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="https://vvip-houpai.lofter.com/">摄影</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/friends">友链</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about/me.html">关于我</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="搜索">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
-    <script>
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        document.querySelector('.content').classList.remove('on');
-        document.querySelector('.sidebar').classList.remove('on');
-      }
-    </script>
-    <div id="mask"></div>
-
-<!-- #reward -->
-<div id="reward">
-  <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯卡布奇诺吧~</p>
-  <div class="reward-box">
-    
-    <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/alipay.png">
-      <span class="reward-type">支付宝</span>
-    </div>
-    
-    
-    <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/wechat.png">
-      <span class="reward-type">微信</span>
-    </div>
-    
-  </div>
-</div>
-    
-<script src="/js/jquery-2.0.3.min.js"></script>
-
-
-<script src="/js/lazyload.min.js"></script>
-
-<!-- Tocbot -->
-
-
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: '.tocbot',
-    contentSelector: '.article-entry',
-    headingSelector: 'h1, h2, h3, h4, h5, h6',
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: 'main',
-    positionFixedSelector: '.tocbot',
-    positionFixedClass: 'is-position-fixed',
-    fixedSidebarOffset: 'auto'
-  });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
-
-<script src="/dist/main.js"></script>
-
-<!-- ImageViewer -->
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
-
-<script>
-    function viewer_init() {
-        let pswpElement = document.querySelectorAll('.pswp')[0];
-        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
-        $imgArr.forEach(($em, i) => {
-            $em.onclick = () => {
-                // slider展开状态
-                // todo: 这样不好，后面改成状态
-                if (document.querySelector('.left-col.show')) return
-                let items = []
-                $imgArr.forEach(($em2, i2) => {
-                    let img = $em2.getAttribute('data-idx', i2)
-                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
-                    let title = $em2.getAttribute('alt')
-                    // 获得原图尺寸
-                    const image = new Image()
-                    image.src = src
-                    items.push({
-                        src: src,
-                        w: image.width || $em2.width,
-                        h: image.height || $em2.height,
-                        title: title
-                    })
-                })
-                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
-                    index: parseInt(i)
-                });
-                gallery.init()
-            }
-        })
-    }
-    viewer_init()
-</script>
-
-<!-- MathJax -->
-
-<!-- Katex -->
-
-<!-- busuanzi  -->
-
-
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-<!-- ClickLove -->
-
-<!-- ClickBoom1 -->
-
-<!-- ClickBoom2 -->
-
-
-<script src="/js/clickBoom2.js"></script>
-
-
-<!-- CodeCopy -->
-
-
-<link rel="stylesheet" href="/css/clipboard.css">
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-  function wait(callback, seconds) {
-    var timelag = null;
-    timelag = window.setTimeout(callback, seconds);
-  }
-  !function (e, t, a) {
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      $(".article pre code").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
-        }
-      });
-      clipboard.on('success', function(e) {
-        let $btn = $(e.trigger);
-        $btn.addClass('copied');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-checkbox-circle-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-checkbox-circle-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-time-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-time-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-    }
-    initCopyCode();
-  }(window, document);
-</script>
-
-
-<!-- CanvasBackground -->
-
-
-<script src="/js/dz.js"></script>
-
-
-
-    
-  </div>
-<!-- hexo injector body_end start -->
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-
-<script src="/lib/codeBlock/codeBlockFuction.js"></script>
-
-<script src="/lib/codeBlock/codeLang.js"></script>
-
-<script src="/lib/codeBlock/codeCopy.js"></script>
-
-<link rel="stylesheet" href="/lib/codeBlock/matery.css">
-<!-- hexo injector body_end end --></body>
-
-</html>
+<p><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGo/image-20210603142503777.png" alt="image-20210603142503777"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://houpai.github.io">houpai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://houpai.github.io/2021/06/03/Vue3%E7%AC%94%E8%AE%B0%20---%20%E5%93%8D%E5%BA%94%E6%80%A7%E5%9F%BA%E7%A1%80%20API/">https://houpai.github.io/2021/06/03/Vue3%E7%AC%94%E8%AE%B0%20---%20%E5%93%8D%E5%BA%94%E6%80%A7%E5%9F%BA%E7%A1%80%20API/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://houpai.github.io" target="_blank">houpai</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Vue3/">Vue3</a></div><div class="post_share"><div class="social-share" data-image="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/06/09/Vue3%E7%AC%94%E8%AE%B0%20---%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"><img class="prev-cover" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vue3笔记 --- 生命周期</div></div></a></div><div class="next-post pull-right"><a href="/2021/06/01/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%20tsconfig.json%20%E6%8C%87%E5%8D%97/"><img class="next-cover" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">了不起的 tsconfig.json 指南</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/08/19/Vue3%E7%AC%94%E8%AE%B0%20---%20Teleport/" title="Vue3笔记 --- Teleport"><img class="cover" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-19</div><div class="title">Vue3笔记 --- Teleport</div></div></a></div><div><a href="/2021/05/31/Vue3%E7%AC%94%E8%AE%B0%20---%20setup/" title="Vue3笔记 --- setup"><img class="cover" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-31</div><div class="title">Vue3笔记 --- setup</div></div></a></div><div><a href="/2021/06/15/Vue3%E7%AC%94%E8%AE%B0%20---%20%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E7%A4%BA%E4%BE%8B/" title="Vue3笔记 --- 代码复用示例"><img class="cover" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-15</div><div class="title">Vue3笔记 --- 代码复用示例</div></div></a></div><div><a href="/2021/06/09/Vue3%E7%AC%94%E8%AE%B0%20---%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue3笔记 --- 生命周期"><img class="cover" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-09</div><div class="title">Vue3笔记 --- 生命周期</div></div></a></div><div><a href="/2021/08/23/Vue%E7%AC%94%E8%AE%B0%20---%20Suspense/" title="Vue3笔记 --- Suspense"><img class="cover" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-23</div><div class="title">Vue3笔记 --- Suspense</div></div></a></div><div><a href="/2021/06/01/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%20tsconfig.json%20%E6%8C%87%E5%8D%97/" title="了不起的 tsconfig.json 指南"><img class="cover" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-01</div><div class="title">了不起的 tsconfig.json 指南</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGodde27b8860204eff9b04d6fd262db6ae!400x400.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">houpai</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/houpai" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:houpai@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%80%A7%E5%9F%BA%E7%A1%80-API"><span class="toc-number">1.</span> <span class="toc-text">响应性基础 API</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ref"><span class="toc-number">1.1.</span> <span class="toc-text">ref</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#toRef"><span class="toc-number">1.2.</span> <span class="toc-text">toRef</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#toRefs"><span class="toc-number">1.3.</span> <span class="toc-text">toRefs</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#readonly-%E2%80%93-%E6%B7%B1%E5%B1%82%E2%80%9D%E7%9A%84%E5%8F%AA%E8%AF%BB-%E4%BB%A3%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text">readonly – 深层”的只读**代理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#reactive"><span class="toc-number">1.5.</span> <span class="toc-text">reactive</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#watchEffect"><span class="toc-number">1.6.</span> <span class="toc-text">watchEffect</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#watch"><span class="toc-number">1.7.</span> <span class="toc-text">watch</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#computed"><span class="toc-number">1.8.</span> <span class="toc-text">computed</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%8F%AA%E4%BC%A0-getter"><span class="toc-number">1.8.1.</span> <span class="toc-text">只传 getter</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%90%8C%E6%97%B6%E4%BC%A0-getter%E3%80%81setter"><span class="toc-number">1.8.2.</span> <span class="toc-text">同时传 getter、setter</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/10/14/100%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%BF%B7%E4%BD%A0Vue/" title="100行代码实现一个迷你Vue"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="100行代码实现一个迷你Vue"/></a><div class="content"><a class="title" href="/2021/10/14/100%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%BF%B7%E4%BD%A0Vue/" title="100行代码实现一个迷你Vue">100行代码实现一个迷你Vue</a><time datetime="2021-10-14T01:20:55.000Z" title="发表于 2021-10-14 09:20:55">2021-10-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/14/%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8ProtocolBuffer%E7%9A%84%E6%96%B9%E6%B3%95/" title="在微信小程序中使用ProtocolBuffer的方法"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在微信小程序中使用ProtocolBuffer的方法"/></a><div class="content"><a class="title" href="/2021/10/14/%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8ProtocolBuffer%E7%9A%84%E6%96%B9%E6%B3%95/" title="在微信小程序中使用ProtocolBuffer的方法">在微信小程序中使用ProtocolBuffer的方法</a><time datetime="2021-10-14T01:09:55.000Z" title="发表于 2021-10-14 09:09:55">2021-10-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/01/element-ui%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E7%BB%84%E4%BB%B6-%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E8%8C%83%E5%9B%B4%E9%99%90%E5%88%B6/" title="element-ui时间选择组件-时间选择范围限制"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="element-ui时间选择组件-时间选择范围限制"/></a><div class="content"><a class="title" href="/2021/09/01/element-ui%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E7%BB%84%E4%BB%B6-%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E8%8C%83%E5%9B%B4%E9%99%90%E5%88%B6/" title="element-ui时间选择组件-时间选择范围限制">element-ui时间选择组件-时间选择范围限制</a><time datetime="2021-09-01T01:09:55.000Z" title="发表于 2021-09-01 09:09:55">2021-09-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/26/%E6%B8%85%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/" title="强缓存和协商缓存"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="强缓存和协商缓存"/></a><div class="content"><a class="title" href="/2021/08/26/%E6%B8%85%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/" title="强缓存和协商缓存">强缓存和协商缓存</a><time datetime="2021-08-26T01:09:55.000Z" title="发表于 2021-08-26 09:09:55">2021-08-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/23/Vue%E7%AC%94%E8%AE%B0%20---%20Suspense/" title="Vue3笔记 --- Suspense"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3笔记 --- Suspense"/></a><div class="content"><a class="title" href="/2021/08/23/Vue%E7%AC%94%E8%AE%B0%20---%20Suspense/" title="Vue3笔记 --- Suspense">Vue3笔记 --- Suspense</a><time datetime="2021-08-23T01:09:55.000Z" title="发表于 2021-08-23 09:09:55">2021-08-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By houpai</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,1163 +1,266 @@
-<!DOCTYPE html>
-
-
-<html lang="zh-CN">
-
-
-<head>
-    <meta charset="utf-8"/>
-    
-    
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <title>
-        
-        houpai
-    </title>
-  <meta name="generator" content="hexo-theme-ayer">
-    
-        <link rel="shortcut icon" href="/favicon.ico"/>
-    
-    
-<link rel="stylesheet" href="/dist/main.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
-    
-<link rel="stylesheet" href="/css/custom.css">
-
-    
-        <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-    
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css"
-          crossorigin>
-
-    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
-
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-    <style>
-        .todark, .totop {
-            background-color: #999 !important;
-        }
-
-        #daodream-container .daodream-launcher-button {
-            width: 3.2rem !important;
-            height: 3.2rem !important;
-            background-size: 3.2rem !important;
-        }
-
-        #daodream-container .daodream-launcher {
-            width: 3.2rem !important;
-            height: 3.2rem !important;
-            right: 50px !important;
-            bottom: 5rem !important;
-            transform: scale(1.2) !important;
-        }
-
-        .daodream-powered-by {
-            display: none !important;
-        }
-
-        body.darkmode .todark, body.darkmode .totop {
-            background-color: #ffffff !important;
-        }
-
-        @media (max-width: 768px) {
-            #daodream-container .daodream-launcher {
-                right: 10px !important;
-            }
-        }
-
-    </style>
-    <script>
-      (function (i, s, o, g, r, a, m) {
-        i["DaoVoiceObject"] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        a.charset = "utf-8";
-        m.parentNode.insertBefore(a, m)
-      })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/5d756096.js", "daovoice")
-      daovoice('init', {
-        app_id: "5d756096"
-      });
-      daovoice('update');
-
-    </script>
-    
-
-    
-
-<link rel="alternate" href="/atom.xml" title="houpai" type="application/atom+xml">
-</head>
-
-</html>
-
-
-<body>
-  <div id="app">
-    
-      
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
-      
-    <main class="content on">
-      
-<section class="cover">
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">houpai</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
-
-
-<!-- Subtitle -->
-
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
-        startDelay: 0,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: true
-      });
-    } catch (err) {
-      console.log(err)
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>houpai</title><meta name="author" content="houpai"><meta name="copyright" content="houpai"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="houpai">
+<meta property="og:url" content="https://houpai.github.io/page/3/index.html">
+<meta property="og:site_name" content="houpai">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGodde27b8860204eff9b04d6fd262db6ae!400x400.jpeg">
+<meta property="article:author" content="houpai">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGodde27b8860204eff9b04d6fd262db6ae!400x400.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://houpai.github.io/page/3/"><link rel="preconnect" href="//fastly.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
     }
-  </script>
-  
-<div id="main">
-  <section class="outer">
-  
-  
-  
-
-<div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
-    <div class="notice-content" id="broad"></div>
-</div>
-<script type="text/javascript">
-    fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("broad").innerHTML = data.hitokoto;
-        })
-        .catch(console.error)
-</script>
-
-<style>
-    .notice {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-    }
-
-    .notice i {
-        float: left;
-        color: #999;
-        font-size: 16px;
-        padding-right: 10px;
-        vertical-align: middle;
-        margin-top: -2px;
-    }
-
-    .notice-content {
-        display: initial;
-        vertical-align: middle;
-    }
-</style>
-  
-  <article class="articles">
-    
-    
-    
-    
-    <article
-  id="post-微信小程序常用工具函数封装"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/05/27/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/"
-    >微信小程序常用工具函数封装</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/05/27/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/" class="article-date">
-  <time datetime="2021-05-27T02:09:55.000Z" itemprop="datePublished">2021-05-27</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>对微信小程序自身特性的功能进行封装使用</p> 
-      <a class="article-more-link" href="/2021/05/27/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-前端中常见字节编码(base64、hex、utf8)及其转换"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/05/07/%E5%89%8D%E7%AB%AF%E4%B8%AD%E5%B8%B8%E8%A7%81%E5%AD%97%E8%8A%82%E7%BC%96%E7%A0%81(base64%E3%80%81hex%E3%80%81utf8)%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2/"
-    >前端中常见字节编码(base64、hex、utf8)及其转换</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/05/07/%E5%89%8D%E7%AB%AF%E4%B8%AD%E5%B8%B8%E8%A7%81%E5%AD%97%E8%8A%82%E7%BC%96%E7%A0%81(base64%E3%80%81hex%E3%80%81utf8)%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2/" class="article-date">
-  <time datetime="2021-05-07T03:09:55.000Z" itemprop="datePublished">2021-05-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>前端中常见字节编码(base64、hex、utf8)及其转换…</p> 
-      <a class="article-more-link" href="/2021/05/07/%E5%89%8D%E7%AB%AF%E4%B8%AD%E5%B8%B8%E8%A7%81%E5%AD%97%E8%8A%82%E7%BC%96%E7%A0%81(base64%E3%80%81hex%E3%80%81utf8)%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-一款vue虚拟键盘(支持中文和手写)插件"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/05/07/%E4%B8%80%E6%AC%BEvue%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98(%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%92%8C%E6%89%8B%E5%86%99)%E6%8F%92%E4%BB%B6/"
-    >一款vue虚拟键盘(支持中文和手写)插件</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/05/07/%E4%B8%80%E6%AC%BEvue%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98(%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%92%8C%E6%89%8B%E5%86%99)%E6%8F%92%E4%BB%B6/" class="article-date">
-  <time datetime="2021-05-07T01:09:55.000Z" itemprop="datePublished">2021-05-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>推荐一款vue虚拟键盘(支持中文和手写)插件…</p> 
-      <a class="article-more-link" href="/2021/05/07/%E4%B8%80%E6%AC%BEvue%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98(%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%92%8C%E6%89%8B%E5%86%99)%E6%8F%92%E4%BB%B6/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Npm/" rel="tag">Npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-旅行/本溪大石湖一日游"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/05/04/%E6%97%85%E8%A1%8C/%E6%9C%AC%E6%BA%AA%E5%A4%A7%E7%9F%B3%E6%B9%96%E4%B8%80%E6%97%A5%E6%B8%B8/"
-    >本溪大石湖一日游</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/05/04/%E6%97%85%E8%A1%8C/%E6%9C%AC%E6%BA%AA%E5%A4%A7%E7%9F%B3%E6%B9%96%E4%B8%80%E6%97%A5%E6%B8%B8/" class="article-date">
-  <time datetime="2021-05-04T01:49:56.000Z" itemprop="datePublished">2021-05-04</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%B8%B8%E8%AE%B0/">游记</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>五一放假期间去了一趟本溪大石湖，喜欢水的又离得比较近小伙伴们可以去耍耍…</p> 
-      <a class="article-more-link" href="/2021/05/04/%E6%97%85%E8%A1%8C/%E6%9C%AC%E6%BA%AA%E5%A4%A7%E7%9F%B3%E6%B9%96%E4%B8%80%E6%97%A5%E6%B8%B8/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%85%E8%A1%8C/" rel="tag">旅行</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Jetbrains系列产品重置试用方法"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/05/04/Jetbrains%E7%B3%BB%E5%88%97%E4%BA%A7%E5%93%81%E9%87%8D%E7%BD%AE%E8%AF%95%E7%94%A8%E6%96%B9%E6%B3%95/"
-    >Jetbrains系列产品重置试用方法</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/05/04/Jetbrains%E7%B3%BB%E5%88%97%E4%BA%A7%E5%93%81%E9%87%8D%E7%BD%AE%E8%AF%95%E7%94%A8%E6%96%B9%E6%B3%95/" class="article-date">
-  <time datetime="2021-05-04T01:48:56.000Z" itemprop="datePublished">2021-05-04</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>记录一下如何重置Jetbrains的产品试用时间（30天试用期）…</p> 
-      <a class="article-more-link" href="/2021/05/04/Jetbrains%E7%B3%BB%E5%88%97%E4%BA%A7%E5%93%81%E9%87%8D%E7%BD%AE%E8%AF%95%E7%94%A8%E6%96%B9%E6%B3%95/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-解决浏览器自动填充账号input出现背景色的问题"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/04/28/%E8%A7%A3%E5%86%B3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E8%B4%A6%E5%8F%B7input%E5%87%BA%E7%8E%B0%E8%83%8C%E6%99%AF%E8%89%B2%E7%9A%84%E9%97%AE%E9%A2%98/"
-    >解决浏览器自动填充账号input出现背景色的问题</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/04/28/%E8%A7%A3%E5%86%B3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E8%B4%A6%E5%8F%B7input%E5%87%BA%E7%8E%B0%E8%83%8C%E6%99%AF%E8%89%B2%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2021-04-28T01:09:55.000Z" itemprop="datePublished">2021-04-28</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>记录一下如何解决浏览器自动填充账号input出现背景色的问题…</p> 
-      <a class="article-more-link" href="/2021/04/28/%E8%A7%A3%E5%86%B3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E8%B4%A6%E5%8F%B7input%E5%87%BA%E7%8E%B0%E8%83%8C%E6%99%AF%E8%89%B2%E7%9A%84%E9%97%AE%E9%A2%98/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Css/" rel="tag">Css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Html/" rel="tag">Html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-移动端H5页面返回并且刷新页面（BFcache）"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/04/27/%E7%A7%BB%E5%8A%A8%E7%AB%AFH5%E9%A1%B5%E9%9D%A2%E8%BF%94%E5%9B%9E%E5%B9%B6%E4%B8%94%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%EF%BC%88BFcache%EF%BC%89/"
-    >移动端H5页面返回并且刷新页面（BFcache）</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/04/27/%E7%A7%BB%E5%8A%A8%E7%AB%AFH5%E9%A1%B5%E9%9D%A2%E8%BF%94%E5%9B%9E%E5%B9%B6%E4%B8%94%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%EF%BC%88BFcache%EF%BC%89/" class="article-date">
-  <time datetime="2021-04-27T01:09:55.000Z" itemprop="datePublished">2021-04-27</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>什么是BF叉车呢…</p> 
-      <a class="article-more-link" href="/2021/04/27/%E7%A7%BB%E5%8A%A8%E7%AB%AFH5%E9%A1%B5%E9%9D%A2%E8%BF%94%E5%9B%9E%E5%B9%B6%E4%B8%94%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%EF%BC%88BFcache%EF%BC%89/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Html/" rel="tag">Html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-node自定义环境变量NODE_ENV"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/04/26/node%E8%87%AA%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FNODE_ENV/"
-    >node自定义环境变量NODE_ENV</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/04/26/node%E8%87%AA%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FNODE_ENV/" class="article-date">
-  <time datetime="2021-04-26T02:09:55.000Z" itemprop="datePublished">2021-04-26</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>记录一下如何指定node自定义环境变量NODE_ENV…</p> 
-      <a class="article-more-link" href="/2021/04/26/node%E8%87%AA%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FNODE_ENV/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/" rel="tag">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag">原创</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-markerdown-高效上传图片工具PicGo"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/04/12/markerdown-%E9%AB%98%E6%95%88%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E5%B7%A5%E5%85%B7PicGo/"
-    >markerdown-高效上传图片工具PicGo</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/04/12/markerdown-%E9%AB%98%E6%95%88%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E5%B7%A5%E5%85%B7PicGo/" class="article-date">
-  <time datetime="2021-04-12T08:05:38.000Z" itemprop="datePublished">2021-04-12</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>在使用Typora时可随时便捷上传图片</p> 
-      <a class="article-more-link" href="/2021/04/12/markerdown-%E9%AB%98%E6%95%88%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E5%B7%A5%E5%85%B7PicGo/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markerdown/" rel="tag">Markerdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-markerdown-Typora编辑器"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/04/12/markerdown-Typora%E7%BC%96%E8%BE%91%E5%99%A8/"
-    >markerdown-Typora编辑器</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/04/12/markerdown-Typora%E7%BC%96%E8%BE%91%E5%99%A8/" class="article-date">
-  <time datetime="2021-04-12T06:47:26.000Z" itemprop="datePublished">2021-04-12</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>Typora 是一款支持实时预览的 Markdown 文本编辑器</p> 
-      <a class="article-more-link" href="/2021/04/12/markerdown-Typora%E7%BC%96%E8%BE%91%E5%99%A8/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markerdown/" rel="tag">Markerdown</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-  </article>
-  
-
-  
-  <nav class="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
-  </nav>
-  
-</section>
-</div>
-
-      <footer class="footer">
-  <div class="outer">
-    <ul>
-      <li>
-        Copyrights &copy;
-        2021-2022
-        <i class="ri-heart-fill heart_icon"></i> houpai
-      </li>
-    </ul>
-<!--    <ul>-->
-<!--      <li>-->
-<!--        -->
-<!--        -->
-<!--        -->
-<!--        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动-->
-<!--        <span class="division">|</span>-->
-<!--        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>-->
-<!--        -->
-<!--      </li>-->
-<!--    </ul>-->
-    <ul>
-      <li>
-        
-        
-        <span>
-  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
-  <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
-</span>
-        
-      </li>
-    </ul>
-    <ul>
-      
-        <li>
-          <a href="http://www.beian.miit.gov.cn/" target="_black" rel="nofollow">辽ICP备2021002704号</a>
-        </li>
-        
-    </ul>
-    <ul>
-      
-    </ul>
-    <ul>
-      <li>
-        <!-- cnzz统计 -->
-        
-      </li>
-    </ul>
-  </div>
-</footer>
-
-      <div class="float_btns">
-        <div class="totop" id="totop">
-  <i class="ri-arrow-up-line"></i>
-</div>
-
-<div class="todark" id="todark">
-  <i class="ri-moon-line"></i>
-</div>
-
-      </div>
-    </main>
-    <aside class="sidebar on">
-      <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/me.jpg" alt="houpai"></a>
-  </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="https://vvip-houpai.lofter.com/">摄影</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/friends">友链</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about/me.html">关于我</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="搜索">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
-    <script>
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        document.querySelector('.content').classList.remove('on');
-        document.querySelector('.sidebar').classList.remove('on');
-      }
-    </script>
-    <div id="mask"></div>
-
-<!-- #reward -->
-<div id="reward">
-  <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯卡布奇诺吧~</p>
-  <div class="reward-box">
-    
-    <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/alipay.png">
-      <span class="reward-type">支付宝</span>
-    </div>
-    
-    
-    <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/houpai/hp-cdn@latest/wechat.png">
-      <span class="reward-type">微信</span>
-    </div>
-    
-  </div>
-</div>
-    
-<script src="/js/jquery-2.0.3.min.js"></script>
-
-
-<script src="/js/lazyload.min.js"></script>
-
-<!-- Tocbot -->
-
-<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
-
-<script src="/dist/main.js"></script>
-
-<!-- ImageViewer -->
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
-
-<script>
-    function viewer_init() {
-        let pswpElement = document.querySelectorAll('.pswp')[0];
-        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
-        $imgArr.forEach(($em, i) => {
-            $em.onclick = () => {
-                // slider展开状态
-                // todo: 这样不好，后面改成状态
-                if (document.querySelector('.left-col.show')) return
-                let items = []
-                $imgArr.forEach(($em2, i2) => {
-                    let img = $em2.getAttribute('data-idx', i2)
-                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
-                    let title = $em2.getAttribute('alt')
-                    // 获得原图尺寸
-                    const image = new Image()
-                    image.src = src
-                    items.push({
-                        src: src,
-                        w: image.width || $em2.width,
-                        h: image.height || $em2.height,
-                        title: title
-                    })
-                })
-                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
-                    index: parseInt(i)
-                });
-                gallery.init()
-            }
-        })
-    }
-    viewer_init()
-</script>
-
-<!-- MathJax -->
-
-<!-- Katex -->
-
-<!-- busuanzi  -->
-
-
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-<!-- ClickLove -->
-
-<!-- ClickBoom1 -->
-
-<!-- ClickBoom2 -->
-
-
-<script src="/js/clickBoom2.js"></script>
-
-
-<!-- CodeCopy -->
-
-
-<link rel="stylesheet" href="/css/clipboard.css">
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-  function wait(callback, seconds) {
-    var timelag = null;
-    timelag = window.setTimeout(callback, seconds);
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'houpai',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-06-06 18:21:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
   }
-  !function (e, t, a) {
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      $(".article pre code").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
         }
-      });
-      clipboard.on('success', function(e) {
-        let $btn = $(e.trigger);
-        $btn.addClass('copied');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-checkbox-circle-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-checkbox-circle-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-time-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-time-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
     }
-    initCopyCode();
-  }(window, document);
-</script>
-
-
-<!-- CanvasBackground -->
-
-
-<script src="/js/dz.js"></script>
-
-
-
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-  </div>
-<!-- hexo injector body_end start -->
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="houpai" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGodde27b8860204eff9b04d6fd262db6ae!400x400.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGohu.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">houpai</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">houpai</h1><div id="site_social_icons"><a class="social-icon" href="https://github.com/houpai" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:houpai@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2021/05/27/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/" title="微信小程序常用工具函数封装"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微信小程序常用工具函数封装"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/27/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/" title="微信小程序常用工具函数封装">微信小程序常用工具函数封装</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-27T02:09:55.000Z" title="发表于 2021-05-27 10:09:55">2021-05-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">对微信小程序自身特性的功能进行封装使用
 
-<script src="/lib/codeBlock/codeBlockFuction.js"></script>
 
-<script src="/lib/codeBlock/codeLang.js"></script>
 
-<script src="/lib/codeBlock/codeCopy.js"></script>
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/05/07/%E5%89%8D%E7%AB%AF%E4%B8%AD%E5%B8%B8%E8%A7%81%E5%AD%97%E8%8A%82%E7%BC%96%E7%A0%81(base64%E3%80%81hex%E3%80%81utf8)%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2/" title="前端中常见字节编码(base64、hex、utf8)及其转换"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端中常见字节编码(base64、hex、utf8)及其转换"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/07/%E5%89%8D%E7%AB%AF%E4%B8%AD%E5%B8%B8%E8%A7%81%E5%AD%97%E8%8A%82%E7%BC%96%E7%A0%81(base64%E3%80%81hex%E3%80%81utf8)%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2/" title="前端中常见字节编码(base64、hex、utf8)及其转换">前端中常见字节编码(base64、hex、utf8)及其转换</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-07T03:09:55.000Z" title="发表于 2021-05-07 11:09:55">2021-05-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">前端中常见字节编码(base64、hex、utf8)及其转换…
 
-<link rel="stylesheet" href="/lib/codeBlock/matery.css">
-<!-- hexo injector body_end end --></body>
 
-</html>
+本文章向大家介绍前端中常见字节编码(base64、hex、utf8)及其转换，主要包括前端中常见字节编码(base64、hex、utf8)及其转换使用实例、应用技巧、基本知识点总结和需要注意事项，具有一定的参考价值，需要的朋友可以参考一下。
+12345678910111213141516171819202122232425262728293031/** 字节编码转换* 首先都需要转为二级制数组 (ArrayBuffer)* 然后才能转换对应的编码字符* 前端常见编码：* base64：就是将二进制转为字符串,将每6个字节转为一个特定的字符串(A-Za-z0-9/+=)。* hex：将二进制每8个字节转为对应的2个十六进制的字符串* */// utf8 转为 base64/hexlet output = Buffer.from(&#x27;utf8的字符串&#x27;, &#x27;utf8&#x27;)console.log(output.toString(&#x27;base64&#x27;))console.log ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/05/07/%E4%B8%80%E6%AC%BEvue%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98(%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%92%8C%E6%89%8B%E5%86%99)%E6%8F%92%E4%BB%B6/" title="一款vue虚拟键盘(支持中文和手写)插件"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一款vue虚拟键盘(支持中文和手写)插件"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/07/%E4%B8%80%E6%AC%BEvue%E8%99%9A%E6%8B%9F%E9%94%AE%E7%9B%98(%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%92%8C%E6%89%8B%E5%86%99)%E6%8F%92%E4%BB%B6/" title="一款vue虚拟键盘(支持中文和手写)插件">一款vue虚拟键盘(支持中文和手写)插件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-07T01:09:55.000Z" title="发表于 2021-05-07 09:09:55">2021-05-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">推荐一款vue虚拟键盘(支持中文和手写)插件…
+
+
+
+
+关于特性 🎉
+支持多达五种键盘模式
+支持自定义主题色
+已集成丰富的中文字库
+支持急速识别的手写能力
+vue3.0 组件开箱即用
+
+支持环境
+
+
+ Edge
+Firefox
+Chrome
+Safari
+Opera
+
+
+
+Edge
+last 2 versions
+last 2 versions
+last 2 versions
+last 2 versions
+
+
+安装使用 npm 或 yarn 安装12$ npm install vue-keyboard-virtual-next --save$ yarn add vue-keyboard-virtual-next --save
+
+如果你的网络环境不佳，推荐使用 cnpm。
+使用全局引入12345678import App from &quot;./app.vue&quot;;import &#123; createApp &#125; from &quot;vue&quot;;import &quot;vue-keyboard-virtual-next/keyboard.min.cs ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/05/04/%E6%97%85%E8%A1%8C/%E6%9C%AC%E6%BA%AA%E5%A4%A7%E7%9F%B3%E6%B9%96%E4%B8%80%E6%97%A5%E6%B8%B8/" title="本溪大石湖一日游"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="本溪大石湖一日游"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/04/%E6%97%85%E8%A1%8C/%E6%9C%AC%E6%BA%AA%E5%A4%A7%E7%9F%B3%E6%B9%96%E4%B8%80%E6%97%A5%E6%B8%B8/" title="本溪大石湖一日游">本溪大石湖一日游</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-04T01:49:56.000Z" title="发表于 2021-05-04 09:49:56">2021-05-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%B8%B8%E8%AE%B0/">游记</a></span></div><div class="content">五一放假期间去了一趟本溪大石湖，喜欢水的又离得比较近小伙伴们可以去耍耍…
+
+
+国际惯例，景区门口留影，哈哈
+这个也好意思叫岛，哈哈
+老婆大人夸我照相技术有点好(感谢煮师爷，哈哈)
+小瀑布
+仙桃
+
+这个叫什么松，挺直
+
+水很清
+
+
+
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/05/04/Jetbrains%E7%B3%BB%E5%88%97%E4%BA%A7%E5%93%81%E9%87%8D%E7%BD%AE%E8%AF%95%E7%94%A8%E6%96%B9%E6%B3%95/" title="Jetbrains系列产品重置试用方法"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jetbrains系列产品重置试用方法"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/04/Jetbrains%E7%B3%BB%E5%88%97%E4%BA%A7%E5%93%81%E9%87%8D%E7%BD%AE%E8%AF%95%E7%94%A8%E6%96%B9%E6%B3%95/" title="Jetbrains系列产品重置试用方法">Jetbrains系列产品重置试用方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-04T01:48:56.000Z" title="发表于 2021-05-04 09:48:56">2021-05-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></span></div><div class="content">记录一下如何重置Jetbrains的产品试用时间（30天试用期）…
+
+本站惯例：本文假定你知道Jetbrains家的产品。不知道可以问问搜索引擎。
+没错，jetbrains-agent这个项目停止了。市面上漫天飞的各种最新都是其他大神的魔改版本。[/斜眼]我不是要专门写个博文来说明jetbrains-agent项目已经停止，然后缅怀感叹一番。这篇文章是想和大家聊聊另一种思路。
+0x0. 项目背景Jetbrains家的产品有一个很良心的地方，他会允许你试用30天（这个数字写死在代码里了）以评估是否你真的需要为它而付费。但很多时候会出现一种情况：IDE并不能按照我们实际的试用时间来计算。我举个例子：如果我们开始了试用，然后媳妇生孩子要你回去陪产！陪产时我们并无空闲对IDE试用评估，它依旧算试用时间。（只是举个例子，或许你并没有女朋友）发现了吗？你未能真的有30天来对它进行全面的试用评估，你甚至无法作出是否付费的决定。此时你会想要延长试用时间，然而Jetbrains并未提供相关功能，该怎么办？
+事实上有一款插件可以实现这个功能，你或许可以用它来重置一下试用时间。但切记不要无休止的一直试用，这 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/04/28/%E8%A7%A3%E5%86%B3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E8%B4%A6%E5%8F%B7input%E5%87%BA%E7%8E%B0%E8%83%8C%E6%99%AF%E8%89%B2%E7%9A%84%E9%97%AE%E9%A2%98/" title="解决浏览器自动填充账号input出现背景色的问题"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="解决浏览器自动填充账号input出现背景色的问题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/28/%E8%A7%A3%E5%86%B3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E8%B4%A6%E5%8F%B7input%E5%87%BA%E7%8E%B0%E8%83%8C%E6%99%AF%E8%89%B2%E7%9A%84%E9%97%AE%E9%A2%98/" title="解决浏览器自动填充账号input出现背景色的问题">解决浏览器自动填充账号input出现背景色的问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-28T01:09:55.000Z" title="发表于 2021-04-28 09:09:55">2021-04-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">记录一下如何解决浏览器自动填充账号input出现背景色的问题…
+
+
+解决前:
+解决后：
+解决方法：
+css设置背景色
+123input:-webkit-autofill &#123;     box-shadow: 0 0 0px 1000px white inset !important;&#125;
+input标签添加autocomplete=“off” 指定某个文本框取消自动填充
+1&lt;el-input type=&quot;text&quot; v-model=&quot;name&quot;  placeholder=&quot;请输入账号&quot; autocomplete=&quot;off&quot; &gt;&lt;/el-input&gt;
+form表单添加autocomplete=“off” 取消所有文本框元素的自动填充
+123&lt;el-form autocomplete=&quot;off&quot;&gt;   ...&lt;/el-form&gt;
+转载自:CSDN文章: 解决input输入框自动填充账号密码出现背景色的问题
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/04/27/%E7%A7%BB%E5%8A%A8%E7%AB%AFH5%E9%A1%B5%E9%9D%A2%E8%BF%94%E5%9B%9E%E5%B9%B6%E4%B8%94%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%EF%BC%88BFcache%EF%BC%89/" title="移动端H5页面返回并且刷新页面（BFcache）"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动端H5页面返回并且刷新页面（BFcache）"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/27/%E7%A7%BB%E5%8A%A8%E7%AB%AFH5%E9%A1%B5%E9%9D%A2%E8%BF%94%E5%9B%9E%E5%B9%B6%E4%B8%94%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%EF%BC%88BFcache%EF%BC%89/" title="移动端H5页面返回并且刷新页面（BFcache）">移动端H5页面返回并且刷新页面（BFcache）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-27T01:09:55.000Z" title="发表于 2021-04-27 09:09:55">2021-04-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">什么是BF叉车呢…
+
+
+​    项目中的需求：点击浏览器中的返回按钮，要让页面重新加载资源。因为这部分的资源每次去加载的内容都不一样，如果返回的时候，还是看到原先的内容，那做这个内容块的意义就很小了；而如果用户看完了这部分内容，再返回来的时候，这个地方换成了新的内容，这样就能体现这部分的价值了。
+​    而对于浏览器来说，大部分浏览器的返回是直接使用缓存的，不会执行任何的javascript代码。原因：部分浏览器在后退时不会触发onload事件，這是HTML5世代浏览器新增的特性之一——Back-Forward Cache(简称bfcache)。
+什么是bfcache?​    bfcache，即back-forward cache，可称为“往返缓存”，可以在用户使用浏览器的“后退”和“前进”按钮时加快页面的转换速度。这个缓存不仅保存页面数据，还保存了DOM和JS的状态，实际上是将整个页面都保存在内存里。如果页面位于bfcache中，那么再次打开该页面就不会触发onload事件
+pageshow事件​    这个事件在用户浏览网页时触发，pageshow 事件类似于 onload  ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/04/26/node%E8%87%AA%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FNODE_ENV/" title="node自定义环境变量NODE_ENV"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="node自定义环境变量NODE_ENV"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/26/node%E8%87%AA%E5%AE%9A%E4%B9%89%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FNODE_ENV/" title="node自定义环境变量NODE_ENV">node自定义环境变量NODE_ENV</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-26T02:09:55.000Z" title="发表于 2021-04-26 10:09:55">2021-04-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">记录一下如何指定node自定义环境变量NODE_ENV…
+
+
+  在很多前端项目中都需要配置node的环境变量，通常在package.json的scripts命令内容和webpack配置文件中可以看到NODE_ENV这个变量，值一般为production或者product，也有人简写为’dev’或’prod’。
+NODE_ENV的作用​     通常这个变量用来区分开发与生产环境，加载不同的配置。
+配置​    node中有全局变量process表示当前node进程，process.env包含着关于系统环境的信息。但是process.env中并不存在NODE_ENV这个东西，NODE_ENV只是一个用户自定义的变量，当我们在服务启动时配置NODE_ENV,或在代码中给process.env.NODE_ENV赋值，js便能通过process.env.NODE_ENV获取信息，通常可以在package.json的scripts里设置
+1234&quot;scripts&quot;: &#123;  &quot;test&quot;: &quot;echo \&quot;Error: no  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/04/12/markerdown-%E9%AB%98%E6%95%88%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E5%B7%A5%E5%85%B7PicGo/" title="markerdown-高效上传图片工具PicGo"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="markerdown-高效上传图片工具PicGo"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/12/markerdown-%E9%AB%98%E6%95%88%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E5%B7%A5%E5%85%B7PicGo/" title="markerdown-高效上传图片工具PicGo">markerdown-高效上传图片工具PicGo</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-12T08:05:38.000Z" title="发表于 2021-04-12 16:05:38">2021-04-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></span></div><div class="content">在使用Typora时可随时便捷上传图片
+
+
+一 应用场景在编写markerdown文档时,需要插入图片,因文档最终上传到云端,所以需要将网络图片地址插入其中;
+PicGo工具在Typora中内置并集成,可使用该插件将本地或其它网络图片直接上传到云端
+二 下载地址官方网站:https://molunerfinn.com/PicGo/
+下载地址:https://github.com/Molunerfinn/picgo/releases
+三 使用方式1下载PicGo并配置​    下载安装完毕后,参照文档进行配置,如图是糖糖的配置项
+​    
+这里推荐github配置,设定的自定义域名为jsdelivr可享有免费的CDN加速
+https://fastly.jsdelivr.net/gh/`[github用户名]`/`[仓库名]`@`[版本分支]`
+例如:https://fastly.jsdelivr.net/gh/tangyuxian/blog_image@latest
+2 在Typora中配置
+
+在文件-&gt;偏好设置-&gt;图像中配置上传服务设定
+按照图中配置即可
+插件配置方式可参 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/04/12/markerdown-Typora%E7%BC%96%E8%BE%91%E5%99%A8/" title="markerdown-Typora编辑器"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="markerdown-Typora编辑器"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/12/markerdown-Typora%E7%BC%96%E8%BE%91%E5%99%A8/" title="markerdown-Typora编辑器">markerdown-Typora编辑器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-12T06:47:26.000Z" title="发表于 2021-04-12 14:47:26">2021-04-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></span></div><div class="content">Typora 是一款支持实时预览的 Markdown 文本编辑器
+
+
+一 了解Markdown
+Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。
+Markdown 语言在 2004 由约翰·格鲁伯（英语：John Gruber）创建。
+Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多种格式的文档。
+Markdown 编写的文档后缀为 .md, .markdown。
+更多详细内容可参照菜鸟教程:Markdown
+二 书写工具Typora官方网站:https://www.typora.io/
+Typora中文网站:https://www.typora.net/
+国内码云上的发行版本:https://gitee.com/typora-mirror/Typora-Mirror/releases
+三 语法1. 字体编辑1.1 标题1234567891011# 一级标题        快捷键Ctrl+1## 二级标题       快捷键Ctrl+2### 三级标题      快捷键Ctrl+3#### 四级标题     快 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGodde27b8860204eff9b04d6fd262db6ae!400x400.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">houpai</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/houpai" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:houpai@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/10/14/100%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%BF%B7%E4%BD%A0Vue/" title="100行代码实现一个迷你Vue"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="100行代码实现一个迷你Vue"/></a><div class="content"><a class="title" href="/2021/10/14/100%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%BF%B7%E4%BD%A0Vue/" title="100行代码实现一个迷你Vue">100行代码实现一个迷你Vue</a><time datetime="2021-10-14T01:20:55.000Z" title="发表于 2021-10-14 09:20:55">2021-10-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/14/%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8ProtocolBuffer%E7%9A%84%E6%96%B9%E6%B3%95/" title="在微信小程序中使用ProtocolBuffer的方法"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在微信小程序中使用ProtocolBuffer的方法"/></a><div class="content"><a class="title" href="/2021/10/14/%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8ProtocolBuffer%E7%9A%84%E6%96%B9%E6%B3%95/" title="在微信小程序中使用ProtocolBuffer的方法">在微信小程序中使用ProtocolBuffer的方法</a><time datetime="2021-10-14T01:09:55.000Z" title="发表于 2021-10-14 09:09:55">2021-10-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/01/element-ui%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E7%BB%84%E4%BB%B6-%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E8%8C%83%E5%9B%B4%E9%99%90%E5%88%B6/" title="element-ui时间选择组件-时间选择范围限制"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="element-ui时间选择组件-时间选择范围限制"/></a><div class="content"><a class="title" href="/2021/09/01/element-ui%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E7%BB%84%E4%BB%B6-%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E8%8C%83%E5%9B%B4%E9%99%90%E5%88%B6/" title="element-ui时间选择组件-时间选择范围限制">element-ui时间选择组件-时间选择范围限制</a><time datetime="2021-09-01T01:09:55.000Z" title="发表于 2021-09-01 09:09:55">2021-09-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/26/%E6%B8%85%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/" title="强缓存和协商缓存"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="强缓存和协商缓存"/></a><div class="content"><a class="title" href="/2021/08/26/%E6%B8%85%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/" title="强缓存和协商缓存">强缓存和协商缓存</a><time datetime="2021-08-26T01:09:55.000Z" title="发表于 2021-08-26 09:09:55">2021-08-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/23/Vue%E7%AC%94%E8%AE%B0%20---%20Suspense/" title="Vue3笔记 --- Suspense"><img src="https://fastly.jsdelivr.net/gh/houpai/hp-cdn@latest/picGoyijing.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3笔记 --- Suspense"/></a><div class="content"><a class="title" href="/2021/08/23/Vue%E7%AC%94%E8%AE%B0%20---%20Suspense/" title="Vue3笔记 --- Suspense">Vue3笔记 --- Suspense</a><time datetime="2021-08-23T01:09:55.000Z" title="发表于 2021-08-23 09:09:55">2021-08-23</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="card-category-list-name">前端</span><span class="card-category-list-count">27</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">开发工具</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B8%B8%E8%AE%B0/"><span class="card-category-list-name">游记</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Css/" style="font-size: 1.17em; color: #999c9f">Css</a> <a href="/tags/ES6/" style="font-size: 1.1em; color: #999">ES6</a> <a href="/tags/ElementUI/" style="font-size: 1.1em; color: #999">ElementUI</a> <a href="/tags/Git/" style="font-size: 1.3em; color: #99a1ac">Git</a> <a href="/tags/Html/" style="font-size: 1.23em; color: #999ea6">Html</a> <a href="/tags/Http/" style="font-size: 1.1em; color: #999">Http</a> <a href="/tags/JavaScript/" style="font-size: 1.37em; color: #99a4b2">JavaScript</a> <a href="/tags/Markerdown/" style="font-size: 1.17em; color: #999c9f">Markerdown</a> <a href="/tags/Node/" style="font-size: 1.17em; color: #999c9f">Node</a> <a href="/tags/Npm/" style="font-size: 1.17em; color: #999c9f">Npm</a> <a href="/tags/TypeScript/" style="font-size: 1.1em; color: #999">TypeScript</a> <a href="/tags/Vue/" style="font-size: 1.3em; color: #99a1ac">Vue</a> <a href="/tags/Vue3/" style="font-size: 1.43em; color: #99a6b9">Vue3</a> <a href="/tags/Webpack/" style="font-size: 1.1em; color: #999">Webpack</a> <a href="/tags/%E5%8E%9F%E5%88%9B/" style="font-size: 1.23em; color: #999ea6">原创</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 1.17em; color: #999c9f">微信小程序</a> <a href="/tags/%E6%97%85%E8%A1%8C/" style="font-size: 1.1em; color: #999">旅行</a> <a href="/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 1.5em; color: #99a9bf">转载</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/10/"><span class="card-archive-list-date">十月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">九月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">八月 2021</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">七月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">六月 2021</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">五月 2021</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">4</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">36</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-06-06T10:21:14.122Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By houpai</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
